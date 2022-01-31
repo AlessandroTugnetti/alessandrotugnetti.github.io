@@ -286,6 +286,7 @@ DEPENDENCIES
   eventmachine
   github-pages
   hawkins
+  jekyll
   jekyll-feed
   jekyll-sitemap
   json (= 2.5.1)

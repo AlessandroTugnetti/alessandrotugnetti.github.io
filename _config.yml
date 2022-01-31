@@ -77,13 +77,13 @@ analytics:
   google:
     tracking_id          : 
   goatcounter:
-    code		 : jayrobwilliams
+    code		 : alessandrotugnetti
 
 
 # Site Author
 author:
-  name             : "Rob Williams"
-  avatar           : "profile.png"
+  name             : "Alessandro Tugnetti"
+  avatar           : "profile.jpeg"
   bio              : "Postdoctoral Research Fellow"
   location         : "St. Louis, MO"
   employer         :

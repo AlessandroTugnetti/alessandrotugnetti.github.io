@@ -26,6 +26,5 @@ group :jekyll_plugins do
   gem 'hawkins'
   gem "json", "2.5.1"
   gem "eventmachine"
+  gem 'thin'
 end
-
-gem "webrick", "~> 1.7"
