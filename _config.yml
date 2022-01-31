@@ -77,15 +77,15 @@ analytics:
   google:
     tracking_id          : 
   goatcounter:
-    code		 : alessandrotugnetti
+    code		 :
 
 
 # Site Author
 author:
   name             : "Alessandro Tugnetti"
-  avatar           : "profile.jpeg"
-  bio              : "Postdoctoral Research Fellow"
-  location         : "St. Louis, MO"
+  avatar           : "profile.png"
+  bio              : "Ph.D. Student"
+  location         : "Luxembourg"
   employer         :
   pubmed           :
   orcid            : "http://orcid.org/0000-0001-9259-3883"

@@ -28,3 +28,4 @@ group :jekyll_plugins do
   gem "eventmachine"
   gem 'thin'
 end
+gem "webrick", "~> 1.7"
