@@ -8,8 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I am a Ph.D. student in the Faculty of Law, Economics and Finance ([FDEF](https://wwwen.uni.lu/fdef)) at
-[Luxembourg University](https://wwwen.uni.lu/). 
+Welcome! I am a Ph.D. student in Finance at [Luxembourg University](https://wwwen.uni.lu/) under the supervision of [Roman Kräussl](https://wwwen.uni.lu/research/fdef/df/people/roman_kraeussl) and [Gilbert Fridgen](https://wwwfr.uni.lu/snt/people/gilbert_fridgen).
 
 <!-- I am also an
 affiliated researcher with the
