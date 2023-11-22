@@ -8,11 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I am a Ph.D. student in Finance at the [University of Luxembourg](https://www.uni.lu/en/person/NTAwNDcwODhfX0FsZXNzYW5kcm8gVFVHTkVUVEk=/) under the supervision of [Julien Pénasse](https://www.uni.lu/en/person/NTAwMDkxNTVfX0p1bGllbiBQRU5BU1NF/) and [Gilbert Fridgen](https://www.uni.lu/en/person/NTAwMzg1MTZfX0dpbGJlcnQgRlJJREdFTg==/).
+Welcome! I am a Ph.D. student in Finance at the [University of Luxembourg](https://www.uni.lu/en/person/NTAwNDcwODhfX0FsZXNzYW5kcm8gVFVHTkVUVEk=/) under the supervision of [Julien Pénasse](https://www.uni.lu/en/person/NTAwMDkxNTVfX0p1bGllbiBQRU5BU1NF/) and [Gilbert Fridgen](https://www.uni.lu/en/person/NTAwMzg1MTZfX0dpbGJlcnQgRlJJREdFTg==/). Furthermore, I am part of the [Young Academics](https://yia.uni.lu/) program, offered by the [Institute for Advanced Studies](https://www.uni.lu/research-en/ias/) in Luxembourg.
 
-**Primary Research Interests:**
+**Primary Research Interests**
 
-Quantitative Finance and Digital Assets
+Quantitative Finance and **Digital Assets**
 
 <!-- I am also an
 affiliated researcher with the
