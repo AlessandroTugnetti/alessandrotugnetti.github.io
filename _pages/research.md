@@ -3,19 +3,9 @@ layout: archive
 title: "Research"
 permalink: /research/
 author_profile: true
-header:
-  og_image: "research/ecdf.png"
 ---
 
-The importance that collectibles play in wealth management is becoming increasingly crucial, and this necessitates the development of models which can efficiently predict their price fluctuations.
-
-In this research, we will exploit the ways in which technology is changing the art market by applying supervised machine learning methods to artistic products. The objective will be to develop a pricing method that is on one hand more accurate, and on the other that maintains the level of interpretability of the models currently used in the industry. In particular, art pricing is typically concerned with estimating Ordinary Least Squares (OLS) models, leveraging on their interpretability potential. However, it is known how these algorithms have small predictive capacity when compared with more flexible models in sectors where the uncertainty and human bias of valuation experts become stronger.
-
-Once we take advantage of the strength and abundance of data existing on the “physical” art framework, we will extend the reasoning to the Non-Fungible Token (NFT) market. The goal here would be to understand the "value-creating factors" of NFTs, to compare them with those of classical works of art and discover points of synergy and detachment between these two worlds.
-
-The objectives that we aim to achieve with our research are very ambitious. 
-First of all, we aim to create a framework that can further connect the world of investments to that of machine learning. The idea is not to stop at the art products, but to analyze and apply the quantitative model also to all the other collectibles and to the real estate market. 
-The ultimate goal will not be to replace the intuition of experts in assigning a price to one of these products, but rather to create an interpretable tool that can be used to correct the biases that may arise in these fields.
+#Publications
 
 <!-- My research falls into two main areas: understanding the influence of geography
 on actor behavior before, during, and after civil conflict, and developing new
