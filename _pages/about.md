@@ -8,7 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-Welcome! I am a Ph.D. student in Finance at [Luxembourg University](https://wwwen.uni.lu/) under the supervision of [Roman Kräussl](https://wwwen.uni.lu/research/fdef/df/people/roman_kraeussl) and [Gilbert Fridgen](https://wwwfr.uni.lu/snt/people/gilbert_fridgen).
+Welcome! I am a Ph.D. student in Finance at the [University of Luxembourg](https://www.uni.lu/en/person/NTAwNDcwODhfX0FsZXNzYW5kcm8gVFVHTkVUVEk=/) under the supervision of [Julien Pénasse](https://www.uni.lu/en/person/NTAwMDkxNTVfX0p1bGllbiBQRU5BU1NF/) and [Gilbert Fridgen](https://www.uni.lu/en/person/NTAwMzg1MTZfX0dpbGJlcnQgRlJJREdFTg==/).
+
+**Primary Research Interests:**
+
+Quantitative Finance and Digital Assets
 
 <!-- I am also an
 affiliated researcher with the
