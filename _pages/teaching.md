@@ -6,7 +6,11 @@ author_profile: true
 
 Research plays a central role in my teaching as students improve their
 analytical skills and master the tools of data analysis through hands-on
-experience. I have taught undergraduate courses on political violence and
+experience. 
+
+I am one of the [Python Camp](https://pythoncamp.uni.lu/) creators offered to M.Sc. students at the University of Luxembourg.
+
+<!-- I have taught undergraduate courses on political violence and
 statistical methodology. While at UNC, I taught the graduate statistics lab for
 Advanced Topics in Political Data Science, where my work was recognized by the
 Political Science Department's Earle Wallace Award for Graduate Student
@@ -28,14 +32,12 @@ from Advanced Topics in Political Data Science, [here](/teaching-materials).
 - Pol Sci 3090: The Scientific Study of Civil War (Spring 2020)
     - [Syllabus](/files/pdf/teaching/PS 3090 Syllabus.pdf)
 - Pol Sci 3171: International Conflict Management & Resolution (Fall 2019)
-    - [Syllabus](/files/pdf/teaching/PS 3171 Syllabus.pdf)
+    - [Syllabus](/files/pdf/teaching/PS 3171 Syllabus.pdf)-->
 
-## The University of North Carolina at Chapel Hill
-- Poli 281: Quantitative Research in Political Science (Spring 2019)
-    - [Syllabus](/files/pdf/teaching/POLI 281 Syllabus.pdf)
-- Poli 891: Lab for Advanced Topics in Political Data Science (Fall 2017, Fall 2018)
-    - [Syllabus](/files/pdf/teaching/POLI 891 Syllabus.pdf)
-
-## ICPSR Summer Program
-- Introduction to Applied Bayesian Modeling (Summer 2017)
-    - [Syllabus](/files/pdf/teaching/bayes2017.pdf)
+## University of Luxembourg
+- WEALMG2-1: Empirical Finance
+    - [Syllabus](https://www.uni.lu/fdef-en/study-programs/master-in-wealth-management/programme/)
+- 2.O1: Bloomberg
+    - [Syllabus](https://www.uni.lu/fdef-en/study-programs/master-of-science-in-finance-and-economics/programme/)
+- ECOIND: Industrial Economics (TA)
+    - [Syllabus](https://www.uni.lu/fdef-en/study-programs/bachelor-en-sciences-economiques/programme/)
