@@ -1,11 +1,27 @@
 ---
 layout: archive
-title: "Research"
 permalink: /research/
 author_profile: true
 ---
 
-Publications
+## Publications
+**Journals**
+- Kräussl, R., & Tugnetti, A. (2023). Non-Fungible Tokens (NFTs): A Review of Pricing Determinants, Applications and Opportunities. *Journal of Economic Surveys*, 00, 1–20. [PDF](https://doi.org/10.1111/joes.12597)
+**Papers Under Reviews**
+- Fridgen, G. & Kräussl, R. & Papageorgiou, O. & Tugnetti, A. (2023). Pricing Dynamics and Herding Behavior of NFTs. *Center for Financial Studies Working Paper No. 709*, [PDF](https://ssrn.com/abstract=4337173)
+**Ongoing Projects**
+**Conferences Attendance**
+- [EFMA 2023](https://www.efmaefm.org/0EFMAMEETINGS/EFMA%20ANNUAL%20MEETINGS/2023-UK/2023%20meetings.php), Fridgen, G. and Kräussl, R. and Papageorgiou, O. and Tugnetti, A. (2023). Pricing Dynamics and Herding Behavior of NFTs. *Center for Financial Studies Working Paper No. 709*
+  - *Discussion of* Oh, G. & Jun, W. C. (2011). Measuring Similarity between Trend Behaviors of Multivariate Time Series
+-[FMA 2023](https://www.fma.org/2023-european-conference), Fridgen, G. and Kräussl, R. and Papageorgiou, O. and Tugnetti, A. (2023). Pricing Dynamics and Herding Behavior of NFTs. *Center for Financial Studies Working Paper No. 709*
+  - *Discussion of* Zhu, L. & Jiang, F. & Tang, G. & Jin, F. (2023). The Sword of Damocles: Sparse Macroeconomic Risks and the Cross-section of Stock Returns
+
+
+## Conferences and Presentations
+**Poster Sessions**
+- **DSEFM** Poster Session, University of Luxembourg, 2023
+
+
 
 <!-- My research falls into two main areas: understanding the influence of geography
 on actor behavior before, during, and after civil conflict, and developing new
