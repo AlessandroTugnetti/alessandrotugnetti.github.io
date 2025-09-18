@@ -9,7 +9,6 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-#    <p>555 your office number</p>
      <p>6, Rue Richard Coudenhove-Kalergi</p>
      <p>1359 Kirchberg, Luxembourg</p>
 
