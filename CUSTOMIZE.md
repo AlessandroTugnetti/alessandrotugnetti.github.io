@@ -439,4 +439,206 @@ Bibliography entries (original file)
   abbr={Vision}
 }
 
+
+
+
+
+{
+  "basics": {
+    "name": "Alessandro Tugnetti",
+    "label": "Ph.D. Student",
+    "image": "",
+    "email": "alessandro.tugnetti@live.it",
+    "phone": "",
+    "url": "",
+    "summary": "Currently a doctoral researcher at the University of Luxembourg’s Faculty of Law, Economics and Finance, I am passionate about applying quantitative methods to macroeconomic analysis and forecasting. Rather than being constrained by disciplinary boundaries, I focus on identifying economically significant research questions and seek to leverage my expertise in econometric modeling, time series analysis, and machine learning in senior research or quantitative finance roles.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Luxembourg",
+      "countryCode": "LU",
+      "region": ""
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "alessandrotugnetti",
+        "url": "www.linkedin.com/in/alessandrotugnetti"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "DWS SA",
+      "location": "Luxembourg",
+      "position": "Liquidity Stress Testing Analyst",
+      "url": "https://funds.dws.com/en-lu/",
+      "startDate": "2021-02-01",
+      "endDate": "2021-11-30",
+      "summary": "Development of market and ESG risks liquidity models for passive Money Market funds",
+      "highlights": ["Python","R","MATLAB","Aladdin Solution"]
+    },
+      {
+      "name": "Accenture",
+      "location": "Turin, Italy",
+      "position": "Quantitative Finance and Compliance Specialist",
+      "url": "https://www.accenture.com/us-en",
+      "startDate": "2019-07-01",
+      "endDate": "2019-11-30",
+      "summary": "Validation of Intesa Sanpaolo’s bank account models to ensure compliance to P.A.D. (Payment Account Directive) regulation",
+      "highlights": ["Python","R","PostgreSQL","Mathematica"]
+    },
+      {
+      "name": "London Mutual Credit Union",
+      "location": "London, UK",
+      "position": "Data Analyst",
+      "url": "https://creditunion.co.uk/",
+      "startDate": "2017-05-01",
+      "endDate": "2017-09-30",
+      "summary": "Collection and analysis of client mortgage application data through the application of machine learning techniques",
+      "highlights": ["Python","MATLAB", "Tableau", "SQL"]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Serve the City",
+      "location": "Luxembourg",
+      "position": "Team Stëmm vun der Strooss",
+      "url": "https://servethecity.lu/about/",
+      "startDate": "2022-01-01",
+      "endDate": "Present",
+      "summary": ""
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Luxembourg",
+      "location": "Luxembourg",
+      "url": "https://www.uni.lu/research-en/doctoral-education/dsefm/finance/",
+      "area": "Finance",
+      "studyType": "PhD",
+      "startDate": "2022-01-17",
+      "endDate": "Present",
+      "score": "",
+      "courses": [""]
+    },
+    {
+      "institution": "University of Turin",
+      "location": "Turin, Italy",
+      "url": "https://www.finance-insurance.unito.it/do/home.pl/View?doc=courses.html",
+      "area": "Quantitative Finance and Insurance",
+      "studyType": "M.Sc.",
+      "startDate": "2018-09-01",
+      "endDate": "2020-11-01",
+      "score": "",
+      "courses": [""]
+    },
+    {
+      "institution": "Collegio Carlo Alberto",
+      "location": "Turin, Italy",
+      "url": "https://www.carloalberto.org/education/allievi-honors-program/",
+      "area": "Economics",
+      "studyType": "B.Sc. + M.Res.",
+      "startDate": "2015-09-01",
+      "endDate": "2018-07-01",
+      "score": "",
+      "courses": [""]
+    }
+  ],
+  "awards": [
+    {
+      "title": "",
+      "date": "",
+      "awarder": "",
+      "url": "",
+      "summary": ""
+    }
+  ],
+  "certificates": [
+    {
+      "name": "",
+      "date": "",
+      "issuer": "",
+      "url": "",
+      "icon": ""
+    }
+  ],
+  "publications": [
+    {
+      "name": "Zur Elektrody/namik bewegter Körper",
+      "publisher": "Annalen der Physik",
+      "releaseDate": "1905-06-30",
+      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
+      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
+    },
+    {
+      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
+      "publisher": "Annalen der Physik",
+      "releaseDate": "1905-03-18",
+      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
+      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
+    }
+  ],
+  "skills": [
+    {
+      "name": "",
+      "level": "",
+      "icon": "",
+      "keywords": []
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent",
+      "icon": ""
+    }
+  ],
+  "interests": [
+    {
+      "name": "Physics",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Quantum Mechanics",
+        "Quantum Computing",
+        "Quantum Information",
+        "Quantum Cryptography",
+        "Quantum Communication",
+        "Quantum Teleportation"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    },
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-thumbtack",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Quantum Computing",
+      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
+      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
+      "startDate": "2018-01-01",
+      "endDate": "2018-01-01",
+      "url": "https://example.com"
+    }
+  ]
+}
+
+
+
+
+
 ---
