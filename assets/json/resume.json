@@ -24,38 +24,81 @@
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "name": "DWS SA",
+      "location": "Luxembourg",
+      "position": "Liquidity Stress Testing Analyst",
+      "url": "https://funds.dws.com/en-lu/",
+      "startDate": "2021-02-01",
+      "endDate": "2021-11-30",
+      "summary": "Development of market and ESG risks liquidity models for passive Money Market funds",
+      "highlights": ["Python","R","MATLAB","Aladdin Solution"]
+    },
+      {
+      "name": "Accenture",
+      "location": "Turin, Italy",
+      "position": "Quantitative Finance and Compliance Specialist",
+      "url": "https://www.accenture.com/us-en",
+      "startDate": "2019-07-01",
+      "endDate": "2019-11-30",
+      "summary": "Validation of Intesa Sanpaolo’s bank account models to ensure compliance to P.A.D. (Payment Account Directive) regulation",
+      "highlights": ["Python","R","PostgreSQL","Mathematica"]
+    },
+      {
+      "name": "London Mutual Credit Union",
+      "location": "London, UK",
+      "position": "Data Analyst",
+      "url": "https://creditunion.co.uk/",
+      "startDate": "2017-05-01",
+      "endDate": "2017-09-30",
+      "summary": "Collection and analysis of client mortgage application data through the application of machine learning techniques",
+      "highlights": ["Python","MATLAB", "Tableau", "SQL"]
     }
   ],
   "volunteer": [
     {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
+      "organization": "Serve the City",
+      "location": "Luxembourg",
+      "position": "Team Stëmm vun der Strooss",
+      "url": "https://servethecity.lu/about/",
+      "startDate": "2022-01-01",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": [""]
     }
   ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
+      "institution": "University of Luxembourg",
+      "location": "Luxembourg",
+      "url": "https://www.uni.lu/research-en/doctoral-education/dsefm/finance/",
+      "area": "Finance",
       "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "startDate": "2022-01-17",
+      "endDate": "Present",
+      "score": "",
+      "courses": [""]
+    },
+    {
+      "institution": "University of Turin",
+      "location": "Turin, Italy",
+      "url": "https://www.finance-insurance.unito.it/do/home.pl/View?doc=courses.html",
+      "area": "Quantitative Finance and Insurance",
+      "studyType": "M.Sc.",
+      "startDate": "2018-09-01",
+      "endDate": "2020-11-01",
+      "score": "",
+      "courses": [""]
+    },
+    {
+      "institution": "Collegio Carlo Alberto",
+      "location": "Turin, Italy",
+      "url": "https://www.carloalberto.org/education/allievi-honors-program/",
+      "area": "Economics",
+      "studyType": "B.Sc. + M.Res.",
+      "startDate": "2015-09-01",
+      "endDate": "2018-07-01",
+      "score": "",
+      "courses": [""]
     }
   ],
   "awards": [
