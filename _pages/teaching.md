@@ -1,9 +1,9 @@
 ---
-layout: page
+layout: teaching
 permalink: /teaching/
 title: teaching
-description:
+image: whirls.jpg
+description: Materials for courses you taught. Replace this text with your description.
 nav: true
-nav_order: 4
+nav_order: 3
 ---
-
