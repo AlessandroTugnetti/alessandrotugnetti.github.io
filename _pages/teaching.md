@@ -1,8 +1,8 @@
 ---
-layout: teaching
+layout: page
 permalink: /teaching/
 title: teaching
-image: whirls.jpg
+image: teaching.png
 description:
 nav: true
 nav_order: 3
