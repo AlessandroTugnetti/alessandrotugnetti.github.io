@@ -47,39 +47,17 @@ nav_order: 3
         </div>
 </div>
 
-<!-- #before 2020 -->
 <div class="publications">
-    <h2 class="year">2020 - 2018</h2>
+    <h2 class="year">2022 - 2024</h2>
         <div class="row">
             <div class="col-sm-3 abbr">
-                Lycée Charlemagne
+                University of Luxembourg
             </div>
             <div class="col-sm-8">
-                <div class="title"><b>Teaching Assistant in Physics</b></div>
-                <em>MPSI</em>
-            </div>
-        </div>
-</div>
-<div class="publications">
-        <div class="row">
-            <div class="col-sm-3 abbr">
-                Lycée Condorcet
-            </div>
-            <div class="col-sm-8">
-                <div class="title"><b>Teaching Assistant in Mathematics</b></div>
-                <em>PSI*</em>
-            </div>
-        </div>
-</div>
-<div class="publications">
-    <h2 class="year">2018 - 2016</h2>
-        <div class="row">
-            <div class="col-sm-3 abbr">
-                Lycée Condorcet
-            </div>
-            <div class="col-sm-8">
-                <div class="title"><b>Teaching Assistant in Mathematics</b></div>
-                <em>PSI*</em>
+                <div class="title">
+                    <b><a href="https://pythoncamp.uni.lu">Python Camp</a></b>
+                </div>
+                <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics/">M.Sc. Finance and Economics</a></em>
             </div>
         </div>
 </div>
