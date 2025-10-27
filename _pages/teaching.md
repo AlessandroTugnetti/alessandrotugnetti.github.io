@@ -8,8 +8,9 @@ nav: true
 nav_order: 3
 ---
 
-<div class="publications">
+<div class="publications-container">
     <h2 class="year">2022 - 2025</h2>
+    <div class="publications">
         <div class="row">
             <div class="col-sm-3 abbr">
                 University of Luxembourg
@@ -21,10 +22,6 @@ nav_order: 3
                 <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-wealth-management/programme/">Master in Wealth Management</a></em>
             </div>
         </div>
-</div>
-
-<div class="publications">
-    <h2 class="year">2022 - 2025</h2>
         <div class="row">
             <div class="col-sm-3 abbr">
                 University of Luxembourg
@@ -36,10 +33,6 @@ nav_order: 3
                 <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics/">M.Sc. Finance and Economics</a></em>
             </div>
         </div>
-</div>
-
-<div class="publications">
-    <h2 class="year">2022 - 2025</h2>
         <div class="row">
             <div class="col-sm-3 abbr">
                 University of Luxembourg
@@ -51,6 +44,7 @@ nav_order: 3
                 <em><a href="https://www.uni.lu/fdef-en/study-programs/bachelor-en-sciences-economiques/programme/#finance">B.Sc. Economics</a></em>
             </div>
         </div>
+    </div>
 </div>
 
 
