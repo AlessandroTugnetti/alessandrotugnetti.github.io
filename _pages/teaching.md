@@ -24,7 +24,6 @@ nav_order: 3
         </div>
         <div class="row">
             <div class="col-sm-3 abbr">
-                University of Luxembourg
             </div>
             <div class="col-sm-8">
                 <div class="title">
@@ -35,7 +34,6 @@ nav_order: 3
         </div>
         <div class="row">
             <div class="col-sm-3 abbr">
-                University of Luxembourg
             </div>
             <div class="col-sm-8">
                 <div class="title">
