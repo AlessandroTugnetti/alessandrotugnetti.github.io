@@ -8,44 +8,51 @@ nav: true
 nav_order: 3
 ---
 
-<!-- #2022 -->
 <div class="publications">
-    <h2 class="year">2022 - 2021</h2>
+    <h2 class="year">2022 - 2025</h2>
         <div class="row">
             <div class="col-sm-3 abbr">
-                Université de Paris
+                University of Luxembourg
             </div>
             <div class="col-sm-8">
-                <div class="title"><b>Teaching Assistant in Mathematics</b></div>
-                <em>MMAN2 - Analyse (L1)</em>
+                <div class="title">
+                    <b>(WEALMG2-1) Empirical Finance</b>
+                </div>
+                <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-wealth-management/programme/">Master in Wealth Management</a></em>
             </div>
         </div>
 </div>
 
-<!-- #2021 -->
 <div class="publications">
-    <h2 class="year">2021 - 2020</h2>
+    <h2 class="year">2022 - 2025</h2>
         <div class="row">
             <div class="col-sm-3 abbr">
-                Université de Paris
+                University of Luxembourg
             </div>
             <div class="col-sm-8">
-                <div class="title"><b>Teaching Assistant in Mathematics</b></div>
-                <em>MM4 - Algèbre et Analyse fondamentale (L2)</em>
+                <div class="title">
+                    <b>(MScFE-52; 2.O1) Bloomberg</b>
+                </div>
+                <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics/">M.Sc. Finance and Economics</a></em>
             </div>
         </div>
 </div>
+
 <div class="publications">
+    <h2 class="year">2022 - 2025</h2>
         <div class="row">
             <div class="col-sm-3 abbr">
-                Université de Paris
+                University of Luxembourg
             </div>
             <div class="col-sm-8">
-                <div class="title"><b>Tutorship in Mathematics</b></div>
-               <em>Maths (L1/L2)</em>
+                <div class="title">
+                    <b>(BASE-45) Industrial Economics, Teaching Assistant</b>
+                </div>
+                <em><a href="https://www.uni.lu/fdef-en/study-programs/bachelor-en-sciences-economiques/programme/#finance">B.Sc. Economics</a></em>
             </div>
         </div>
 </div>
+
 
 <div class="publications">
     <h2 class="year">2022 - 2024</h2>
@@ -58,6 +65,21 @@ nav_order: 3
                     <b><a href="https://pythoncamp.uni.lu">Python Camp</a></b>
                 </div>
                 <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics/">M.Sc. Finance and Economics</a></em>
+            </div>
+        </div>
+</div>
+
+<div class="publications">
+    <h2 class="year">2023</h2>
+        <div class="row">
+            <div class="col-sm-3 abbr">
+                University of Luxembourg
+            </div>
+            <div class="col-sm-8">
+                <div class="title">
+                    <b>(MScFE_BK-12; 4.E1) Design Execution and Evaluation of Research in Finance and Economics</b>
+                </div>
+                <em><a href="https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics-financial-economics/programme/">M.Sc. Finance and Economics – Digital Transformation in Finance (2nd year)</a></em>
             </div>
         </div>
 </div>
