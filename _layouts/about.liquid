@@ -9,7 +9,7 @@ layout: default
         {{ site.first_name }}
         {{ site.last_name }}
       </h1>
-      <p class="intro-role">PhD candidate in Finance <span>@</span> <a href="https://www.uni.lu/">University of Luxembourg</a></p>
+      <p class="intro-role">{{ site.data.resume.basics.label }}</p>
       <div class="intro-biography">{{ content }}</div>
       <p class="intro-connect">
         Let’s connect. <a href="mailto:{{ site.data.socials.email }}">Get in touch <span aria-hidden="true">↗</span></a>
@@ -41,18 +41,26 @@ layout: default
       <span class="terminal-path" aria-hidden="true">~/updates</span>
     </div>
     <div class="terminal-news-body">
-      {% if site.data.home_news.size > 0 %}
-        <ul>
-          {% for item in site.data.home_news %}
-            <li>
-              <time datetime="{{ item.date | date: '%Y-%m-%d' }}">[{{ item.date | date: '%b %Y' }}]</time> <span aria-hidden="true">~ $</span>
-              {{ item.text | markdownify }}
-            </li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p class="news-empty"><span aria-hidden="true">~ $</span> No updates yet.<span class="news-cursor" aria-hidden="true">▌</span></p>
-      {% endif %}
+      {% for year in site.data.home_news %}
+        <details
+          class="news-year"
+          {% if forloop.index <= 2 %}
+            open
+          {% endif %}
+        >
+          <summary>
+            {{ year.year }}
+            <span>({{ year.items.size }} updates)</span>
+          </summary>
+          <ul>
+            {% for item in year.items %}
+              <li>
+                <time datetime="{{ item.date }}">[{{ item.label }}]</time> <span aria-hidden="true">~ $</span> {{ item.text | markdownify }}
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+      {% endfor %}
     </div>
   </section>
 

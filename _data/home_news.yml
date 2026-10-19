@@ -1,1 +1,62 @@
-[]
+- year: 2026
+  items:
+    - date: "2026-10"
+      label: October
+      text: "Started WeSTEM+’s Applied Data & AI Academy, with completion expected in April 2027."
+    - date: "2026-04-27"
+      label: 27 April
+      text: "Defended my PhD dissertation, *Essays in Empirical Finance*, at the University of Luxembourg."
+- year: 2025
+  items:
+    - date: "2025-10"
+      label: October
+      text: "Co-founded the QFI Alumni & Students Association and became Vice President, with responsibility for its Research area."
+    - date: "2025"
+      label: Publication
+      text: "*Pricing dynamics and herding behaviour of NFTs* appeared in *European Financial Management*. [Read the article](https://doi.org/10.1111/eufm.12506)."
+- year: 2024
+  items:
+    - date: "2024"
+      label: Publication
+      text: "Our review of NFT pricing determinants, applications and opportunities appeared in *Journal of Economic Surveys*. [Read the article](https://doi.org/10.1111/joes.12597)."
+- year: 2023
+  items:
+    - date: "2023-08"
+      label: August
+      text: "Completed Computational Methods in Financial Mathematics at the London School of Economics and Political Science."
+    - date: "2023"
+      label: Teaching
+      text: "Contributed to Design Execution and Evaluation of Research in Finance and Economics at the University of Luxembourg. [Teaching details](/teaching/)."
+- year: 2022
+  items:
+    - date: "2022-11"
+      label: November
+      text: "Participated in the University of Luxembourg’s Ideation Camp, 10th Edition."
+    - date: "2022-07"
+      label: July
+      text: "Completed blockchain training through the University of Zurich and MasterZ."
+    - date: "2022-02"
+      label: February
+      text: "Started as a Doctoral Researcher in Finance at the University of Luxembourg. My university teaching activities also began in 2022."
+- year: 2021
+  items:
+    - date: "2021-12"
+      label: December
+      text: "Joined the IAS Young Academics research-support initiative at the University of Luxembourg."
+    - date: "2021-11"
+      label: November
+      text: "Completed the IBM Data Science Specialization on Coursera. [Credential](https://www.coursera.org/account/accomplishments/specialization/certificate/S9YF74JTDWBU)."
+    - date: "2021-09"
+      label: September
+      text: "Started volunteering with Serve the City Luxembourg."
+    - date: "2021-02"
+      label: February
+      text: "Joined DWS Investments in Luxembourg to work on liquidity stress testing."
+- year: 2020
+  items:
+    - date: "2020"
+      label: Education
+      text: "Completed my MSc in Quantitative Finance and Insurance at the University of Turin and Master of Research in Economics at Collegio Carlo Alberto."
+    - date: "2020-10"
+      label: October
+      text: "Joined the SHARP Consulting career mentoring programme."

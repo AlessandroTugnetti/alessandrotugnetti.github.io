@@ -2,19 +2,11 @@
 layout: page
 permalink: /research/
 title: research
-description:
+description: Published articles and working papers in empirical finance, economic forecasting and alumni career trajectories.
 nav: true
 nav_order: 2
 ---
 
-<!-- _pages/publications.md -->
+My research combines econometrics, machine learning and data preparation to study digital-asset markets and long-run economic growth. Through QFI, I also study alumni labour-market entry and career progression.
 
-<!-- Bibsearch Feature -->
-
-{% include bib_search.liquid %}
-
-<div class="publications">
-
-{% bibliography %}
-
-</div>
+{% include public_research.liquid %}

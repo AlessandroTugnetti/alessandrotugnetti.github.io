@@ -1,0 +1,73 @@
+\documentclass[aspectratio=169,xcolor=dvipsnames]{beamer}
+\usetheme{MyPKA}
+\usepackage[sort,compress]{natbib}
+\usepackage{bibentry}
+\IfFileExists{appendixnumberbeamer.sty}{\usepackage{appendixnumberbeamer}}{}
+\usepackage{booktabs}
+\usepackage{tikz}
+\IfFileExists{pgfplots.sty}{\usepackage{pgfplots}\pgfplotsset{compat=1.18}}{}
+\usetikzlibrary{arrows.meta,calc,positioning}
+\hypersetup{colorlinks=true,linkcolor=MyPKADarkBlue,citecolor=MyPKADarkBlue,urlcolor=MyPKADarkBlue}
+\usepackage{mypka-citations}
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{{\color{MyPKADarkBlue}\oldtextbf{#1}}}
+
+\title{A Reproducible Research Presentation}
+\subtitle{Beamer house-style example}
+\author{Author Name}
+\institute{Institution}
+\date{\today}
+
+\begin{document}
+\bibliographystyle{apalike}
+\nobibliography{references}
+{\setbeamertemplate{footline}{}\begin{frame}\titlepage\end{frame}}
+
+\begin{frame}{Question and Contribution}
+\begin{itemize}
+  \setlength\itemsep{0.7em}
+  \item \textbf{Question:} What does the evidence establish?
+  \item \textbf{Contribution:} One claim per frame keeps the argument visible.
+  \item \citet{example2025} supplies the benchmark.
+  \item The result is supported by related work \citep{example2025,companion2024}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A Native Table}
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Specification} & \textbf{Estimate} & \textbf{Std. error} \\
+\midrule
+Baseline & 0.42 & 0.08 \\
+Robustness & 0.39 & 0.09 \\
+\bottomrule
+\end{tabular}
+\end{frame}
+
+\begin{frame}{A TikZ Plot}
+\centering
+\input{slide-plot.tex}
+\end{frame}
+
+\begin{frame}{A TikZ Diagram}
+\centering
+\input{slide-diagram.tex}
+\end{frame}
+
+\begin{frame}{What We Learn}
+\begin{block}{}
+The conclusion, its scope, and its main limitation should remain visible together.
+\end{block}
+\end{frame}
+
+\appendix
+\begin{frame}{References}
+\footnotesize
+\bibentry{example2025}
+
+\vspace{0.7em}
+\bibentry{companion2024}
+\end{frame}
+\end{document}

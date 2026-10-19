@@ -47,6 +47,8 @@ jobs:
           JEKYLL_ENV: production
           BUNDLE_FROZEN: "true"
         run: bundle exec jekyll build --trace
+      - name: Check public CV source and PDF consistency
+        run: npm run cv:check
       - name: Check generated site
         run: npm run site:check
       - name: Prepare static Pages output

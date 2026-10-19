@@ -1,0 +1,32 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeMyPKA}[2026/08/25 myPKA Beamer layout]
+\setbeamersize{text margin left=2em,text margin right=2em}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{frametitle}{%
+  \vspace*{0.5em}%
+  \bfseries\insertframetitle\par
+  \vskip-6pt
+  \hrulefill\vspace{-0.1em}%
+}
+\setbeamertemplate{title page}{%
+  \vspace{3em}
+  \begingroup\centering
+  \begin{beamercolorbox}[sep=10pt,center]{title}
+    \usebeamerfont{title}\inserttitle\par
+    \ifx\insertsubtitle\@empty\else
+      \vskip0.25em{\usebeamerfont{subtitle}\insertsubtitle\par}
+    \fi
+  \end{beamercolorbox}
+  \vskip0.5em
+  \begin{beamercolorbox}[sep=8pt,center]{author}\usebeamerfont{author}\insertauthor\end{beamercolorbox}
+  \vskip0.5em
+  \begin{beamercolorbox}[sep=8pt,center]{institute}\usebeamerfont{institute}\insertinstitute\end{beamercolorbox}
+  \begin{beamercolorbox}[sep=8pt,center]{date}\usebeamerfont{date}\insertdate\end{beamercolorbox}
+  \endgroup\vfill
+}

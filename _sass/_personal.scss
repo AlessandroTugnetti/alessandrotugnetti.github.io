@@ -778,3 +778,50 @@ select:focus-visible {
     gap: 6px;
   }
 }
+
+.news-year {
+  border-bottom: 1px solid var(--global-divider-color);
+  padding: 12px 0;
+}
+.news-year:last-child {
+  border-bottom: 0;
+}
+.news-year summary {
+  cursor: pointer;
+  color: var(--personal-accent);
+  font-weight: 700;
+}
+.news-year summary span {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: var(--personal-muted);
+}
+.news-year ul {
+  margin-top: 12px;
+}
+.news-year time {
+  color: var(--personal-muted);
+}
+.public-cv section {
+  margin-top: 36px;
+}
+.cv-entry {
+  margin: 22px 0;
+}
+.cv-entry h3,
+.cv-entry h4 {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+.cv-entry p {
+  margin-bottom: 6px;
+}
+.cv-meta {
+  color: var(--personal-muted);
+  font-size: 0.93rem;
+}
+.research-entry {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--global-divider-color);
+}

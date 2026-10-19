@@ -1,0 +1,64 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{mypka-document}
+
+\title{A Reproducible Research Document}
+\author{Author Name}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Question and contribution}
+The document states the question, evidence, result, and limitation before detail. \citet{example2025} supplies a narrative citation. Related work supplies a parenthetical multi-work example \citep{example2025,companion2024}.
+
+\section{Lists}
+Lists use generous but controlled spacing.
+\begin{itemize}
+  \item Lead with the substantive claim.
+  \item Separate evidence from inference.
+  \item State the principal limitation.
+\end{itemize}
+\begin{enumerate}
+  \item Define the question.
+  \item Present the design.
+  \item Interpret the result.
+\end{enumerate}
+
+\section{Native table}
+\begin{table}[H]
+  \centering
+  \caption{Illustrative estimates.}
+  \label{tab:estimates}
+    \begin{tabular}{lcc}
+      \toprule
+      Specification & {Estimate} & {Std. error} \\
+      \midrule
+      Baseline & 0.42 & 0.08 \\
+      Robustness & 0.39 & 0.09 \\
+      \bottomrule
+    \end{tabular}
+
+    \parbox{0.72\textwidth}{\footnotesize\textit{Notes:} Values are illustrative. The table contains no empirical claim.}
+\end{table}
+
+\section{TikZ plot and diagram}
+\begin{figure}[H]
+  \centering
+  \input{figure-plot.tex}
+  \caption{Illustrative series rendered with PGFPlots.}
+  \label{fig:plot}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \input{figure-diagram.tex}
+  \caption{Illustrative research flow rendered with TikZ.}
+  \label{fig:diagram}
+\end{figure}
+
+\chapter{Conclusion}
+The source demonstrates cross-references to Table~\ref{tab:estimates}, Figure~\ref{fig:plot}, and Figure~\ref{fig:diagram}, together with a reproducible bibliography.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}

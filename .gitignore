@@ -10,3 +10,6 @@ assets/libs/
 node_modules/
 vendor
 .idea
+
+# Public CV intermediate LaTeX files
+_cv_source/build/

@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypka-citations}[2026/08/25 myPKA citation interface]
+
+\RequirePackage{etoolbox}
+
+% Both public commands accept a comma-separated list of BibTeX keys. Author
+% text remains inert and only each year links to its bibliography entry.
+\newcounter{mypkacitecount}
+\newcommand{\mypkayearlink}[1]{%
+  \hyperlink{cite.#1}{\begingroup\NoHyper\citeyear{#1}\endNoHyper\endgroup}%
+}
+\newcommand{\mypkanarrativeitem}[1]{%
+  \begingroup\NoHyper\citeauthor{#1}\endNoHyper\endgroup\ (\mypkayearlink{#1})%
+}
+\newcommand{\mypkaparentheticalitem}[1]{%
+  \begingroup\NoHyper\citeauthor{#1}\endNoHyper\endgroup, \mypkayearlink{#1}%
+}
+\newcommand{\mypkacitet}[1]{%
+  \begingroup
+  \def\do##1{\ifstrempty{##1}{}{\ifnumgreater{\value{mypkacitecount}}{0}{; }{}\mypkanarrativeitem{##1}\stepcounter{mypkacitecount}}}%
+  \setcounter{mypkacitecount}{0}\docsvlist{#1}%
+  \endgroup
+}
+\newcommand{\mypkacitep}[1]{%
+  \begingroup
+  (\def\do##1{\ifstrempty{##1}{}{\ifnumgreater{\value{mypkacitecount}}{0}{; }{}\mypkaparentheticalitem{##1}\stepcounter{mypkacitecount}}}%
+  \setcounter{mypkacitecount}{0}\docsvlist{#1})%
+  \endgroup
+}
+\renewcommand{\citet}[1]{\mypkacitet{#1}}
+\renewcommand{\citep}[1]{\mypkacitep{#1}}

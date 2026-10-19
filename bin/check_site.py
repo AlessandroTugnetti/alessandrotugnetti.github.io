@@ -2,6 +2,9 @@
 """Check published pages for missing local href/src targets and wrong site URLs."""
 
 import sys
+import json
+import re
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
@@ -38,6 +41,38 @@ for page in pages:
     page_url = SITE + "/" + relative.as_posix()
     parser = Links()
     parser.feed(page.read_text(encoding="utf-8"))
+
+# Verify the professional pages as generated, catching template/data wiring failures.
+def visible_text(path):
+    return " ".join(unescape(re.sub(r"<[^>]+>", " ", path.read_text(encoding="utf-8"))).split())
+
+resume = json.loads((root / "assets/json/resume.json").read_text())
+home = (root / "index.html").read_text()
+for route in ("index.html", "cv/index.html", "research/index.html", "teaching/index.html"):
+    text = visible_text(root / route)
+    if re.search(r"PhD candidate|Ph\.D\. Student|Currently a doctoral researcher", text, re.I):
+        errors.append(f"{route}: obsolete candidate status")
+    if "Coudenhove-Kalergi" in text:
+        errors.append(f"{route}: obsolete university contact address")
+for route in ("cv/index.html", "research/index.html"):
+    text = visible_text(root / route)
+    for paper in resume["publications"]:
+        if paper["name"] not in text:
+            errors.append(f"{route}: missing public research item {paper['name']}")
+    if "abstract_id=7582999" not in (root / route).read_text():
+        errors.append(f"{route}: missing QFI working-paper link")
+news_years = [int(y) for y in re.findall(r"<summary>\s*(20\d{2})", home)]
+if (
+    news_years != sorted(set(news_years), reverse=True)
+    or any(y < 2020 for y in news_years)
+    or not set(range(2020, 2027)).issubset(news_years)
+):
+    errors.append("index.html: News years must be unique, descending and include 2020–2026")
+for course in resume["teaching"]:
+    if course["name"] not in visible_text(root / "teaching/index.html"):
+        errors.append(f"teaching/index.html: missing course {course['name']}")
+if not (root / "assets/pdf/Tugnetti_CV.pdf").read_bytes().startswith(b"%PDF-"):
+    errors.append("Public CV download is not a PDF")
 
 for name in ("robots.txt", "sitemap.xml"):
     path = root / name

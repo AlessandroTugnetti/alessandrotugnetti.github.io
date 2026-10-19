@@ -1,0 +1,73 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mypka-document}[2026/08/25 myPKA document house style]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[english]{babel}
+% The thesis source uses Bitstream Charter text with Math Design's matching
+% Charter mathematics. These packages are required, not optional fallbacks.
+\RequirePackage{charter}
+\RequirePackage[charter]{mathdesign}
+\RequirePackage[left=3cm,right=2.5cm]{geometry}
+\RequirePackage[nodisplayskipstretch]{setspace}
+\setstretch{1.5}
+\RequirePackage{microtype}
+\microtypesetup{expansion=false}
+\RequirePackage{xcolor}
+\definecolor{mypkared}{HTML}{DC2C24}
+\definecolor{mypkablue}{HTML}{009FD3}
+\definecolor{mypkalink}{HTML}{3366AA}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\tolerance=1000
+\emergencystretch=10pt
+
+% Math Design and amssymb both define \circledS. Preserve Math Design's
+% symbol exactly as the thesis preamble does before loading the AMS stack.
+\RequirePackage{savesym}
+\savesymbol{circledS}
+\RequirePackage{amsmath,amssymb,amsthm,mathtools}
+\RequirePackage{array,booktabs,longtable,tabularx}
+\IfFileExists{siunitx.sty}{\RequirePackage{siunitx}\sisetup{detect-all}}{}
+\RequirePackage{graphicx,float,pdflscape}
+\RequirePackage{tikz}
+\IfFileExists{pgfplots.sty}{\RequirePackage{pgfplots}\pgfplotsset{compat=1.18}}{}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\IfFileExists{enumitem.sty}{%
+  \RequirePackage{enumitem}
+  \setlist[itemize]{itemsep=0.35em,topsep=0.5em}
+  \setlist[enumerate]{itemsep=0.35em,topsep=0.5em}
+}{}
+
+\RequirePackage[labelfont=bf,textfont=md,labelsep=period]{caption}
+\RequirePackage[sort,compress,authoryear,round]{natbib}
+
+\RequirePackage[
+  plainpages=false,
+  pdfpagelabels=true,
+  colorlinks=true,
+  linkcolor=mypkalink,
+  citecolor=mypkalink,
+  urlcolor=mypkalink,
+  filecolor=mypkalink,
+  bookmarksopen=true,
+  pdfborder={0 0 0}
+]{hyperref}
+\RequirePackage{mypka-citations}
+\IfFileExists{cleveref.sty}{%
+  \RequirePackage[nameinlink,noabbrev]{cleveref}
+}{%
+  \newcommand{\cref}[1]{\ref{##1}}%
+}
+
+\newcommand{\mypkachapter}[2]{%
+  \clearpage
+  \refstepcounter{chapter}%
+  \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}%
+  \thispagestyle{empty}%
+  \vspace*{1cm}%
+  {\Huge\bfseries Chapter \thechapter\par}%
+  \vspace{4cm}%
+  {\Huge\bfseries\raggedright #2\par}%
+  \clearpage
+}

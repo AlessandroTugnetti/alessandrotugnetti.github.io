@@ -1,0 +1,8 @@
+\begin{tikzpicture}[x=1.25cm,y=1.25cm]
+\draw[->] (0,0) -- (5.7,0) node[right] {Period};
+\draw[->] (0,0) -- (0,3.2) node[above] {Index (units)};
+\foreach \x in {1,...,5} \draw (\x,0.06) -- (\x,-0.06) node[below] {\x};
+\foreach \y in {1,2,3} \draw (0.06,\y) -- (-0.06,\y) node[left] {\y};
+\draw[mypkalink,very thick,mark=*] plot coordinates {(1,1.0) (2,1.4) (3,1.8) (4,2.3) (5,2.7)};
+\node[anchor=west,mypkalink] at (0.35,2.85) {Illustrative series};
+\end{tikzpicture}

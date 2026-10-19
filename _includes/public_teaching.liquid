@@ -1,0 +1,15 @@
+{% for course in site.data.resume.teaching %}
+  <div class="cv-entry">
+    <h3>
+      {{ course.name -}}
+      {%- if course.role %}
+        <span class="cv-meta">({{ course.role }})</span>
+      {%- endif %}
+    </h3>
+    <p class="cv-meta">
+      {{ course.period -}}
+      {%- if course.code != '' %} · {{ course.code }}{% endif %}
+    </p>
+    <p>{{ course.program }}</p>
+  </div>
+{% endfor %}

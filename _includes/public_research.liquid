@@ -1,0 +1,32 @@
+{% assign published = site.data.resume.publications | where: 'status', 'Published article' %}
+{% assign working = site.data.resume.publications | where: 'status', 'Working paper' %}
+{% for group in (1..2) %}
+  {% if group == 1 -%}
+    {%- assign papers = published %}
+    <h3>Published articles</h3>
+  {% else -%}
+    {%- assign papers = working %}
+    <h3>Working papers</h3>
+  {% endif %}
+  {% for paper in papers %}
+    <div class="cv-entry research-entry">
+      <h4>
+        {% if paper.url != '' -%}
+          <a href="{{ paper.url }}">{{ paper.name }}</a>
+        {%- else -%}
+          {{- paper.name -}}
+        {%- endif %}
+      </h4>
+      <p>{{ paper.authors }}</p>
+      <p class="cv-meta">
+        {{ paper.status -}}
+        {%- if paper.period != '' %} · {{ paper.period }}{% endif -%}
+        {%- if paper.citation %} · {{ paper.citation }}{% endif %}
+      </p>
+      <p>{{ paper.summary }}</p>
+      {% if paper.url contains 'ssrn' %}
+        <p><a href="{{ paper.url }}">Working paper on SSRN ↗</a></p>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endfor %}
