@@ -19,22 +19,22 @@
       <div class="face-recall-controls">
         <button type="button" id="retrieve-pattern" class="demo-button" disabled>Retrieve Pattern</button>
         <p id="recall-status" role="status" aria-live="polite">Loading the portrait…</p>
-        <span class="face-step-count">(Steps: <span id="step-counter">0</span>/3000)</span>
+        <span class="face-step-count">(Reconstruction steps: <span id="step-counter">0</span>/3000)</span>
       </div>
       <p>
         A Hopfield network is an associative memory inspired by the Ising model. Its neurons interact to reach stable, low-energy states, allowing a
         partial pattern to recover a stored memory.
       </p>
       <p>
-        This network has learned a 50 × 50 binary portrait of me. The left half starts blank; click <strong>Retrieve Pattern</strong> to watch
-        asynchronous neuron updates reconstruct it.
+        This network stores a 100 × 100 color portrait using a Hopfield memory for each color bit. The left half starts blank. Click
+        <strong>Retrieve Pattern</strong> to recall it from the visible half.
       </p>
       <p class="face-energy" aria-label="Energy equals minus one half the sum over distinct neurons of weight i j times state i times state j">
         E = −½ ∑<sub>i ≠ j</sub> W<sub>ij</sub> s<sub>i</sub> s<sub>j</sub>
       </p>
       <p class="face-demo-note">
         A small educational demonstration inspired by <a href="https://physics-morris.github.io/">Morris Huang’s website</a>. The network recalls a
-        learned image; it does not generate a new face.
+        learned image; it does not generate a new face. Recall is computed first; 3000 reconstruction steps then display the recovered pixels.
       </p>
     </div>
   </div>
