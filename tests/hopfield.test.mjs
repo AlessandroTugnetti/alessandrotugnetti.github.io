@@ -1,42 +1,46 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { patterns, weights, energy, sweep } from "../assets/js/hopfield.mjs";
-
-test("Hebbian weights are symmetric with no self connections", () => {
-  for (let i = 0; i < 100; i++) {
-    assert.equal(weights[i][i], 0);
-    for (let j = 0; j < 100; j++) assert.equal(weights[i][j], weights[j][i]);
-  }
+import { createMemory, maskedFace } from "../assets/js/hopfield.mjs";
+const side = 50;
+// A sparse asymmetric binary face-shaped memory, including eyes and hair.
+const pattern = Array.from({ length: side * side }, (_, i) => {
+  const x = (i % side) - 24.5,
+    y = Math.floor(i / side) - 24.5;
+  return (x * x) / 300 + (y * y) / 480 < 1 &&
+    (y < -8 || Math.abs(x) > 12 || (Math.abs(y + 3) < 2 && Math.abs(x) > 5) || (Math.abs(y - 9) < 2 && Math.abs(x) < 8))
+    ? 1
+    : -1;
 });
-for (const [name, pattern] of Object.entries(patterns)) {
-  test(`${name}: stored memory is stable and noisy recall decreases energy`, () => {
-    assert.equal(sweep(pattern).changes, 0);
-    let seed = 10919;
-    const random = () => {
-      seed = (1664525 * seed + 1013904223) >>> 0;
-      return seed / 4294967296;
-    };
-    for (let trial = 0; trial < 40; trial++) {
-      let state = pattern.slice();
-      const indices = Array.from({ length: 100 }, (_, i) => i);
-      for (let i = 99; i > 0; i--) {
-        const j = Math.floor(random() * (i + 1));
-        [indices[i], indices[j]] = [indices[j], indices[i]];
-      }
-      indices.slice(0, 20).forEach((i) => (state[i] *= -1));
-      let stable = false;
-      for (let i = 0; i < 30; i++) {
-        const before = energy(state),
-          result = sweep(state);
-        state = result.state;
-        assert.ok(energy(state) <= before + 1e-8);
-        if (!result.changes) {
-          stable = true;
-          break;
-        }
-      }
-      assert.ok(stable);
-      assert.deepEqual(state, pattern);
+test("Factored Hebbian weights match explicit matrix and have zero diagonal", () => {
+  const p = [1, -1, 1, -1],
+    m = createMemory(p),
+    s = [1, 1, -1, -1];
+  let explicit = 0;
+  for (let i = 0; i < p.length; i++)
+    for (let j = 0; j < p.length; j++) {
+      assert.equal(m.weight(i, j), m.weight(j, i));
+      if (i === j) assert.equal(m.weight(i, j), 0);
+      explicit += m.weight(i, j) * s[i] * s[j];
     }
+  assert.equal(m.energy(s), -explicit / 2);
+});
+for (const left of [true, false])
+  test(`50x50 face: masked ${left ? "left" : "right"} half reconstructs through non-increasing energy`, () => {
+    const m = createMemory(pattern),
+      initial = maskedFace(pattern, left, side),
+      n = m.start(initial);
+    assert.notDeepEqual(initial, pattern);
+    for (let i = 0; i < pattern.length * 2; i++) {
+      const before = m.energy(n.values);
+      n.update(i % pattern.length);
+      assert.ok(m.energy(n.values) <= before + 1e-8);
+    }
+    assert.deepEqual(n.values, pattern);
   });
-}
+test("Stored portrait is stable and invalid states are rejected", () => {
+  const m = createMemory(pattern),
+    n = m.start(pattern);
+  for (let i = 0; i < pattern.length; i++) assert.equal(n.update(i), false);
+  assert.throws(() => createMemory([0, 1]), TypeError);
+  assert.throws(() => m.start([1, -1]), TypeError);
+});
