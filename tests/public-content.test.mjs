@@ -19,3 +19,9 @@ test("public identity and contact do not retain the former candidate/address or 
   assert(!resume.references);
   assert.equal(resume.teaching.length, 5);
 });
+
+test("language levels omit the removed qualifier", () => {
+  assert(!JSON.stringify(resume.languages).includes("self-assessed"));
+  assert.equal(resume.languages.find((l) => l.language === "English").fluency, "C1/C2");
+  assert.equal(resume.languages.find((l) => l.language === "Luxembourgish").fluency, "B1");
+});
