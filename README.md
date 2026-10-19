@@ -1,3 +1,32 @@
+# Alessandro Tugnetti’s website
+
+Live site: https://alessandrotugnetti.github.io/
+
+## Local editing
+
+Run `docker compose up` in this folder and open http://localhost:8080. Stop with `Ctrl+C` and `docker compose down`. The pinned image includes Ruby, Jekyll and the locked gems. Your edits remain local until you commit and push.
+
+Install Node dependencies once with `npm ci`. Run `npm run format` after editing, then `npm run format:check`.
+
+## Publishing
+
+Commit your edits and `git push origin main`. The **Deploy site** workflow checks formatting, builds in production mode, checks internal links, and publishes the generated output to `gh-pages`. GitHub Pages serves that branch automatically at the URL above. A failed check prevents publication and leaves the last published site available. Do not edit `gh-pages` directly.
+
+To validate the production output locally, stop the preview first, then run:
+
+```sh
+npm ci
+npm run format:check
+docker compose run --rm --no-deps --entrypoint bash -e JEKYLL_ENV=production jekyll -lc 'bundle exec jekyll build --trace'
+npm run site:check
+```
+
+Pages settings must keep **Deploy from a branch**, branch **gh-pages**, folder **/(root)**. Deployment uses the built-in GitHub token. No personal access token or separate hosting account is needed. The optional **CodeQL Advanced** security scan can be run manually from Actions.
+
+The original theme documentation follows. Theme upgrades should be reviewed separately from content edits.
+
+---
+
 # al-folio
 
 <div align="center">

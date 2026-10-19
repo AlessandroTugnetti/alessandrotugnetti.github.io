@@ -45,7 +45,6 @@ nav_order: 3
     </div>
 </div>
 
-
 <div class="publications">
     <h2 class="year">2022 - 2024</h2>
         <div class="row">

@@ -15,7 +15,9 @@ services:
     ports:
       - 8080:8080
       - 35729:35729
+    command: ["bash", "bin/entry_point.sh"]
     volumes:
       - .:/srv/jekyll
     environment:
       - JEKYLL_ENV=development
+      - BUNDLE_FROZEN=true

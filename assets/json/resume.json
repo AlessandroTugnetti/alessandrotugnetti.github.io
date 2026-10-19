@@ -76,9 +76,9 @@
       "startDate": "2021-02-01",
       "endDate": "2021-11-30",
       "summary": "Development of market and ESG risks liquidity models for passive Money Market funds",
-      "highlights": ["Python","R","MATLAB","Aladdin Solution"]
+      "highlights": ["Python", "R", "MATLAB", "Aladdin Solution"]
     },
-      {
+    {
       "name": "Accenture",
       "location": "Turin, Italy",
       "position": "Quantitative Finance and Compliance Specialist",
@@ -86,9 +86,9 @@
       "startDate": "2019-07-01",
       "endDate": "2019-11-30",
       "summary": "Validation of Intesa Sanpaolo’s bank account models to ensure compliance to P.A.D. (Payment Account Directive) regulation",
-      "highlights": ["Python","R","PostgreSQL","Mathematica"]
+      "highlights": ["Python", "R", "PostgreSQL", "Mathematica"]
     },
-      {
+    {
       "name": "London Mutual Credit Union",
       "location": "London, UK",
       "position": "Data Analyst",
@@ -96,7 +96,7 @@
       "startDate": "2017-05-01",
       "endDate": "2017-09-30",
       "summary": "Collection and analysis of client mortgage application data through the application of machine learning techniques",
-      "highlights": ["Python","MATLAB", "Tableau", "SQL"]
+      "highlights": ["Python", "MATLAB", "Tableau", "SQL"]
     }
   ],
   "skills": [
