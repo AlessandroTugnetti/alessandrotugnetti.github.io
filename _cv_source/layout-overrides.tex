@@ -1,0 +1,167 @@
+% myPKA-owned permanent two-column CV layout.
+
+\RequirePackage{eso-pic}
+\geometry{top=0.38cm,bottom=0.55cm,left=8.45cm,right=0.7cm,footskip=12pt}
+\definecolor{sidebarblue}{HTML}{1F5DA8}
+\renewcommand{\webSymbol}{\decorativeicon{\faGlobe}}
+
+\AddToShipoutPictureBG{%
+  \AtPageLowerLeft{\color{sidebarblue}\rule{7.95cm}{\paperheight}}%
+}
+
+\titleformat{\section}{\fontsize{13.6pt}{14.8pt}\selectfont\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{13pt}{6pt}
+\renewcommand{\sectionContentGap}{\vspace{0.9em}\par\noindent}
+\renewcommand\emptySeparator{%
+  \multicolumn{1}{c}{\vspace{0.62em}\color{darkGrey!52}\rule{0.34\linewidth}{0.4pt}}\\[0.16em]
+}
+
+\newcommand{\KeepWithNext}[1]{%
+  \par
+  \begingroup
+  \dimen0=#1\baselineskip
+  \dimen2=\pagegoal
+  \advance\dimen2 by -\pagetotal
+  \ifdim\dimen2<\dimen0\newpage\fi
+  \endgroup
+}
+
+\newcommand{\sidebarsection}[2]{%
+  \par\vspace{2.2em}%
+  {\color{white}\bfseries\fontsize{13.4pt}{14.4pt}\selectfont \raisebox{-0.05em}{\decorativeicon{#2}}\hspace{0.58em}\MakeUppercase{#1}}%
+  \par\vspace{0.58em}%
+  {\color{white!55}\rule{\linewidth}{0.35pt}}%
+  \par\vspace{0.58em}%
+}
+
+\newcommand{\sidebarcontact}[3]{%
+  \par\noindent
+  \hbox{%
+    \makebox[1.15em][l]{\color{white!88}\fontsize{10.4pt}{10.4pt}\selectfont \decorativeicon{#1}}%
+    \hspace{0.28em}%
+    \raisebox{0.19em}{\color{white}\fontsize{10.3pt}{11.5pt}\selectfont\mbox{#3}}%
+  }%
+  \par\vspace{0.46em}%
+}
+
+\newcommand{\cvtarget}[2]{%
+  \noindent{\raggedright\color{accentcolor}\fontsize{17.2pt}{19pt}\selectfont\bfseries #1\enspace #2\par}%
+  \vspace{0.3em}%
+}
+
+\renewenvironment{experiences}{%
+  \renewcommand{\arraystretch}{1}
+  \sectionContentGap
+  \setlength\LTleft{0pt}
+  \setlength\LTright{0pt}
+  \setlength\LTpre{0pt}
+  \setlength\LTpost{0pt}
+  \setlength{\tabcolsep}{0pt}
+  \begin{longtable}{@{}p{\linewidth}@{}}
+}{%
+  \end{longtable}
+}
+
+\renewcommand\experience[7]{%
+  \begin{minipage}[t]{\linewidth}
+    \begin{tabular*}{\linewidth}{@{}p{0.68\linewidth}@{\extracolsep{\fill}}r@{}}
+      \raggedright\bfseries\fontsize{11.9pt}{12.7pt}\selectfont #2 &
+      \bfseries\fontsize{10.6pt}{11.4pt}\selectfont\textsc{\ifstrempty{#1}{}{#1\enspace\textperiodcentered\enspace}#5}
+    \end{tabular*}\par\vspace{0.06em}%
+    {\raggedright\bfseries\fontsize{10.4pt}{11.2pt}\selectfont #3, #4\par}%
+    \vspace{0.64em}%
+    \begingroup
+      \fontsize{9.65pt}{10.65pt}\selectfont
+      \setlist[itemize,1]{label=\decorativeicon{\faAngleRight},topsep=0pt,itemsep=0.13em,parsep=0pt,partopsep=0pt,leftmargin=0.92em,labelsep=0.35em}
+      #6
+    \endgroup
+  \end{minipage}\\
+}
+
+\newcommand{\sidebarlink}[3]{\sidebarcontact{#1}{#2}{\href{#2}{\nolinkurl{#3}}}}
+
+\newcommand{\sidebareducationentry}[3]{%
+  \par\noindent{\color{white!72}\fontsize{9.9pt}{11pt}\selectfont #1}\par
+  {\color{white}\fontsize{10.3pt}{11.5pt}\selectfont\textbf{#2}\par #3}\par\vspace{0.82em}%
+}
+
+\newcommand{\sidebarkeywordsentry}[2]{%
+  \par\noindent
+  \begingroup
+    \color{white}\fontsize{10.3pt}{11.7pt}\selectfont
+    \setlength{\tabcolsep}{0pt}%
+    \begin{tabular}{@{}>{\raggedright\arraybackslash\bfseries}p{2.55cm}@{\hspace{0.18em}}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-2.55cm-0.18em\relax}@{}}
+      #1: & #2
+    \end{tabular}%
+  \endgroup
+  \par\vspace{0.58em}%
+}
+
+\newcommand{\sidebarlanguageentry}[2]{%
+  \par\noindent
+  {\color{white}\fontsize{10.8pt}{12.2pt}\selectfont #1}%
+  \hfill
+  {\color{white}\fontsize{10.8pt}{12.2pt}\selectfont\textbf{#2}}%
+  \par\vspace{0.42em}%
+}
+
+\renewcommand\project[5]{%
+  \begin{minipage}[t]{\linewidth}
+    \raggedright\fontsize{9.7pt}{10.6pt}\selectfont
+    \begin{minipage}[t]{0.86\linewidth}\raggedright\textbf{#1}\end{minipage}%
+    \hfill\begin{minipage}[t]{0.12\linewidth}\raggedleft\bfseries\textsc{#2}\end{minipage}%
+    \par\vspace{0.08em}%
+    {\fontsize{9.2pt}{10pt}\selectfont #3}\par\vspace{0.1em}%
+    \ifstrempty{#4}{}{#4\par\vspace{0.08em}}%
+  \end{minipage}
+  \\*
+}
+
+\AddToShipoutPictureFG{%
+  \ifnum\value{page}>1
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north west,inner sep=0pt] at ([xshift=0.5cm,yshift=-0.8cm]current page.north west) {%
+        \begin{minipage}[t]{6.95cm}
+          \centering
+          {\color{white}\fontsize{17pt}{18pt}\selectfont\bfseries
+            \candidatefirstname\space\candidatelastname\par}
+          \vspace{0.65em}
+          {\color{white!55}\rule{\linewidth}{0.35pt}}\par\vspace{0.55em}
+          \raggedright
+          \sidebarlink{\faPhone}{tel:\candidatephoneuri}{\candidatephonedisplay}
+          \sidebarlink{\faAt}{mailto:\candidateemail}{\candidateemail}
+          \sidebarlink{\faGlobe}{https://\candidatewebsite}{\candidatewebsite}
+        \end{minipage}%
+      };
+    \end{tikzpicture}%
+  \fi
+}
+
+\newcommand{\makecvsidebar}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north west,inner sep=0pt] at ([xshift=0.5cm,yshift=-0.58cm]current page.north west) {%
+      \begin{minipage}[t]{6.95cm}
+        \centering
+        \ifdefined\cvwithoutphoto\else
+          \begin{minipage}{2.75cm}\idphoto\end{minipage}
+          \par\vspace{0.45em}
+        \fi
+        {\color{white}\fontsize{21.5pt}{22.5pt}\selectfont\bfseries
+          \candidatefirstname\par\candidatelastname\par}
+        \vspace{1.72em}
+        \raggedright
+        \sidebarlink{\faLinkedin}{https://\candidatelinkedin}{\candidatelinkedin}
+        \sidebarlink{\faAt}{mailto:\candidateemail}{\candidateemail}
+        \sidebarlink{\faGithub}{https://\candidategithub}{\candidategithub}
+        \sidebarlink{\faGlobe}{https://\candidatewebsite}{\candidatewebsite}
+        \sidebarlink{\faPhone}{tel:\candidatephoneuri}{\candidatephonedisplay}
+        \sidebarcontact{\faCalendar}{}{\candidatebirthdate}
+        \sidebarcontact{\faMapMarker}{}{\candidatelocation}
+        \sidebarcontact{\faFlag}{}{\candidatenationality}
+        \input{section_scolarite}
+        \input{section_competences}
+        \input{section_langues}
+      \end{minipage}%
+    };
+  \end{tikzpicture}%
+}

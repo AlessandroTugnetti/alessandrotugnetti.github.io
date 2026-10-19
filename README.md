@@ -29,6 +29,8 @@ npm run site:check
 
 Pages settings must keep **Deploy from a branch**, branch **gh-pages**, folder **/(root)**. Deployment uses the built-in GitHub token. No personal access token or separate hosting account is needed. The optional **CodeQL Advanced** security scan can be run manually from Actions.
 
+Google Scholar badges use each article's ID, separate from the author profile ID. Every build checks the public profile and validates the article title before accepting a citation count. `_data/google_scholar.json` holds the dated, verified fallback (35 for Pricing and 137 for the Review, checked 20 October 2026). Blocked requests retain that snapshot and its original date; missing data never becomes zero. The badge tooltip and accessible label show the check date. The deployment workflow also runs weekly on Monday at 07:00 UTC to refresh reachable counts. Source links are the article records and their Google Scholar citing-paper lists. Update the fallback only after verifying those records directly; no other citation service is presented as Google Scholar.
+
 The original theme documentation follows. Theme upgrades should be reviewed separately from content edits.
 
 ---

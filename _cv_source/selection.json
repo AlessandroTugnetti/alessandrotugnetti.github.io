@@ -1,0 +1,28 @@
+{
+  "profile": "Data scientist based in Luxembourg, with a PhD in Finance completed in April 2026. Experience turning complex data into statistical models, economic forecasts and clear analytical results.",
+  "experience_bullets": [
+    [
+      "Developed statistical and machine-learning models for empirical finance and long-run economic forecasting.",
+      "Built a Kalman-filter-based approach to reconstruct missing GDP observations from historical country data.",
+      "Co-authored two journal articles; led tutorials, prepared materials and marked assessments for four courses."
+    ],
+    [
+      "Contributed to liquidity-stress-testing model development for money market funds.",
+      "Collaborated with IT to translate analytical methodology into production use within four months.",
+      "Worked with Python, R, MATLAB and Aladdin to analyse and communicate quantitative results."
+    ],
+    [
+      "Analysed bank-account models for an Intesa Sanpaolo project concerning the Payment Accounts Directive.",
+      "Integrated source files into an analytical dataset using SQL and Python.",
+      "Applied statistical modelling and communicated findings to management."
+    ],
+    [
+      "Built an OCR workflow to extract document fields into a unified analytical dataset.",
+      "Processed more than 80,000 documents in approximately six weeks, principally using MATLAB.",
+      "Developed credit-scorecard analysis and presented the workflow and results to management."
+    ]
+  ],
+  "selected_publication_status": "Published article",
+  "layout_reference": "editus-one-page-v1",
+  "distribution": "Short public download; excludes QFI and working papers. Complete CV remains on the website."
+}

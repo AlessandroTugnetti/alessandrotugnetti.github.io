@@ -1,85 +1,78 @@
-require "active_support/all"
+require 'json'
+require 'date'
 require 'nokogiri'
 require 'open-uri'
-
-module Helpers
-  extend ActiveSupport::NumberHelper
-end
+require 'uri'
 
 module Jekyll
-  class GoogleScholarCitationsTag < Liquid::Tag
-    Citations = { }
+  # A missing/blocked Scholar response is unknown, never an inferred zero.
+  module GoogleScholarMetrics
+    class << self
+      def normalize_title(title)
+        title.to_s.downcase.tr("‐‑–—", '----').gsub(/\s+/, ' ').strip
+      end
 
+      def parse_profile(html, profile, articles, checked_on: Date.today.iso8601)
+        doc = Nokogiri::HTML(html)
+        articles.each_with_object({}) do |(article_id, expected), found|
+          row = doc.css('tr.gsc_a_tr').find do |candidate|
+            link = candidate.at_css('a.gsc_a_at')
+            link && URI.decode_www_form(URI.parse(link['href']).query.to_s).to_h['citation_for_view'] == "#{profile}:#{article_id}"
+          end
+          next unless row
+          title = row.at_css('a.gsc_a_at').text
+          next unless normalize_title(title) == normalize_title(expected['title'])
+          cited = row.at_css('a.gsc_a_ac')
+          value = cited&.text&.strip&.delete(',')
+          next unless value&.match?(/\A\d+\z/)
+          cluster = URI.decode_www_form(URI.parse(cited['href'].to_s).query.to_s).to_h['cites']
+          next unless cluster&.match?(/\A\d+\z/)
+          found[article_id] = expected.merge('count' => value.to_i, 'checked_on' => checked_on,
+            'cited_by_url' => "https://scholar.google.com/scholar?cites=#{cluster}&hl=en")
+        end
+      end
+
+      def verified_snapshot(record)
+        return {} unless record && record['count'].is_a?(Integer) && record['count'] >= 0
+        Date.iso8601(record['checked_on'].to_s)
+        record
+      rescue ArgumentError
+        {}
+      end
+
+      def metrics(site, profile, article_id)
+        @profiles ||= {}
+        snapshot = site.data.fetch('google_scholar', {})
+        return {} unless snapshot['profile_id'] == profile
+        articles = snapshot.fetch('articles', {})
+        return {} unless articles.key?(article_id)
+        unless @profiles.key?(profile)
+          begin
+            url = "https://scholar.google.com/citations?user=#{URI.encode_www_form_component(profile)}&hl=en&pagesize=100"
+            html = URI.open(url, 'User-Agent' => 'Mozilla/5.0', open_timeout: 8, read_timeout: 8, &:read)
+            @profiles[profile] = parse_profile(html, profile, articles, checked_on: site.time.strftime('%Y-%m-%d'))
+          rescue StandardError => error
+            Jekyll.logger.warn('Google Scholar:', "#{error.class}; retaining dated verified snapshot")
+            @profiles[profile] = {}
+          end
+        end
+        @profiles[profile][article_id] || verified_snapshot(articles[article_id])
+      end
+    end
+  end
+
+  class GoogleScholarCitationsTag < Liquid::Tag
     def initialize(tag_name, params, tokens)
       super
-      splitted = params.split(" ").map(&:strip)
-      @scholar_id = splitted[0]
-      @article_id = splitted[1]
-
-      if @scholar_id.nil? || @scholar_id.empty?
-        puts "Invalid scholar_id provided"
-      end
-
-      if @article_id.nil? || @article_id.empty?
-        puts "Invalid article_id provided"
-      end
+      @profile, @article, @field = params.split
+      @field ||= 'count'
     end
 
     def render(context)
-      article_id = context[@article_id.strip]
-      scholar_id = context[@scholar_id.strip]
-      article_url = "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=#{scholar_id}&citation_for_view=#{scholar_id}:#{article_id}"
-
-      begin
-          # If the citation count has already been fetched, return it
-          if GoogleScholarCitationsTag::Citations[article_id]
-            return GoogleScholarCitationsTag::Citations[article_id]
-          end
-
-          # Sleep for a random amount of time to avoid being blocked
-          sleep(rand(1.5..3.5))
-
-          # Fetch the article page
-          doc = Nokogiri::HTML(URI.open(article_url, "User-Agent" => "Ruby/#{RUBY_VERSION}"))
-
-          # Attempt to extract the "Cited by n" string from the meta tags
-          citation_count = 0
-
-          # Look for meta tags with "name" attribute set to "description"
-          description_meta = doc.css('meta[name="description"]')
-          og_description_meta = doc.css('meta[property="og:description"]')
-
-          if !description_meta.empty?
-            cited_by_text = description_meta[0]['content']
-            matches = cited_by_text.match(/Cited by (\d+[,\d]*)/)
-
-            if matches
-              citation_count = matches[1].sub(",", "").to_i
-            end
-
-          elsif !og_description_meta.empty?
-            cited_by_text = og_description_meta[0]['content']
-            matches = cited_by_text.match(/Cited by (\d+[,\d]*)/)
-
-            if matches
-              citation_count = matches[1].sub(",", "").to_i
-            end
-          end
-
-        citation_count = Helpers.number_to_human(citation_count, :format => '%n%u', :precision => 2, :units => { :thousand => 'K', :million => 'M', :billion => 'B' })
-
-      rescue Exception => e
-        # Handle any errors that may occur during fetching
-        citation_count = "N/A"
-
-        # Print the error message including the exception class and message
-        puts "Error fetching citation count for #{article_id} in #{article_url}: #{e.class} - #{e.message}"
-      end
-
-      GoogleScholarCitationsTag::Citations[article_id] = citation_count
-      return "#{citation_count}"
+      return '' unless @profile && @article && %w[count checked_on cited_by_url].include?(@field)
+      record = GoogleScholarMetrics.metrics(context.registers[:site], context[@profile], context[@article])
+      record.fetch(@field, '').to_s
     end
   end
 end
-
 Liquid::Template.register_tag('google_scholar_citations', Jekyll::GoogleScholarCitationsTag)

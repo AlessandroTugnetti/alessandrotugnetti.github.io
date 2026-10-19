@@ -1,171 +1,77 @@
-\documentclass[11pt,a4paper]{report}
-\usepackage{house-style/mypka-document}
-\hyphenpenalty=10000\exhyphenpenalty=10000
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\small Alessandro Tugnetti}
-\fancyhead[R]{\small Public curriculum vitae}
-\fancyfoot[C]{\thepage}
-\setlength{\headheight}{14pt}
-\setcounter{secnumdepth}{0}
-\makeatletter
-\renewcommand\section{\@startsection{section}{1}{0pt}{1.2ex plus .2ex}{.6ex}{\Large\bfseries}}
-\renewcommand\subsection{\@startsection{subsection}{2}{0pt}{1ex plus .2ex}{.5ex}{\large\bfseries}}
-\makeatother
-\raggedright
-\hypersetup{pdftitle={Alessandro Tugnetti - Public CV},pdfauthor={Alessandro Tugnetti}}
+% Approved JobApplication editus-one-page-v1 layout, public short-CV adaptation.
+% YAAC class: Christophe Roger; retained class license and font notices apply.
+\documentclass[localFont,alternative]{yaac-another-awesome-cv}
+\newcommand{\decorativeicon}[1]{#1}
+\input{layout-overrides}
+\def\cvwithoutphoto{1}
+\newcommand{\candidatefirstname}{Alessandro}
+\newcommand{\candidatelastname}{Tugnetti}
+\newcommand{\candidateemail}{alessandro.tugnetti@live.it}
+\newcommand{\candidatewebsite}{alessandrotugnetti.github.io}
+\newcommand{\candidatephoneuri}{}
+\newcommand{\candidatephonedisplay}{}
+\hypersetup{pdflang=en,pdftitle={Alessandro Tugnetti - Curriculum Vitae},pdfauthor={Alessandro Tugnetti}}
+% Public-only contacts. No phone, address, date of birth, nationality or referees.
+\renewcommand{\makecvsidebar}{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at ([xshift=0.5cm,yshift=-0.8cm]current page.north west) {%
+\begin{minipage}[t]{6.95cm}
+\centering
+{\color{white}\fontsize{25pt}{27pt}\selectfont\bfseries Alessandro\par Tugnetti\par}
+\vspace{1.5em}\raggedright
+\sidebarlink{\faAt}{mailto:\candidateemail}{\candidateemail}
+\sidebarcontact{\faMapMarker}{}{Luxembourg}
+\sidebarlink{\faLinkedin}{https://www.linkedin.com/in/alessandrotugnetti/}{linkedin.com/in/alessandrotugnetti}
+\sidebarlink{\faGithub}{https://github.com/AlessandroTugnetti}{github.com/AlessandroTugnetti}
+\sidebarlink{\faGlobe}{https://alessandrotugnetti.github.io/}{alessandrotugnetti.github.io}
+\sidebarsection{Education}{\faGraduationCap}
+\sidebareducationentry{2022--2026}{PhD in Finance}{University of Luxembourg}
+\sidebareducationentry{2018--2020}{MSc in Quantitative Finance and Insurance}{University of Turin}
+\sidebareducationentry{Awarded 2020}{Master of Research in Economics}{Collegio Carlo Alberto}
+\sidebareducationentry{Awarded 2018}{Bachelor in Economics}{University of Turin}
+\sidebarsection{Core Expertise}{\faTasks}
+\sidebarkeywordsentry{Modelling}{Statistics, machine learning, forecasting}
+\sidebarkeywordsentry{Data}{Python, R, MATLAB, Stata, SQL}
+\sidebarkeywordsentry{Delivery}{Research, data quality, teaching}
+\sidebarsection{Languages}{\faGlobe}
+\sidebarlanguageentry{Italian}{Native}
+\sidebarlanguageentry{English}{C1/C2}
+\sidebarlanguageentry{French}{C1/C2}
+\sidebarlanguageentry{Luxembourgish}{B1}
+\sidebarsection{Development}{\faBook}
+\sidebareducationentry{October 2026 -- April 2027 (expected)}{Applied Data \& AI Academy}{WeSTEM+ | In progress}
+\end{minipage}};
+\end{tikzpicture}}
 \begin{document}
-{\LARGE\bfseries Alessandro Tugnetti}\par
-Data Scientist \textperiodcentered{} PhD in Finance\par
-Luxembourg\quad\href{mailto:alessandro.tugnetti@live.it}{alessandro.tugnetti@live.it}\par
-\href{https://alessandrotugnetti.github.io/}{Website}\quad\href{https://www.linkedin.com/in/alessandrotugnetti/}{LinkedIn}\quad\href{https://github.com/AlessandroTugnetti}{GitHub}\par\medskip
-I am a data scientist based in Luxembourg with a research background in finance and economics. I work with complex data, statistical models and machine learning to investigate economic questions, evaluate forecasts and communicate results. I completed my PhD in Finance at the University of Luxembourg in April 2026.
-\section*{Experience}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Doctoral Researcher in Finance}\par\nobreak
-{\color{mypkalink}University of Luxembourg \textperiodcentered{} February 2022 -- April 2026}\par
-Research in empirical finance, digital assets and long-run economic forecasting. Developed a Kalman-filter-based approach to reconstruct missing GDP observations and evaluated forecasting models out of sample. Co-authored two journal articles and contributed to university teaching.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Liquidity Stress Testing Analyst}\par\nobreak
-{\color{mypkalink}DWS Investments S.A. \textperiodcentered{} February -- December 2021}\par
-Contributed to quantitative liquidity-stress-testing frameworks for money market funds and collaborated with IT to translate analytical models into production use.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Quantitative Finance and Compliance Specialist}\par\nobreak
-{\color{mypkalink}Accenture \textperiodcentered{} July -- October 2019}\par
-Analysed bank-account models for an Intesa Sanpaolo project concerning the Payment Accounts Directive. Built an integrated analytical dataset and communicated statistical results to management.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Data Analyst Intern}\par\nobreak
-{\color{mypkalink}London Mutual Credit Union \textperiodcentered{} May -- September 2017}\par
-Processed loan-application documents using OCR and developed credit-scorecard analysis, principally in MATLAB.\par
-\end{minipage}\par\smallskip
-\section*{Education}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{PhD in Finance}\par\nobreak
-{\color{mypkalink}University of Luxembourg \textperiodcentered{} 2022--2026}\par
-Essays in Empirical Finance. Defended on 27 April 2026.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{MSc in Quantitative Finance and Insurance}\par\nobreak
-{\color{mypkalink}University of Turin \textperiodcentered{} 2018--2020}\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Master of Research in Economics}\par\nobreak
-{\color{mypkalink}Collegio Carlo Alberto \textperiodcentered{} Awarded 2020}\par
-Completed through the Allievi Honours Program.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Bachelor in Economics}\par\nobreak
-{\color{mypkalink}University of Turin \textperiodcentered{} Awarded 2018}\par
-\end{minipage}\par\smallskip
-\section*{Teaching}
-University of Luxembourg. Four curricular courses, plus the Python Camp.\par\medskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Empirical Finance}\par\nobreak
-{\color{mypkalink}2022--2025 \textperiodcentered{} WEALMG2-1}\par
-Master in Wealth Management\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Bloomberg}\par\nobreak
-{\color{mypkalink}2022--2025 \textperiodcentered{} MScFE-52 / 2.O1}\par
-MSc in Finance and Economics\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Industrial Economics (Teaching Assistant)}\par\nobreak
-{\color{mypkalink}2022--2025 \textperiodcentered{} BASE-45}\par
-BSc in Economics\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Design Execution and Evaluation of Research in Finance and Economics}\par\nobreak
-{\color{mypkalink}2023 \textperiodcentered{} MScFE\_BK-12 / 4.E1}\par
-MSc in Finance and Economics, Digital Transformation in Finance\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Python Camp}\par\nobreak
-{\color{mypkalink}2022--2024}\par
-MSc in Finance and Economics\par
-\end{minipage}\par\smallskip
-\section*{Research}
-\subsection*{Published articles}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Pricing dynamics and herding behaviour of NFTs}\par\nobreak
-{\color{mypkalink}Gilbert Fridgen, Roman Kräussl, Orestis Papageorgiou and Alessandro Tugnetti}\par
-European Financial Management, 31(2), 670--710. 2025 Examines pricing determinants, liquidity and herding in the art-NFT market.\par
-\end{minipage}\par\smallskip
-\href{https://onlinelibrary.wiley.com/doi/full/10.1111/eufm.12506}{Published article}\par\medskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Non-Fungible Tokens (NFTs): A Review of Pricing Determinants, Applications and Opportunities}\par\nobreak
-{\color{mypkalink}Roman Kräussl and Alessandro Tugnetti}\par
-Journal of Economic Surveys, 38(2), 555--574. 2024 Reviews NFT pricing determinants, applications and opportunities.\par
-\end{minipage}\par\smallskip
-\href{https://onlinelibrary.wiley.com/doi/abs/10.1111/joes.12597}{Published article}\par\medskip
-\subsection*{Working papers}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{The Out-of-Sample Predictability of Long-Run Economic Growth}\par\nobreak
-{\color{mypkalink}E. Nekrasova, J. Pénasse and Alessandro Tugnetti}\par
-Working paper Evaluates long-run GDP forecasting with historical country panels and out-of-sample model comparisons.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{QFI Alumni: Labour-Market Entry and Career Progression}\par\nobreak
-{\color{mypkalink}Saverio Cabra, Lorenzo Toscano and Alessandro Tugnetti}\par
-Working paper Studies QFI alumni career trajectories, including labour-market entry, employment sectors, roles, career progression and geographical mobility.\par
-\end{minipage}\par\smallskip
-\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7582999}{SSRN working paper}\par\medskip
-\section*{Training \& Certifications}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Applied Data \& AI Academy}\par\nobreak
-{\color{mypkalink}WeSTEM+ \textperiodcentered{} October 2026 -- April 2027 (expected)}\par
-In progress; started October 2026.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Computational Methods in Financial Mathematics}\par\nobreak
-{\color{mypkalink}London School of Economics and Political Science \textperiodcentered{} August 2023}\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Ideation Camp, 10th Edition}\par\nobreak
-{\color{mypkalink}University of Luxembourg \textperiodcentered{} November 2022}\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Deep Dive into Blockchain: Linking Economics, Technology and Law}\par\nobreak
-{\color{mypkalink}University of Zurich \textperiodcentered{} July 2022}\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{MasterZ Blockchain \& Digital Assets}\par\nobreak
-{\color{mypkalink}MasterZ \textperiodcentered{} July 2022}\par
-\end{minipage}\par\smallskip
-\href{https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/37912846989437473799933213870497165215501391704981195481847523024647021920257}{Credential}\par\medskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{IBM Data Science Specialization}\par\nobreak
-{\color{mypkalink}Coursera \textperiodcentered{} November 2021}\par
-Credential ID: S9YF74JTDWBU.\par
-\end{minipage}\par\smallskip
-\href{https://www.coursera.org/account/accomplishments/specialization/certificate/S9YF74JTDWBU}{Credential}\par\medskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Advanced Risk and Portfolio Management}\par\nobreak
-{\color{mypkalink}ARPM \textperiodcentered{} February 2019}\par
-\end{minipage}\par\smallskip
-\section*{Honors, Recognition \& Programs}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{IAS Young Academics}\par\nobreak
-{\color{mypkalink}IAS, University of Luxembourg \textperiodcentered{} December 2021}\par
-Research-support initiative for interdisciplinary doctoral research.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Mentoring Program SHARP Consulting}\par\nobreak
-{\color{mypkalink}SHARP Consulting Group \textperiodcentered{} October 2020}\par
-Career mentoring programme supporting the transition from university to employment.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Scholarship ``Franco Cellino''}\par\nobreak
-{\color{mypkalink}Turin Chamber of Commerce \textperiodcentered{} January 2018}\par
-Scholarship supporting studies in Quantitative Finance and Insurance at the University of Turin.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Scholarship ``Diplomati eccellenti tecnici e professionali''}\par\nobreak
-{\color{mypkalink}Turin Chamber of Commerce \textperiodcentered{} September 2015}\par
-Recognition for outstanding achievement in technical and vocational secondary education.\par
-\end{minipage}\par\smallskip
-\section*{Languages}
-Italian: Native\par
-English: C1/C2 (self-assessed)\par
-French: C1/C2 (self-assessed)\par
-Luxembourgish: B1 (self-assessed)\par
-\section*{Leadership \& Volunteering}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Co-founder and Vice President}\par\nobreak
-{\color{mypkalink}QFI Alumni \& Students Association \textperiodcentered{} October 2025 -- Present}\par
-Developed the career-support framework, including mentoring and alumni connections. Coordinate research on alumni sectors, roles, progression and geography, including compensation where available. Contribute to the association's strategy and research agenda; planned outputs aim to guide students and inform programme development.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Community Volunteer}\par\nobreak
-{\color{mypkalink}Serve the City Luxembourg \textperiodcentered{} September 2021 -- Present}\par
-Contribute to local community initiatives organised by Serve the City Luxembourg.\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{President}\par\nobreak
-{\color{mypkalink}Cultural Association ``Amici del Cammello'' \textperiodcentered{} June 2012 -- Present}\par
-Lead a volunteer-run cultural association promoting reading, education and community participation through its bookshop and cultural activities.\par
-\end{minipage}\par\smallskip
-\section*{Skills}
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Analysis}\par\nobreak
-{\color{mypkalink}Statistical modelling, Machine learning, Economic forecasting, Out-of-sample evaluation, Data integration and quality control}\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Programming and data}\par\nobreak
-{\color{mypkalink}Python, R, MATLAB, Stata, SQL}\par
-\end{minipage}\par\smallskip
-\noindent\begin{minipage}{\linewidth}\raggedright\textbf{Research and communication}\par\nobreak
-{\color{mypkalink}Research design, Peer-reviewed publishing, Data visualisation, Teaching, Technical and stakeholder communication}\par
-\end{minipage}\par\smallskip
+\hyphenpenalty=6500\exhyphenpenalty=6500\emergencystretch=2em
+\makecvsidebar
+\sectionTitle{Profile}{\faUser}
+Data scientist based in Luxembourg, with a PhD in Finance completed in April 2026. Experience turning complex data into statistical models, economic forecasts and clear analytical results.
+\sectionTitle{Experience}{\faSuitcase}
+\begin{experiences}
+\experience{}{Doctoral Researcher in Finance}{University of Luxembourg}{Luxembourg}{}{\textbf{February 2022 -- April 2026}\par\smallskip\begin{itemize}\item Developed statistical and machine-learning models for empirical finance and long-run economic forecasting.
+\item Built a Kalman-filter-based approach to reconstruct missing GDP observations from historical country data.
+\item Co-authored two journal articles; led tutorials, prepared materials and marked assessments for four courses.
+\end{itemize}}{}
+\emptySeparator
+\experience{}{Liquidity Stress Testing Analyst}{DWS Investments S.A.}{Luxembourg}{}{\textbf{February -- December 2021}\par\smallskip\begin{itemize}\item Contributed to liquidity-stress-testing model development for money market funds.
+\item Collaborated with IT to translate analytical methodology into production use within four months.
+\item Worked with Python, R, MATLAB and Aladdin to analyse and communicate quantitative results.
+\end{itemize}}{}
+\emptySeparator
+\experience{}{Quantitative Finance and Compliance Specialist}{Accenture}{Turin, Italy}{}{\textbf{July -- October 2019}\par\smallskip\begin{itemize}\item Analysed bank-account models for an Intesa Sanpaolo project concerning the Payment Accounts Directive.
+\item Integrated source files into an analytical dataset using SQL and Python.
+\item Applied statistical modelling and communicated findings to management.
+\end{itemize}}{}
+\emptySeparator
+\experience{}{Data Analyst Intern}{London Mutual Credit Union}{London, United Kingdom}{}{\textbf{May -- September 2017}\par\smallskip\begin{itemize}\item Built an OCR workflow to extract document fields into a unified analytical dataset.
+\item Processed more than 80,000 documents in approximately six weeks, principally using MATLAB.
+\item Developed credit-scorecard analysis and presented the workflow and results to management.
+\end{itemize}}{}
+\end{experiences}
+\sectionTitle{Selected Publications}{\faBook}
+\begin{projects}
+\project{Pricing dynamics and herding behaviour of NFTs}{2025}{Gilbert Fridgen, Roman Kräussl, Orestis Papageorgiou and Alessandro Tugnetti}{\href{https://onlinelibrary.wiley.com/doi/full/10.1111/eufm.12506}{European Financial Management, 31(2), 670--710.}}{}
+\project{Non-Fungible Tokens (NFTs): A Review of Pricing Determinants, Applications and Opportunities}{2024}{Roman Kräussl and Alessandro Tugnetti}{\href{https://onlinelibrary.wiley.com/doi/abs/10.1111/joes.12597}{Journal of Economic Surveys, 38(2), 555--574.}}{}
+\end{projects}
 \end{document}

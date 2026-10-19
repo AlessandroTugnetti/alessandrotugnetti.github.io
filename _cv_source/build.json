@@ -1,4 +1,30 @@
 {
-  "data_sha256": "13089ee6f3820685ef7c4388a9969231ea29348595486abb687a8cb180cefd1c",
-  "pdf_sha256": "2888830e0876db00b0842e042238f6948d0f0411fe949125d836f191edfc34f0"
+  "inputs": {
+    "assets/json/resume.json": "f8f204f0e1861758d8e655dde3534cebfd04cf879da402944b7a646a980d57eb",
+    "bin/build_public_cv.py": "166d5c32753843a7cc76229ebff8cde4d0323dc0f2e62a4d138c01831e88f5c6",
+    "_cv_source/selection.json": "2ea9404dab468314542b9086ba5fabf9ab0c40b70336a840e8119bf40d6180c7",
+    "_cv_source/main.tex": "81e2b05ccdfba557c375854448bca0cf19dbab8e8923ee59f1a276523d5b1466",
+    "_cv_source/layout-overrides.tex": "2e2849a17533014be09856230fd9bbab084479f6e425e17bc8af7cd7c1be7762",
+    "_cv_source/yaac-another-awesome-cv.cls": "c8ad262dae4d85b71d17c2c0c300cc32dea0ec828e75aea51c9ee708391ed0b3",
+    "_cv_source/fonts/FontAwesome.ttf": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8",
+    "_cv_source/fonts/SourceSansPro-Black.otf": "e447cd47a62874dc94d6ab97a84dbeb7f2f0aba3e490b9f0128b6c8399a96f37",
+    "_cv_source/fonts/SourceSansPro-BlackIt.otf": "07198d116759bd75afeee9f7a975c9435608fa57e0647a09349c9d01b90ea3d0",
+    "_cv_source/fonts/SourceSansPro-Bold.otf": "9b8bd174f97413334e317be808d14d0ff8f6efed79a69299d84384c7e10e9312",
+    "_cv_source/fonts/SourceSansPro-BoldIt.otf": "b94666879fb221aad70f479107ad01f8c93500c6fd2a77811da412d364441ab5",
+    "_cv_source/fonts/SourceSansPro-ExtraLight.otf": "faccddbb11292f3952d38248a02087856ea4b1ec61f2828f2e6018d051127a98",
+    "_cv_source/fonts/SourceSansPro-ExtraLightIt.otf": "06ec3606be288627b452595d25e46e2c5094ef453e2f5c371076390557c53495",
+    "_cv_source/fonts/SourceSansPro-It.otf": "e90b35e5f96577f03a27e659c4b69666e45e1691f2bce2fc2f883aeff9238419",
+    "_cv_source/fonts/SourceSansPro-Light.otf": "4b3250ffc8182e93d79221c36b8f6a214600f7082b843142ef9c252581e13bb6",
+    "_cv_source/fonts/SourceSansPro-LightIt.otf": "c5dc9a7de549b032e341b4564ef9f8f215ab938f9adcec36442de5f9a7bb0290",
+    "_cv_source/fonts/SourceSansPro-Regular.otf": "6b096b47206d8f78a2c49af2f2ae46b35d93b0e3cf105a9febef59144aa2eae2",
+    "_cv_source/fonts/SourceSansPro-Semibold.otf": "ee3ba5c88400b22b880d85202ce82143dc5e19861bf7880b7f4c32d4263e96d5",
+    "_cv_source/fonts/SourceSansPro-SemiboldIt.otf": "82ed41eed0b18254c1bbcd7c4317abfbfa55ac056a5cf62004f561c0c44f735c"
+  },
+  "pdf_sha256": "cfe1639aa3686a46a93038a1cc9564217c42bc8da664cdc0ade94e1c3f1ec9f5",
+  "qa": {
+    "pages": 1,
+    "layout": "editus-one-page-v1",
+    "columns": 2,
+    "selected_papers": 2
+  }
 }

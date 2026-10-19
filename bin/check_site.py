@@ -73,6 +73,16 @@ for route in ("cv/index.html", "research/index.html", "teaching/index.html"):
         errors.append(f"{route}: missing CV section cards")
     if route.startswith(("research/", "teaching/")) and structure.rows < 4:
         errors.append(f"{route}: missing publication/course rows")
+research_source = (root / "research/index.html").read_text()
+for article_id in ("qjMakFHDy7sC", "2osOgNQ5qMEC"):
+    if f"citation_for_view=nD56QvQAAAAJ:{article_id}" not in research_source:
+        errors.append(f"research/index.html: missing correct Scholar article link {article_id}")
+if "citation_for_view=nD56QvQAAAAJ:nD56QvQAAAAJ" in research_source:
+    errors.append("research/index.html: Scholar profile ID incorrectly used as article ID")
+if len(re.findall(r'alt="\d+ Google Scholar citations \(checked \d{4}-\d{2}-\d{2}\)"', research_source)) != 2:
+    errors.append("research/index.html: Scholar counts must include a verified check date")
+if "self-assessed" in visible_text(root / "cv/index.html"):
+    errors.append("cv/index.html: removed language qualifier still present")
 for course in resume["teaching"]:
     if course["name"] not in visible_text(root / "teaching/index.html"):
         errors.append(f"teaching/index.html: missing course {course['name']}")

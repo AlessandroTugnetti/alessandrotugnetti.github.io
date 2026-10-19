@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
-"""Render the public CV from the same JSON used by Jekyll; never used by JobApplication."""
+"""Build/check the one-page public CV using the approved JobApplication layout.
+
+The web CV is complete. This PDF deliberately selects experience, education,
+training, skills and two published papers, excluding QFI and other working papers.
+"""
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
+import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,107 +23,138 @@ def tex(text):
     return ''.join(substitutions.get(c, c) for c in str(text))
 
 
-def entry(title, meta, summary=''):
-    result = r'\noindent\begin{minipage}{\linewidth}\raggedright\textbf{' + tex(title) + r'}\par\nobreak' + '\n'
-    result += r'{\color{mypkalink}' + tex(meta) + '}\par\n'
-    if summary:
-        result += tex(summary) + '\\par\n'
-    return result + r'\end{minipage}\par\smallskip' + '\n'
-
-
 def generate(r):
-    out = r'''\documentclass[11pt,a4paper]{report}
-\usepackage{house-style/mypka-document}
-\hyphenpenalty=10000\exhyphenpenalty=10000
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\small Alessandro Tugnetti}
-\fancyhead[R]{\small Public curriculum vitae}
-\fancyfoot[C]{\thepage}
-\setlength{\headheight}{14pt}
-\setcounter{secnumdepth}{0}
-\makeatletter
-\renewcommand\section{\@startsection{section}{1}{0pt}{1.2ex plus .2ex}{.6ex}{\Large\bfseries}}
-\renewcommand\subsection{\@startsection{subsection}{2}{0pt}{1ex plus .2ex}{.5ex}{\large\bfseries}}
-\makeatother
-\raggedright
-\hypersetup{pdftitle={Alessandro Tugnetti - Public CV},pdfauthor={Alessandro Tugnetti}}
-\begin{document}
-{\LARGE\bfseries Alessandro Tugnetti}\par
-'''
+    selection = json.loads((SOURCE / 'selection.json').read_text())
     b = r['basics']
-    out += tex(b['label']) + r'\par' + '\n'
-    out += tex(b['location']['city']) + r'\quad\href{mailto:' + b['email'] + '}{' + tex(b['email']) + r'}\par' + '\n'
-    out += r'\href{' + b['url'] + r'}{Website}\quad\href{' + b['profiles'][0]['url'] + r'}{LinkedIn}\quad\href{' + b['profiles'][1]['url'] + r'}{GitHub}\par\medskip' + '\n'
-    out += tex(b['summary']) + '\n'
-    out += r'\section*{Experience}' + '\n'
-    for e in r['work']:
-        out += entry(e['position'], e['name'] + ' · ' + e['period'], e['summary'])
-    out += r'\section*{Education}' + '\n'
+    papers = [p for p in r['publications'] if p['status'] == selection['selected_publication_status']]
+    assert len(papers) == 2, 'The short PDF selects exactly two published articles'
+    assert len(r['work']) == len(selection['experience_bullets']) == 4
+    out = r'''% Approved JobApplication editus-one-page-v1 layout, public short-CV adaptation.
+% YAAC class: Christophe Roger; retained class license and font notices apply.
+\documentclass[localFont,alternative]{yaac-another-awesome-cv}
+\newcommand{\decorativeicon}[1]{#1}
+\input{layout-overrides}
+\def\cvwithoutphoto{1}
+\newcommand{\candidatefirstname}{Alessandro}
+\newcommand{\candidatelastname}{Tugnetti}
+\newcommand{\candidateemail}{'''+tex(b['email'])+r'''}
+\newcommand{\candidatewebsite}{alessandrotugnetti.github.io}
+\newcommand{\candidatephoneuri}{}
+\newcommand{\candidatephonedisplay}{}
+\hypersetup{pdflang=en,pdftitle={Alessandro Tugnetti - Curriculum Vitae},pdfauthor={Alessandro Tugnetti}}
+% Public-only contacts. No phone, address, date of birth, nationality or referees.
+\renewcommand{\makecvsidebar}{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at ([xshift=0.5cm,yshift=-0.8cm]current page.north west) {%
+\begin{minipage}[t]{6.95cm}
+\centering
+{\color{white}\fontsize{25pt}{27pt}\selectfont\bfseries Alessandro\par Tugnetti\par}
+\vspace{1.5em}\raggedright
+\sidebarlink{\faAt}{mailto:\candidateemail}{\candidateemail}
+\sidebarcontact{\faMapMarker}{}{Luxembourg}
+\sidebarlink{\faLinkedin}{https://www.linkedin.com/in/alessandrotugnetti/}{linkedin.com/in/alessandrotugnetti}
+\sidebarlink{\faGithub}{https://github.com/AlessandroTugnetti}{github.com/AlessandroTugnetti}
+\sidebarlink{\faGlobe}{https://alessandrotugnetti.github.io/}{alessandrotugnetti.github.io}
+\sidebarsection{Education}{\faGraduationCap}
+'''
     for e in r['education']:
-        out += entry(e['studyType'], e['institution'] + ' · ' + e['period'], e['summary'])
-    out += r'\section*{Teaching}' + '\nUniversity of Luxembourg. Four curricular courses, plus the Python Camp.\par\medskip\n'
-    for e in r['teaching']:
-        title = e['name'] + (' (' + e['role'] + ')' if e.get('role') else '')
-        out += entry(title, e['period'] + (' · ' + e['code'] if e['code'] else ''), e['program'])
-    out += r'\section*{Research}' + '\n'
-    for group in ['Published article', 'Working paper']:
-        out += r'\subsection*{' + ('Published articles' if group == 'Published article' else 'Working papers') + '}\n'
-        for e in r['publications']:
-            if e['status'] != group:
-                continue
-            out += entry(e['name'], e['authors'], e.get('citation', e['status']) + (' ' + e['period'] if e['period'] else '') + ' ' + e['summary'])
-            if e['url']:
-                out += r'\href{' + e['url'] + '}{' + ('SSRN working paper' if 'ssrn' in e['url'] else 'Published article') + r'}\par\medskip' + '\n'
-    out += r'\section*{Training \& Certifications}' + '\n'
-    for e in r['certificates']:
-        out += entry(e['name'], e['issuer'] + ' · ' + e['period'], e['summary'])
-        if e['url']:
-            out += r'\href{' + e['url'] + r'}{Credential}\par\medskip' + '\n'
-    out += r'\section*{Honors, Recognition \& Programs}' + '\n'
-    for e in r['awards']:
-        out += entry(e['title'], e['awarder'] + ' · ' + e['period'], e['summary'])
-    out += r'\section*{Languages}' + '\n'
+        out += r'\sidebareducationentry{'+tex(e['period'])+'}{'+tex(e['studyType'])+'}{'+tex(e['institution'])+'}\n'
+    out += r'\sidebarsection{Core Expertise}{\faTasks}'+'\n'
+    for label, value in [('Modelling', 'Statistics, machine learning, forecasting'), ('Data', 'Python, R, MATLAB, Stata, SQL'), ('Delivery', 'Research, data quality, teaching')]:
+        out += r'\sidebarkeywordsentry{'+tex(label)+'}{'+tex(value)+'}\n'
+    out += r'\sidebarsection{Languages}{\faGlobe}'+'\n'
     for e in r['languages']:
-        out += tex(e['language'] + ': ' + e['fluency']) + r'\par' + '\n'
-    out += r'\section*{Leadership \& Volunteering}' + '\n'
-    for e in r['volunteer']:
-        out += entry(e['position'], e['organization'] + ' · ' + e['period'], e['summary'])
-    out += r'\section*{Skills}' + '\n'
-    for e in r['skills']:
-        out += entry(e['name'], ', '.join(e['keywords']))
-    out += r'\end{document}' + '\n'
+        level = re.sub(r'\s*\(self-assessed\)', '', e['fluency'], flags=re.I)
+        out += r'\sidebarlanguageentry{'+tex(e['language'])+'}{'+tex(level)+'}\n'
+    course = next(e for e in r['certificates'] if e['issuer'] == 'WeSTEM+')
+    out += r'\sidebarsection{Development}{\faBook}'+'\n'
+    out += r'\sidebareducationentry{'+tex(course['period'])+'}{'+tex(course['name'])+'}{WeSTEM+ | In progress}\n'
+    out += r'''\end{minipage}};
+\end{tikzpicture}}
+\begin{document}
+\hyphenpenalty=6500\exhyphenpenalty=6500\emergencystretch=2em
+\makecvsidebar
+\sectionTitle{Profile}{\faUser}
+'''+tex(selection['profile'])+'\n'+r'\sectionTitle{Experience}{\faSuitcase}'+'\n'+r'\begin{experiences}'+'\n'
+    cities = ['Luxembourg', 'Luxembourg', 'Turin, Italy', 'London, United Kingdom']
+    for i, (e, bullets) in enumerate(zip(r['work'], selection['experience_bullets'])):
+        # Full role date range is intentionally beneath the title to avoid clipping.
+        out += r'\experience{}{'+tex(e['position'])+'}{'+tex(e['name'])+'}{'+tex(cities[i])+'}{}{'+r'\textbf{'+tex(e['period'])+'}'+r'\par\smallskip\begin{itemize}'
+        out += ''.join(r'\item '+tex(bullet)+'\n' for bullet in bullets)
+        out += r'\end{itemize}}{}'+'\n'
+        if i < 3:
+            out += r'\emptySeparator'+'\n'
+    out += r'\end{experiences}'+'\n'+r'\sectionTitle{Selected Publications}{\faBook}'+'\n'+r'\begin{projects}'+'\n'
+    for p in papers:
+        out += r'\project{'+tex(p['name'])+'}{'+tex(p['period'])+'}{'+tex(p['authors'])+'}{'+r'\href{'+p['url']+'}{'+tex(p['citation'])+'}}{}\n'
+    out += r'\end{projects}'+'\n'+r'\end{document}'+'\n'
     return out
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def inputs():
+    files = [DATA, Path(__file__).resolve(), SOURCE/'selection.json', SOURCE/'main.tex', SOURCE/'layout-overrides.tex', SOURCE/'yaac-another-awesome-cv.cls']
+    files.extend(sorted((SOURCE/'fonts').glob('*')))
+    return {str(p.relative_to(ROOT)): digest(p) for p in files}
+
+
+def verify_pdf():
+    # Structural checks are separate from the required rendered-page review.
+    from pypdf import PdfReader
+    reader = PdfReader(PDF)
+    assert len(reader.pages) == 1, 'Public download must be exactly one page'
+    page = reader.pages[0]
+    text = page.extract_text()
+    normalized = re.sub(r"\s+", "", text).lower()
+    positions = []
+    def record(fragment, cm, tm, font, size):
+        if fragment.strip():
+            positions.append((fragment.strip(), tm[4]*cm[0]+tm[5]*cm[2]+cm[4]))
+    page.extract_text(visitor_text=record)
+    assert any('education' in t.lower() and x < 220 for t, x in positions), 'Missing left education column'
+    assert any('profile' in t.lower() and x > 230 for t, x in positions), 'Missing right profile column'
+    for forbidden in ['QFI', 'Labour-Market', 'self-assessed', '+352', 'Rue Richard', 'Referees']:
+        assert re.sub(r'\s+', '', forbidden).lower() not in normalized, f'Unexpected public PDF content: {forbidden}'
+    for required in ['Alessandro', 'Tugnetti', '2026', '2027', 'C1/C2', 'B1', 'Selected Publications', 'WeSTEM']:
+        assert re.sub(r'\s+', '', required).lower() in normalized, f'Missing public PDF content: {required}'
+    assert 'sidebarblue' in (SOURCE/'layout-overrides.tex').read_text()
+    assert '\\makecvsidebar' in (SOURCE/'main.tex').read_text()
+    # Public contact allowlist, including hyperlink annotations.
+    uris = [str(a.get_object().get('/A', {}).get('/URI', '')) for a in page.get('/Annots', [])]
+    allowed = ['mailto:alessandro.tugnetti@live.it', 'https://www.linkedin.com/in/alessandrotugnetti/', 'https://github.com/AlessandroTugnetti', 'https://alessandrotugnetti.github.io/', 'https://onlinelibrary.wiley.com/']
+    assert all(any(u.startswith(prefix) for prefix in allowed) for u in uris if u), 'Unexpected PDF contact/link'
+    return {'pages': 1, 'layout': 'editus-one-page-v1', 'columns': 2, 'selected_papers': 2}
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    raw = DATA.read_bytes()
-    generated = generate(json.loads(raw))
-    manifest = SOURCE / 'build.json'
+    generated = generate(json.loads(DATA.read_text()))
+    manifest = SOURCE/'build.json'
     if args.check:
-        assert (SOURCE / 'main.tex').read_text() == generated, 'Public CV LaTeX is stale: run python3 bin/build_public_cv.py'
+        assert (SOURCE/'main.tex').read_text() == generated, 'Short CV source is stale; run python3 bin/build_public_cv.py'
         state = json.loads(manifest.read_text())
-        assert state['data_sha256'] == hashlib.sha256(raw).hexdigest(), 'Public CV data changed since PDF build'
-        assert state['pdf_sha256'] == hashlib.sha256(PDF.read_bytes()).hexdigest(), 'Public CV PDF differs from validated build'
-        print('Public CV source, data and PDF match.')
+        assert state['inputs'] == inputs(), 'Short CV inputs changed; rebuild the PDF'
+        assert state['pdf_sha256'] == digest(PDF), 'PDF differs from the validated build'
+        verify_pdf()
+        print('Short public CV: one page, two columns, two published papers; source and PDF match.')
         return
-    (SOURCE / 'main.tex').write_text(generated)
-    build = SOURCE / 'build'
+    assert shutil.which('xelatex'), 'Install XeLaTeX to rebuild the public CV'
+    (SOURCE/'main.tex').write_text(generated)
+    build = SOURCE/'build'
     build.mkdir(exist_ok=True)
-    env = __import__('os').environ.copy()
-    env['TEXINPUTS'] = str(SOURCE / 'house-style') + ':'
     for _ in range(2):
-        subprocess.run(['pdflatex', '-interaction=nonstopmode', '-halt-on-error', '-output-directory=build', 'main.tex'], cwd=SOURCE, env=env, check=True, stdout=subprocess.DEVNULL)
-    log = (build / 'main.log').read_text()
+        subprocess.run(['xelatex', '-interaction=nonstopmode', '-halt-on-error', '-output-directory=build', 'main.tex'], cwd=SOURCE, check=True, stdout=subprocess.DEVNULL)
+    log = (build/'main.log').read_text()
     assert 'Overfull \\hbox' not in log and 'Overfull \\vbox' not in log, 'CV contains overfull boxes'
-    PDF.write_bytes((build / 'main.pdf').read_bytes())
-    manifest.write_text(json.dumps({'data_sha256': hashlib.sha256(raw).hexdigest(), 'pdf_sha256': hashlib.sha256(PDF.read_bytes()).hexdigest()}, indent=2) + '\n')
-    print('Built assets/pdf/Tugnetti_CV.pdf from assets/json/resume.json')
-
+    PDF.write_bytes((build/'main.pdf').read_bytes())
+    qa = verify_pdf()
+    manifest.write_text(json.dumps({'inputs': inputs(), 'pdf_sha256': digest(PDF), 'qa': qa}, indent=2)+'\n')
+    print('Built short one-page public CV from the complete web CV and approved selection.')
 
 if __name__ == '__main__':
     main()
