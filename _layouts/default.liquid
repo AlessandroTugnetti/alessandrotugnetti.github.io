@@ -17,6 +17,11 @@
 
   <!-- Body -->
   <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+    <canvas id="ambient-particles" aria-hidden="true"></canvas>
+    <button id="particles-toggle" class="particles-toggle" type="button" aria-pressed="false" hidden>
+      <span class="particle-indicator" aria-hidden="true"></span> Particles <span id="particles-state">Off</span>
+    </button>
+    <script defer src="{{ '/assets/js/particles.js' | relative_url | bust_file_cache }}"></script>
     <!-- Header -->
     {% include header.liquid %}
 

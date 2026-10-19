@@ -1,0 +1,51 @@
+<section class="hopfield-demo" aria-labelledby="hopfield-title">
+  <div class="demo-heading">
+    <p class="section-kicker">An interactive experiment</p>
+    <h2 id="hopfield-title">Machine Learning Demo <span>· Hopfield Networks</span></h2>
+  </div>
+  <p class="demo-intro">How does a network remember? Start with a noisy pattern and watch a small associative memory recover what it has learned.</p>
+  <div class="demo-controls">
+    <label
+      >Stored pattern<select id="memory-pattern">
+        <option value="ring">Ring</option>
+        <option value="cross">Cross</option>
+      </select></label
+    >
+    <label class="noise-control"
+      >Noise <output id="noise-value" for="memory-noise">20%</output><input id="memory-noise" type="range" min="0" max="40" value="20" step="5"
+    ></label>
+    <button type="button" id="corrupt-pattern" class="demo-button secondary">New noisy pattern</button>
+  </div>
+  <div class="demo-workspace">
+    <div class="pattern-pair">
+      <figure>
+        <canvas id="noisy-pattern" width="240" height="240" role="img" aria-label="Noisy input pattern"></canvas>
+        <figcaption><span>01</span> Noisy input</figcaption>
+      </figure>
+      <span class="pattern-arrow" aria-hidden="true">→</span>
+      <figure>
+        <canvas id="recalled-pattern" width="240" height="240" role="img" aria-label="Network output pattern"></canvas>
+        <figcaption><span>02</span> Network recall</figcaption>
+      </figure>
+    </div>
+    <div class="demo-explanation">
+      <h3>From noise to memory.</h3>
+      <p>
+        This Hopfield network stores two binary patterns using Hebbian learning. Each neuron updates from its neighbours, moving the system toward a
+        stable, lower-energy state.
+      </p>
+      <p>More noise makes retrieval harder. A stable state is not always the intended memory.</p>
+      <button type="button" id="retrieve-pattern" class="demo-button">Retrieve pattern <span aria-hidden="true">↗</span></button>
+      <p id="recall-status" class="recall-status" role="status" aria-live="polite">Ready to recall. Choose a pattern and try it.</p>
+      <p class="demo-metrics">
+        <span>Sweeps <strong id="recall-sweeps">0</strong></span
+        ><span>Energy <strong id="recall-energy">0</strong></span>
+      </p>
+    </div>
+  </div>
+  <noscript><p>Enable JavaScript to run the interactive demo. Your browser performs all calculations locally.</p></noscript>
+  <p class="demo-note">
+    A browser-based illustration of associative memory, inspired by <a href="https://physics-morris.github.io/">Morris Huang’s website</a>. This is an
+    educational experiment, not a research result.
+  </p>
+</section>

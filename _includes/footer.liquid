@@ -1,30 +1,40 @@
-{% capture footer_contents %}
-  &copy; Copyright {{ site.time | date: '%Y' }}
-  {{ site.first_name }}
-  {{ site.middle_name }}
-  {{ site.last_name }}. {{ site.footer_text }}
-  {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-  {% endif %}
-  {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
-  {% endif %}
-{% endcapture %}
-
-{% if site.footer_fixed %}
-  <footer class="fixed-bottom" role="contentinfo">
-    <div class="container mt-0">
-      {{ footer_contents }}
+<footer class="academic-footer" role="contentinfo">
+  <div class="container footer-grid">
+    <div class="footer-identity">
+      <a class="footer-wordmark" href="{{ '/' | relative_url }}"
+        >Ale Tugné<span>at Lux<span class="footer-prompt" aria-hidden="true"> ~ $</span></span></a
+      >
+      <p>
+        Finance, machine learning<br>
+        and the dynamics of markets.
+      </p>
+      <p class="footer-copyright">
+        © {{ site.time | date: '%Y' }}
+        {{ site.first_name }}
+        {{ site.last_name }}.
+      </p>
     </div>
-  </footer>
-{% else %}
-  <footer class="sticky-bottom mt-5" role="contentinfo">
-    {% if site.newsletter.enabled %}
-      {% include newsletter.liquid %}
-    {% endif %}
-
-    <div class="container">
-      {{ footer_contents }}
+    <div>
+      <h2>Contact</h2>
+      <p>
+        University of Luxembourg<br>
+        6, Rue Richard Coudenhove-Kalergi<br>
+        1359 Kirchberg, Luxembourg
+      </p>
+      <a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a>
     </div>
-  </footer>
-{% endif %}
+    <div>
+      <h2>Find me online</h2>
+      <ul>
+        <li><a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}">Google Scholar ↗</a></li>
+        <li><a href="https://github.com/{{ site.data.socials.github_username }}">GitHub ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}/">LinkedIn ↗</a></li>
+        <li><a href="https://orcid.org/{{ site.data.socials.orcid_id }}">ORCID ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>Built with <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/alshedivat/al-folio">al-folio</a>.</span
+      ><span>Visual inspiration: <a href="https://physics-morris.github.io/">Morris Huang</a></span>
+    </div>
+  </div>
+</footer>

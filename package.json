@@ -6,6 +6,7 @@
   "scripts": {
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "site:check": "python3 bin/check_site.py _site"
+    "site:check": "python3 bin/check_site.py _site",
+    "test": "node --test tests/*.test.mjs"
   }
 }

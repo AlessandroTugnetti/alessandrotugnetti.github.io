@@ -8,6 +8,12 @@ Run `docker compose up` in this folder and open http://localhost:8080. Stop with
 
 Install Node dependencies once with `npm ci`. Run `npm run format` after editing, then `npm run format:check`.
 
+## Homepage customization
+
+The personal layout is inspired by [Morris Huang’s website](https://physics-morris.github.io/) with original styling and browser code. The original al-folio MIT license is retained. Biography: `_pages/about.md`; portrait: `assets/img/prof_pic.jpg`; selected papers: `_bibliography/papers.bib` (`selected = {true}`); news: `_data/home_news.yml`. News starts empty. Add entries with `date: YYYY-MM-DD` and `text: your update` when ready.
+
+Particles can be turned on or off; the preference is saved in this browser. Reduced-motion preferences turn the initial effect off. The Hopfield demo runs locally with Hebbian weights, asynchronous updates and two stored patterns. `npm test` checks stable memories, recovery and decreasing energy, and also runs before deployment.
+
 ## Publishing
 
 Commit your edits and `git push origin main`. The **Deploy site** workflow checks formatting, builds in production mode, checks internal links, and publishes the generated output to `gh-pages`. GitHub Pages serves that branch automatically at the URL above. A failed check prevents publication and leaves the last published site available. Do not edit `gh-pages` directly.
