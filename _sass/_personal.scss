@@ -779,39 +779,46 @@ select:focus-visible {
   }
 }
 
-.news-year {
-  border-bottom: 1px solid var(--global-divider-color);
-  padding: 12px 0;
+.news-tabs {
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  margin-left: auto;
+  overflow-x: auto;
 }
-.news-year:last-child {
-  border-bottom: 0;
-}
-.news-year summary {
+.news-tabs button {
+  flex: 0 0 auto;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #b2c5df;
+  padding: 5px 8px;
+  font: 12px monospace;
   cursor: pointer;
-  color: var(--personal-accent);
-  font-weight: 700;
 }
-.news-year summary span {
-  font-size: 0.8em;
-  font-weight: 400;
+.news-tabs button[aria-selected="true"] {
+  color: #fff;
+  border-bottom-color: #8ec9ff;
+}
+.news-tabs button:focus-visible {
+  outline: 2px solid #8ec9ff;
+  outline-offset: -2px;
+}
+.news-panel[hidden] {
+  display: none;
+}
+.news-panel time {
   color: var(--personal-muted);
 }
-.news-year ul {
-  margin-top: 12px;
-}
-.news-year time {
-  color: var(--personal-muted);
-}
-.public-cv section {
-  margin-top: 36px;
+.public-cv .card-title {
+  font-size: 1.5rem;
 }
 .cv-entry {
-  margin: 22px 0;
+  margin: 16px 0;
 }
 .cv-entry h3,
 .cv-entry h4 {
-  font-size: 1.1rem;
-  line-height: 1.5;
+  font-size: 1rem;
   margin-bottom: 5px;
 }
 .cv-entry p {
@@ -821,7 +828,29 @@ select:focus-visible {
   color: var(--personal-muted);
   font-size: 0.93rem;
 }
-.research-entry {
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--global-divider-color);
+.research-summary {
+  margin-top: 6px;
+}
+.teaching-course {
+  margin-bottom: 18px;
+}
+@media (max-width: 575px) {
+  .terminal-news-bar {
+    gap: 8px;
+    padding: 10px;
+  }
+  .terminal-dots {
+    display: none;
+  }
+  .terminal-news-bar h2 {
+    flex: 0 0 auto;
+  }
+  .news-tabs button {
+    padding: 5px 7px;
+  }
+}
+
+.public-cv .date-column .badge {
+  white-space: normal;
+  line-height: 1.5;
 }

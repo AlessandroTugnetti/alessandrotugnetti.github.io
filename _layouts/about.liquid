@@ -38,20 +38,33 @@ layout: default
     <div class="terminal-news-bar">
       <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
       <h2 id="news-title">~ News</h2>
-      <span class="terminal-path" aria-hidden="true">~/updates</span>
+      <div class="news-tabs" role="tablist" aria-label="News by year">
+        {% for year in site.data.home_news %}
+          <button
+            type="button"
+            role="tab"
+            id="news-tab-{{ year.year }}"
+            aria-controls="news-panel-{{ year.year }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+          >
+            {{ year.year }}
+          </button>
+        {% endfor %}
+      </div>
     </div>
     <div class="terminal-news-body">
       {% for year in site.data.home_news %}
-        <details
-          class="news-year"
-          {% if forloop.index <= 2 %}
-            open
-          {% endif %}
+        <div
+          class="news-panel"
+          id="news-panel-{{ year.year }}"
+          role="tabpanel"
+          aria-labelledby="news-tab-{{ year.year }}"
+          tabindex="0"
+          {% unless forloop.first %}
+            hidden
+          {% endunless %}
         >
-          <summary>
-            {{ year.year }}
-            <span>({{ year.items.size }} updates)</span>
-          </summary>
           <ul>
             {% for item in year.items %}
               <li>
@@ -59,7 +72,7 @@ layout: default
               </li>
             {% endfor %}
           </ul>
-        </details>
+        </div>
       {% endfor %}
     </div>
   </section>
@@ -75,3 +88,5 @@ layout: default
   {% include hopfield_demo.liquid %}
 </div>
 <script type="module" src="{{ '/assets/js/hopfield.mjs' | relative_url | bust_file_cache }}"></script>
+
+<script type="module" src="{{ "/assets/js/news-tabs.mjs" | relative_url | bust_file_cache }}"></script>

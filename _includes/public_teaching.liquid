@@ -1,15 +1,40 @@
-{% for course in site.data.resume.teaching %}
-  <div class="cv-entry">
-    <h3>
-      {{ course.name -}}
-      {%- if course.role %}
-        <span class="cv-meta">({{ course.role }})</span>
-      {%- endif %}
-    </h3>
-    <p class="cv-meta">
-      {{ course.period -}}
-      {%- if course.code != '' %} · {{ course.code }}{% endif %}
-    </p>
-    <p>{{ course.program }}</p>
-  </div>
-{% endfor %}
+<div class="publications-container">
+  {% assign periods = site.data.resume.teaching | map: 'period' | uniq %}
+  {% for period in periods %}
+    <h2 class="year">{{ period }}</h2>
+    <div class="publications">
+      {% for course in site.data.resume.teaching %}
+        {% if course.period == period %}
+          <div class="row teaching-course">
+            <div class="col-sm-3 abbr">University of Luxembourg</div>
+            <div class="col-sm-8">
+              <div class="title">
+                <b>
+                  {%- if course.code != '' %}({{ course.code }}) {% endif -%}
+                  {% if course.name == 'Python Camp' -%}
+                    <a href="https://pythoncamp.uni.lu">{{ course.name }}</a>
+                  {%- else -%}
+                    {{- course.name -}}
+                  {%- endif %}
+                </b>
+                {%- if course.role %} ({{ course.role }}){% endif %}
+              </div>
+              {% if course.name == 'Empirical Finance' %}
+                {% assign program_url = 'https://www.uni.lu/fdef-en/study-programs/master-in-wealth-management/programme/' %}
+              {% elsif course.name == 'Industrial Economics' %}
+                {% assign program_url = 'https://www.uni.lu/fdef-en/study-programs/bachelor-en-sciences-economiques/programme/#finance' %}
+              {% elsif course.code contains 'MScFE_BK' %}
+                {% assign program_url = 'https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics-financial-economics/programme/' %}
+              {% else %}
+                {% assign program_url = 'https://www.uni.lu/fdef-en/study-programs/master-in-finance-and-economics/' %}
+              {% endif %}
+              <em
+                ><a href="{{ program_url }}">{{ course.program }}</a></em
+              >
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>

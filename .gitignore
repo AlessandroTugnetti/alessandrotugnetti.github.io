@@ -13,3 +13,6 @@ vendor
 
 # Public CV intermediate LaTeX files
 _cv_source/build/
+
+# Python validation bytecode
+__pycache__/

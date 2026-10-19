@@ -6,4 +6,4 @@ Run `npm run cv:build` after changing the data, then inspect every PDF page. Thi
 
 `npm run cv:check` requires the generated source and the validated PDF to match the data. CI verifies their hashes without requiring a TeX installation. Build intermediates are ignored. Existing PDF history remains recoverable in Git.
 
-Home News are maintained separately in `_data/home_news.yml`, grouped by year. Dates preserve known precision: `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`. Do not invent a month or day to satisfy a date field. The most recent two years are open by default; older years use native keyboard-accessible disclosure controls.
+Home News are maintained separately in `_data/home_news.yml`, grouped by year. Dates preserve known precision: `YYYY`, `YYYY-MM`, or `YYYY-MM-DD`. Do not invent a month or day to satisfy a date field. Horizontal year tabs in the News header show one year at a time, with the latest year selected initially. Arrow keys, Home and End switch tabs; the bar scrolls on narrow screens.

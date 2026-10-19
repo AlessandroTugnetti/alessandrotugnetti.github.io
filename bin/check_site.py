@@ -9,6 +9,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
+from rendered_content import ContentStructure, rendering_errors, news_errors
+
 SITE = "https://alessandrotugnetti.github.io"
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "_site").resolve()
 errors = []
@@ -57,17 +59,20 @@ for route in ("index.html", "cv/index.html", "research/index.html", "teaching/in
 for route in ("cv/index.html", "research/index.html"):
     text = visible_text(root / route)
     for paper in resume["publications"]:
-        if paper["name"] not in text:
+        if paper["name"].casefold() not in text.casefold():
             errors.append(f"{route}: missing public research item {paper['name']}")
     if "abstract_id=7582999" not in (root / route).read_text():
         errors.append(f"{route}: missing QFI working-paper link")
-news_years = [int(y) for y in re.findall(r"<summary>\s*(20\d{2})", home)]
-if (
-    news_years != sorted(set(news_years), reverse=True)
-    or any(y < 2020 for y in news_years)
-    or not set(range(2020, 2027)).issubset(news_years)
-):
-    errors.append("index.html: News years must be unique, descending and include 2020–2026")
+errors.extend(f"index.html: {error}" for error in news_errors(home))
+for route in ("cv/index.html", "research/index.html", "teaching/index.html"):
+    source = (root / route).read_text()
+    errors.extend(f"{route}: {error}" for error in rendering_errors(source))
+    structure = ContentStructure()
+    structure.feed(source)
+    if route.startswith("cv/") and structure.cards < 9:
+        errors.append(f"{route}: missing CV section cards")
+    if route.startswith(("research/", "teaching/")) and structure.rows < 4:
+        errors.append(f"{route}: missing publication/course rows")
 for course in resume["teaching"]:
     if course["name"] not in visible_text(root / "teaching/index.html"):
         errors.append(f"teaching/index.html: missing course {course['name']}")

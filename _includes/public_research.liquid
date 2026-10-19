@@ -1,32 +1,47 @@
-{% assign published = site.data.resume.publications | where: 'status', 'Published article' %}
-{% assign working = site.data.resume.publications | where: 'status', 'Working paper' %}
-{% for group in (1..2) %}
-  {% if group == 1 -%}
-    {%- assign papers = published %}
-    <h3>Published articles</h3>
-  {% else -%}
-    {%- assign papers = working %}
-    <h3>Working papers</h3>
+<div class="publications">
+  {% if include.bibliography %}
+    {% bibliography %}
   {% endif %}
-  {% for paper in papers %}
-    <div class="cv-entry research-entry">
-      <h4>
-        {% if paper.url != '' -%}
-          <a href="{{ paper.url }}">{{ paper.name }}</a>
-        {%- else -%}
-          {{- paper.name -}}
-        {%- endif %}
-      </h4>
-      <p>{{ paper.authors }}</p>
-      <p class="cv-meta">
-        {{ paper.status -}}
-        {%- if paper.period != '' %} · {{ paper.period }}{% endif -%}
-        {%- if paper.citation %} · {{ paper.citation }}{% endif %}
-      </p>
-      <p>{{ paper.summary }}</p>
-      {% if paper.url contains 'ssrn' %}
-        <p><a href="{{ paper.url }}">Working paper on SSRN ↗</a></p>
-      {% endif %}
-    </div>
+  {% assign statuses = 'Published article|Working paper' | split: '|' %}
+  {% for status in statuses %}
+    {% if include.bibliography and status == 'Published article' %}{% continue %}{% endif %}
+    <h2 class="bibliography">
+      {% if status == 'Published article' %}Published articles{% else %}Working papers{% endif %}
+    </h2>
+    <ol class="bibliography">
+      {% for paper in site.data.resume.publications %}
+        {% if paper.status == status %}
+          <li>
+            <div class="row">
+              <div class="col-sm-2 abbr">
+                <span class="badge">
+                  {%- if paper.period != '' %}{{ paper.period }}{% else %}Working paper{% endif -%}
+                </span>
+              </div>
+              <div class="col-sm-10">
+                <div class="title">
+                  {% if paper.url != '' -%}
+                    <a href="{{ paper.url }}">{{ paper.name }}</a>
+                  {%- else -%}
+                    {{- paper.name -}}
+                  {%- endif %}
+                </div>
+                <div class="author">{{ paper.authors }}</div>
+                <div class="periodical">
+                  <em>
+                    {{- paper.status -}}
+                    {%- if paper.citation %} · {{ paper.citation }}{% endif -%}
+                  </em>
+                </div>
+                <div class="research-summary">{{ paper.summary }}</div>
+                {% if paper.url contains 'ssrn' %}
+                  <div class="links"><a class="btn btn-sm z-depth-0" href="{{ paper.url }}">SSRN</a></div>
+                {% endif %}
+              </div>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ol>
   {% endfor %}
-{% endfor %}
+</div>

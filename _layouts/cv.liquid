@@ -3,7 +3,12 @@ layout: default
 ---
 <div class="post public-cv">
   <header class="post-header">
-    <h1 class="post-title">Curriculum vitae</h1>
+    <h1 class="post-title">
+      {{ page.title }}
+      <a class="float-right" href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}" aria-label="Download public CV (PDF)"
+        ><i class="fa-solid fa-file-pdf" aria-hidden="true"></i
+      ></a>
+    </h1>
     <p><a class="btn btn-sm z-depth-0" href="{{ '/assets/pdf/Tugnetti_CV.pdf' | relative_url }}">Download public CV (PDF)</a></p>
     <p>
       {{ site.data.resume.basics.name }} · {{ site.data.resume.basics.location.city }} ·
@@ -12,90 +17,117 @@ layout: default
     <p>{{ site.data.resume.basics.summary }}</p>
   </header>
   <article>
-    <section aria-labelledby="cv-experience">
-      <h2 id="cv-experience">Experience</h2>
-      {% for item in site.data.resume.work %}
-        <div class="cv-entry">
-          <h3>{{ item.position }}</h3>
-          <p class="cv-meta">{{ item.name }} · {{ item.period }}</p>
-          <p>{{ item.summary }}</p>
-        </div>
-      {% endfor %}
-    </section>
-    <section aria-labelledby="cv-education">
-      <h2 id="cv-education">Education</h2>
-      {% for item in site.data.resume.education %}
-        <div class="cv-entry">
-          <h3>{{ item.studyType }}</h3>
-          <p class="cv-meta">{{ item.institution }} · {{ item.period }}</p>
-          {% if item.summary != '' %}
-            <p>{{ item.summary }}</p>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </section>
-    <section aria-labelledby="cv-research">
-      <h2 id="cv-research">Research</h2>
-      {% include public_research.liquid %}
-    </section>
-    <section aria-labelledby="cv-teaching">
-      <h2 id="cv-teaching">Teaching</h2>
-      <p>University of Luxembourg. Four curricular courses, plus the Python Camp.</p>
-      {% include public_teaching.liquid %}
-    </section>
-    <section aria-labelledby="cv-training">
-      <h2 id="cv-training">Training &amp; Certifications</h2>
-      {% for item in site.data.resume.certificates %}
-        <div class="cv-entry">
-          <h3>
-            {% if item.url != '' -%}
-              <a href="{{ item.url }}">{{ item.name }}</a>
-            {%- else -%}
-              {{- item.name -}}
-            {%- endif %}
-          </h3>
-          <p class="cv-meta">{{ item.issuer }} · {{ item.period }}</p>
-          {% if item.summary != '' %}
-            <p>{{ item.summary }}</p>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </section>
-    <section aria-labelledby="cv-awards">
-      <h2 id="cv-awards">Honors, Recognition &amp; Programs</h2>
-      {% for item in site.data.resume.awards %}
-        <div class="cv-entry">
-          <h3>{{ item.title }}</h3>
-          <p class="cv-meta">{{ item.awarder }} · {{ item.period }}</p>
-          <p>{{ item.summary }}</p>
-        </div>
-      {% endfor %}
-    </section>
-    <section aria-labelledby="cv-volunteer">
-      <h2 id="cv-volunteer">Leadership &amp; Volunteering</h2>
-      {% for item in site.data.resume.volunteer %}
-        <div class="cv-entry">
-          <h3>{{ item.position }}</h3>
-          <p class="cv-meta">{{ item.organization }} · {{ item.period }}</p>
-          <p>{{ item.summary }}</p>
-        </div>
-      {% endfor %}
-    </section>
-    <section aria-labelledby="cv-languages">
-      <h2 id="cv-languages">Languages</h2>
-      <ul>
-        {% for item in site.data.resume.languages %}
-          <li>{{ item.language }}: {{ item.fluency }}</li>
+    <div class="cv">
+      <section class="card mt-3 p-3" aria-labelledby="cv-experience">
+        <h2 class="card-title font-weight-medium" id="cv-experience">Experience</h2>
+        {% for item in site.data.resume.work %}
+          <div class="cv-entry row">
+            <div class="col-md-2 text-center date-column">
+              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+            </div>
+            <div class="col-md-10">
+              <h3>{{ item.position }}</h3>
+              <p class="cv-meta">{{ item.name }}</p>
+              <p>{{ item.summary }}</p>
+            </div>
+          </div>
         {% endfor %}
-      </ul>
-    </section>
-    <section aria-labelledby="cv-skills">
-      <h2 id="cv-skills">Skills</h2>
-      {% for item in site.data.resume.skills %}
-        <p>
-          <strong>{{ item.name }}:</strong> {{ item.keywords | join: ', ' }}.
-        </p>
-      {% endfor %}
-    </section>
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-education">
+        <h2 class="card-title font-weight-medium" id="cv-education">Education</h2>
+        {% for item in site.data.resume.education %}
+          <div class="cv-entry row">
+            <div class="col-md-2 text-center date-column">
+              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+            </div>
+            <div class="col-md-10">
+              <h3>{{ item.studyType }}</h3>
+              <p class="cv-meta">{{ item.institution }}</p>
+              {% if item.summary != '' %}
+                <p>{{ item.summary }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-research">
+        <h2 class="card-title font-weight-medium" id="cv-research">Research</h2>
+        {% include public_research.liquid %}
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-teaching">
+        <h2 class="card-title font-weight-medium" id="cv-teaching">Teaching</h2>
+        <p>University of Luxembourg. Four curricular courses, plus the Python Camp.</p>
+        {% include public_teaching.liquid %}
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-training">
+        <h2 class="card-title font-weight-medium" id="cv-training">Training &amp; Certifications</h2>
+        {% for item in site.data.resume.certificates %}
+          <div class="cv-entry row">
+            <div class="col-md-2 text-center date-column">
+              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+            </div>
+            <div class="col-md-10">
+              <h3>
+                {% if item.url != '' -%}
+                  <a href="{{ item.url }}">{{ item.name }}</a>
+                {%- else -%}
+                  {{- item.name -}}
+                {%- endif %}
+              </h3>
+              <p class="cv-meta">{{ item.issuer }}</p>
+              {% if item.summary != '' %}
+                <p>{{ item.summary }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-awards">
+        <h2 class="card-title font-weight-medium" id="cv-awards">Honors, Recognition &amp; Programs</h2>
+        {% for item in site.data.resume.awards %}
+          <div class="cv-entry row">
+            <div class="col-md-2 text-center date-column">
+              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+            </div>
+            <div class="col-md-10">
+              <h3>{{ item.title }}</h3>
+              <p class="cv-meta">{{ item.awarder }}</p>
+              <p>{{ item.summary }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-volunteer">
+        <h2 class="card-title font-weight-medium" id="cv-volunteer">Leadership &amp; Volunteering</h2>
+        {% for item in site.data.resume.volunteer %}
+          <div class="cv-entry row">
+            <div class="col-md-2 text-center date-column">
+              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+            </div>
+            <div class="col-md-10">
+              <h3>{{ item.position }}</h3>
+              <p class="cv-meta">{{ item.organization }}</p>
+              <p>{{ item.summary }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-languages">
+        <h2 class="card-title font-weight-medium" id="cv-languages">Languages</h2>
+        <ul>
+          {% for item in site.data.resume.languages %}
+            <li>{{ item.language }}: {{ item.fluency }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      <section class="card mt-3 p-3" aria-labelledby="cv-skills">
+        <h2 class="card-title font-weight-medium" id="cv-skills">Skills</h2>
+        {% for item in site.data.resume.skills %}
+          <p>
+            <strong>{{ item.name }}:</strong> {{ item.keywords | join: ', ' }}.
+          </p>
+        {% endfor %}
+      </section>
+    </div>
   </article>
 </div>
