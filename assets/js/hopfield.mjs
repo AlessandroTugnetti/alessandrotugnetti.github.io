@@ -30,29 +30,29 @@ export function createMemory(pattern) {
 export function maskedFace(pattern, left = true, side = SIDE) {
   return pattern.map((value, i) => (i % side < side / 2 === left ? -1 : value));
 }
-export const PORTRAIT_SIDE = 100;
-// A pixel comprises 32 bipolar neurons, one for each RGBA bit. The masked
-// half is unknown (zero), rather than falsely asserting a black/white value.
-export function recallPortrait(pixels, side = PORTRAIT_SIDE) {
+export const PORTRAIT_SIDE = 50;
+export function portraitPattern(pixels, side = PORTRAIT_SIDE, mouthPixels = pixels) {
   if (pixels.length !== side * side * 4) throw new TypeError("RGBA dimensions do not match.");
-  const output = new Uint8ClampedArray(pixels.length);
-  for (let channel = 0; channel < 4; channel++) {
-    for (let bit = 0; bit < 8; bit++) {
-      const pattern = Array.from({ length: side * side }, (_, i) => ((pixels[4 * i + channel] >> bit) & 1 ? 1 : -1));
-      const memory = createMemory(pattern);
-      const initial = pattern.map((value, i) => (i % side < side / 2 ? 0 : value));
-      const network = memory.start(initial);
-      // Asynchronous, unclamped recall: every unknown neuron is visited.
-      for (let i = 0; i < pattern.length; i++) if (i % side < side / 2) network.update(i);
-      for (let i = 0; i < pattern.length; i++) if (network.values[i] === 1) output[4 * i + channel] |= 1 << bit;
-    }
-  }
-  return output;
+  // The source is intentional blue-and-white pixel art. This classifies its
+  // palette, rather than thresholding shadows in a photograph.
+  return Array.from({ length: side * side }, (_, i) => {
+    const row = Math.floor(i / side) / side;
+    // Preserve the original thin curl/eye marks; area averaging in the smile
+    // band prevents the narrow mouth outline disappearing between samples.
+    const mouth = row >= 0.58 && row <= 0.66;
+    const sample = mouth ? mouthPixels : pixels;
+    return sample[4 * i + 3] > 128 && sample[4 * i] < (mouth ? 200 : 180) ? 1 : -1;
+  });
 }
-export function reconstructionOrder(pixels, side = PORTRAIT_SIDE) {
+export function recallPortrait(pattern, side = PORTRAIT_SIDE) {
+  const memory = createMemory(pattern),
+    network = memory.start(maskedFace(pattern, true, side));
+  for (let i = 0; i < pattern.length * 2; i++) network.update(i % pattern.length);
+  return network.values;
+}
+export function reconstructionOrder(pattern, side = PORTRAIT_SIDE) {
   const order = [];
-  for (let i = 0; i < side * side; i++) if (i % side < side / 2 && pixels[4 * i + 3] > 32) order.push(i);
-  // Deterministic shuffle makes the visual progression reproducible.
+  for (let i = 0; i < side * side; i++) if (i % side < side / 2 && pattern[i] === 1) order.push(i);
   let seed = 271828;
   for (let i = order.length - 1; i > 0; i--) {
     seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
@@ -62,14 +62,9 @@ export function reconstructionOrder(pixels, side = PORTRAIT_SIDE) {
   return order;
 }
 export function reconstructionFrame(recalled, order, step, side = PORTRAIT_SIDE) {
-  const frame = new Uint8ClampedArray(recalled.length);
-  for (let i = 0; i < side * side; i++) if (i % side >= side / 2) frame.set(recalled.subarray(4 * i, 4 * i + 4), 4 * i);
-  const count = (Math.min(3000, Math.max(0, step)) * order.length) / 3000;
-  for (let j = 0; j < Math.ceil(count); j++) {
-    const offset = 4 * order[j];
-    frame.set(recalled.subarray(offset, offset + 4), offset);
-    frame[offset + 3] = Math.round(recalled[offset + 3] * Math.min(1, count - j));
-  }
+  const frame = maskedFace(recalled, true, side);
+  const count = Math.floor((Math.min(3000, Math.max(0, step)) * order.length) / 3000);
+  for (let j = 0; j < count; j++) frame[order[j]] = recalled[order[j]];
   return frame;
 }
 if (typeof document !== "undefined" && document.getElementById("face-memory")) {
@@ -90,7 +85,10 @@ if (typeof document !== "undefined" && document.getElementById("face-memory")) {
     completed = false,
     frame = 0;
   function draw(step) {
-    source.putImageData(new ImageData(reconstructionFrame(recalled, order, step), PORTRAIT_SIDE, PORTRAIT_SIDE), 0, 0);
+    const values = reconstructionFrame(recalled, order, step);
+    const data = new Uint8ClampedArray(values.length * 4);
+    values.forEach((value, i) => data.set(value === 1 ? [99, 169, 214, 255] : [255, 255, 255, 255], i * 4));
+    source.putImageData(new ImageData(data, PORTRAIT_SIDE, PORTRAIT_SIDE), 0, 0);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(buffer, 0, 0, canvas.width, canvas.height);
@@ -133,8 +131,12 @@ if (typeof document !== "undefined" && document.getElementById("face-memory")) {
     frame = requestAnimationFrame(tick);
   }
   image.onload = () => {
+    source.imageSmoothingQuality = "low";
     source.drawImage(image, 0, 0, PORTRAIT_SIDE, PORTRAIT_SIDE);
-    pixels = source.getImageData(0, 0, PORTRAIT_SIDE, PORTRAIT_SIDE).data;
+    const fine = source.getImageData(0, 0, PORTRAIT_SIDE, PORTRAIT_SIDE).data;
+    source.imageSmoothingQuality = "high";
+    source.drawImage(image, 0, 0, PORTRAIT_SIDE, PORTRAIT_SIDE);
+    pixels = portraitPattern(fine, PORTRAIT_SIDE, source.getImageData(0, 0, PORTRAIT_SIDE, PORTRAIT_SIDE).data);
     recalled = recallPortrait(pixels);
     order = reconstructionOrder(recalled);
     reset();

@@ -45,31 +45,29 @@ test("Stored portrait is stable and invalid states are rejected", () => {
   assert.throws(() => m.start([1, -1]), TypeError);
 });
 
-test("Color bit-plane recall restores exact RGBA values from the visible half", async () => {
-  const { recallPortrait } = await import("../assets/js/hopfield.mjs");
-  const side = 20;
-  const pixels = Uint8ClampedArray.from({ length: side * side * 4 }, (_, i) => (i * 37 + Math.floor(i / 4) * 13) % 256);
-  assert.deepEqual(recallPortrait(pixels, side), pixels);
+test("Binary portrait recall restores the missing half", async () => {
+  const { recallPortrait, portraitPattern } = await import("../assets/js/hopfield.mjs");
+  assert.deepEqual(recallPortrait(pattern, side), pattern);
+  const palette = new Uint8ClampedArray([99, 169, 214, 255, 255, 255, 255, 255, 99, 169, 214, 255, 255, 255, 255, 255]);
+  assert.deepEqual(portraitPattern(palette, 2), [1, -1, 1, -1]);
 });
-test("Reconstruction keeps making visible progress through its final step", async () => {
+test("Binary reconstruction progresses through the final step without extra colors", async () => {
   const { reconstructionOrder, reconstructionFrame } = await import("../assets/js/hopfield.mjs");
-  const side = 100;
-  const pixels = Uint8ClampedArray.from({ length: side * side * 4 }, (_, i) => (i % 4 === 3 ? 255 : 100));
-  const order = reconstructionOrder(pixels, side);
-  assert.deepEqual(order, reconstructionOrder(pixels, side));
+  const order = reconstructionOrder(pattern, side);
+  assert.deepEqual(order, reconstructionOrder(pattern, side));
   for (const [before, after] of [
-    [0, 1],
-    [799, 800],
-    [1499, 1500],
-    [2499, 2500],
-    [2998, 2999],
+    [0, 100],
+    [799, 900],
+    [1499, 1600],
+    [2499, 2600],
     [2999, 3000],
   ]) {
-    const a = reconstructionFrame(pixels, order, before, side),
-      b = reconstructionFrame(pixels, order, after, side);
+    const a = reconstructionFrame(pattern, order, before, side),
+      b = reconstructionFrame(pattern, order, after, side);
     assert.notDeepEqual(a, b);
-    assert.ok(b.reduce((n, value, i) => n + (i % 4 === 3 ? value : 0), 0) > a.reduce((n, value, i) => n + (i % 4 === 3 ? value : 0), 0));
+    assert.ok(b.every((value) => value === 1 || value === -1));
+    assert.ok(b.filter((value) => value === 1).length > a.filter((value) => value === 1).length);
   }
-  assert.deepEqual(reconstructionFrame(pixels, order, 3000, side), pixels);
-  assert.notDeepEqual(reconstructionFrame(pixels, order, 2999, side), pixels);
+  assert.deepEqual(reconstructionFrame(pattern, order, 3000, side), pattern);
+  assert.notDeepEqual(reconstructionFrame(pattern, order, 2999, side), pattern);
 });

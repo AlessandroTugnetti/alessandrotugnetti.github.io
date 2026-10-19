@@ -11,7 +11,7 @@
         height="300"
         role="img"
         aria-label="Alessandro’s pixelated face with the left half missing"
-        data-portrait="{{ '/assets/img/tugne-demo-cutout.png' | relative_url }}"
+        data-portrait="{{ '/assets/img/tugne-demo-pixel-portrait.png' | relative_url }}"
       ></canvas>
       <figcaption id="face-caption">Half a face. Can the network remember the rest?</figcaption>
     </figure>
@@ -26,7 +26,7 @@
         partial pattern to recover a stored memory.
       </p>
       <p>
-        This network stores a 100 × 100 color portrait using a Hopfield memory for each color bit. The left half starts blank. Click
+        This network stores a simple 50 × 50 blue-and-white pixel portrait. Each pixel is one binary neuron. The left half starts blank. Click
         <strong>Retrieve Pattern</strong> to recall it from the visible half.
       </p>
       <p class="face-energy" aria-label="Energy equals minus one half the sum over distinct neurons of weight i j times state i times state j">
