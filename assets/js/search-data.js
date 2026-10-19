@@ -11,14 +11,14 @@ ninja.data = [{
     },
   },{id: "nav-research",
           title: "research",
-          description: "",
+          description: "Published articles and working papers in empirical finance, economic forecasting and alumni career trajectories.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/research/";
           },
         },{id: "nav-teaching",
           title: "teaching",
-          description: "",
+          description: "University of Luxembourg, 2022–2025.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
