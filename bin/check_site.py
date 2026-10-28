@@ -134,6 +134,30 @@ for name, url in (("European Financial Management", resume["publications"][0]["u
 for course in resume["teaching"]:
     if course["name"] not in visible_text(root / "teaching/index.html"):
         errors.append(f"teaching/index.html: missing course {course['name']}")
+# Check the role and both colleague links separately in each requested location.
+cv_source = (root / "cv/index.html").read_text()
+role_regions = {
+    "Home biography": re.search(r'class="intro-biography">(.*?)</div>', home, re.S),
+    "Home News": re.search(r'<section class="terminal-news"(.*?)</section>', home, re.S),
+    "CV experience": re.search(r'aria-labelledby="cv-experience"(.*?)</section>', cv_source, re.S),
+}
+for region, match in role_regions.items():
+    if not match:
+        errors.append(f"{region}: missing ADEM display region")
+        continue
+    source = match.group(1)
+    text = " ".join(unescape(re.sub(r"<[^>]+>", " ", source)).split())
+    links = LinkedText()
+    links.feed(source)
+    if "ADEM" not in text or "2 November 2026" not in text:
+        errors.append(f"{region}: missing dated ADEM role")
+    for name in ("Gabriele Marconi", "François-Xavier Borsi"):
+        url = next(a["url"] for a in identities if name in a["aliases"])
+        if (name, url) not in links.links:
+            errors.append(f"{region}: missing colleague link {name}")
+    if re.search(r"upcoming|I'll join|Starting 2 November", text):
+        errors.append(f"{region}: role must use neutral dated wording")
+
 if not (root / "assets/pdf/Tugnetti_CV.pdf").read_bytes().startswith(b"%PDF-"):
     errors.append("Public CV download is not a PDF")
 

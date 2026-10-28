@@ -1,0 +1,12 @@
+{%- assign role = site.data.resume.web_work | first -%}
+{%- assign date_label = role.startDate | date: '%-d %B %Y' -%}
+{%- case include.kind -%}
+  {%- when 'period' -%}
+    From {{ date_label }}
+  {%- when 'bio' -%}
+    At {{ role.name }} from {{ date_label }}, working with {{ role.colleagues | linked_authors }}.
+  {%- when 'news' -%}
+    {{ role.position }} at {{ role.name }}, from {{ date_label }}, working with {{ role.colleagues | linked_authors }}.
+  {%- when 'colleagues' -%}
+    Working with {{ role.colleagues | linked_authors }}.
+{%- endcase -%}

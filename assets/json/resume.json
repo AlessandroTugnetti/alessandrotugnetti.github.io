@@ -284,5 +284,14 @@
       "period": "September 2015",
       "summary": "Recognition for outstanding achievement in technical and vocational secondary education."
     }
+  ],
+  "web_work": [
+    {
+      "name": "ADEM",
+      "position": "Data Scientist",
+      "startDate": "2026-11-02",
+      "colleagues": "Gabriele Marconi and François-Xavier Borsi",
+      "summary": ""
+    }
   ]
 }

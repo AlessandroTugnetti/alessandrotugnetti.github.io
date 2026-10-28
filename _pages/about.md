@@ -25,6 +25,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
+{% include adem_role.liquid kind='bio' %}
+
 {{ site.data.resume.basics.summary }}
 
 I also serve as Vice President of the Quantitative Finance and Insurance (QFI) Alumni and Students Association.

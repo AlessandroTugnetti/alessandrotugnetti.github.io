@@ -20,15 +20,22 @@ layout: default
     <div class="cv">
       <section class="card mt-3 p-3" aria-labelledby="cv-experience">
         <h2 class="card-title font-weight-medium" id="cv-experience">Experience</h2>
-        {% for item in site.data.resume.work %}
+        {% assign displayed_work = site.data.resume.web_work | concat: site.data.resume.work %}
+        {% for item in displayed_work %}
           <div class="cv-entry row">
             <div class="col-md-2 text-center date-column">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+              <span class="badge font-weight-bold danger-color-dark text-uppercase">
+                {%- if item.startDate %}{% include adem_role.liquid kind='period' %}{% else %}{{ item.period }}{% endif -%}
+              </span>
             </div>
             <div class="col-md-10">
               <h3>{{ item.position }}</h3>
               <p class="cv-meta">{{ item.name }}</p>
-              <p>{{ item.summary }}</p>
+              {% if item.startDate %}
+                <p>{% include adem_role.liquid kind='colleagues' %}</p>
+              {% else %}
+                <p>{{ item.summary }}</p>
+              {% endif %}
             </div>
           </div>
         {% endfor %}

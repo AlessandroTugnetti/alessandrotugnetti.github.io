@@ -67,7 +67,8 @@ layout: default
           <ul>
             {% for item in year.items %}
               <li>
-                <time datetime="{{ item.date }}">[{{ item.label }}]</time> <span aria-hidden="true">~ $</span> {{ item.text | markdownify }}
+                <time datetime="{{ item.date }}">[{{ item.label }}]</time> <span aria-hidden="true">~ $</span>
+                {% if item.current_role %}{% include adem_role.liquid kind='news' %}{% else %}{{ item.text | markdownify }}{% endif %}
               </li>
             {% endfor %}
           </ul>
