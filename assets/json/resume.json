@@ -4,7 +4,7 @@
     "label": "Data Scientist · PhD in Finance",
     "email": "alessandro.tugnetti@live.it",
     "url": "https://alessandrotugnetti.github.io/",
-    "summary": "I'm a data scientist with a PhD in Finance from the University of Luxembourg. My interests include machine learning and data science.",
+    "summary": "I'm interested in machine learning and its applications.",
     "location": {
       "city": "Luxembourg",
       "countryCode": "LU"
@@ -31,13 +31,15 @@
       "institution": "University of Turin",
       "studyType": "MSc in Quantitative Finance and Insurance",
       "period": "2018–2020",
-      "summary": ""
+      "summary": "",
+      "url": "https://www.finance-insurance.unito.it/do/home.pl"
     },
     {
       "institution": "Collegio Carlo Alberto",
       "studyType": "Master of Research in Economics",
       "period": "Awarded 2020",
-      "summary": "Completed through the Allievi Honours Program."
+      "summary": "Completed through the Allievi Honours Program.",
+      "url": "https://www.carloalberto.org/education/allievi-honors-program/"
     },
     {
       "institution": "University of Turin",
@@ -161,7 +163,8 @@
       "organization": "Serve the City Luxembourg",
       "position": "Community Volunteer",
       "period": "September 2021 – Present",
-      "summary": "Contribute to local community initiatives organised by Serve the City Luxembourg."
+      "summary": "Contribute to local community initiatives organised by Serve the City Luxembourg.",
+      "url": "https://servethecity.lu/"
     },
     {
       "organization": "Cultural Association “Amici del Cammello”",
@@ -216,34 +219,34 @@
       "issuer": "London School of Economics and Political Science",
       "period": "August 2023",
       "summary": "",
-      "url": ""
+      "url": "https://www.lse.ac.uk/study-at-lse/summer-schools/summer-school/courses/research-methods/me200"
     },
     {
       "name": "Ideation Camp, 10th Edition",
       "issuer": "University of Luxembourg",
       "period": "November 2022",
       "summary": "",
-      "url": ""
+      "url": "https://www.uni.lu/en/news/ideation-camp-10-an-unforgettable-experience/"
     },
     {
       "name": "Deep Dive into Blockchain: Linking Economics, Technology and Law",
       "issuer": "University of Zurich",
       "period": "July 2022",
       "summary": "",
-      "url": ""
+      "url": "https://www.uzh.ch/en/researchinnovation/priorities/competence/BCC.html"
     },
     {
       "name": "MasterZ Blockchain & Digital Assets",
       "issuer": "MasterZ",
       "period": "July 2022",
       "summary": "",
-      "url": "https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/37912846989437473799933213870497165215501391704981195481847523024647021920257"
+      "url": "https://www.masterzblockchain.com/en/"
     },
     {
       "name": "IBM Data Science Specialization",
       "issuer": "Coursera",
       "period": "November 2021",
-      "summary": "Credential ID: S9YF74JTDWBU.",
+      "summary": "",
       "url": "https://www.coursera.org/account/accomplishments/specialization/certificate/S9YF74JTDWBU"
     },
     {
@@ -259,13 +262,15 @@
       "title": "IAS Young Academics",
       "awarder": "IAS, University of Luxembourg",
       "period": "December 2021",
-      "summary": "Research-support initiative for interdisciplinary doctoral research."
+      "summary": "Research-support initiative for interdisciplinary doctoral research.",
+      "url": "https://yia.uni.lu/institute-for-advanced-studies/"
     },
     {
       "title": "Mentoring Program SHARP Consulting",
       "awarder": "SHARP Consulting Group",
       "period": "October 2020",
-      "summary": "Career mentoring programme supporting the transition from university to employment."
+      "summary": "Career mentoring programme supporting the transition from university to employment.",
+      "url": "https://sharp-website-27836f.webflow.io/"
     },
     {
       "title": "Scholarship “Franco Cellino”",

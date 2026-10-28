@@ -41,8 +41,20 @@ layout: default
               <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
             </div>
             <div class="col-md-10">
-              <h3>{{ item.studyType }}</h3>
-              <p class="cv-meta">{{ item.institution }}</p>
+              <h3>
+                {% if item.url -%}
+                  <a href="{{ item.url }}">{{ item.studyType }}</a>
+                {%- else -%}
+                  {{- item.studyType -}}
+                {%- endif %}
+              </h3>
+              <p class="cv-meta">
+                {% if item.url -%}
+                  <a href="{{ item.url }}">{{ item.institution }}</a>
+                {%- else -%}
+                  {{- item.institution -}}
+                {%- endif %}
+              </p>
               {% if item.summary != '' %}
                 <p>{{ item.summary }}</p>
               {% endif %}
@@ -96,8 +108,20 @@ layout: default
               <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
             </div>
             <div class="col-md-10">
-              <h3>{{ item.title }}</h3>
-              <p class="cv-meta">{{ item.awarder }}</p>
+              <h3>
+                {% if item.url -%}
+                  <a href="{{ item.url }}">{{ item.title }}</a>
+                {%- else -%}
+                  {{- item.title -}}
+                {%- endif %}
+              </h3>
+              <p class="cv-meta">
+                {% if item.url -%}
+                  <a href="{{ item.url }}">{{ item.awarder }}</a>
+                {%- else -%}
+                  {{- item.awarder -}}
+                {%- endif %}
+              </p>
               <p>{{ item.summary }}</p>
             </div>
           </div>
@@ -112,7 +136,13 @@ layout: default
             </div>
             <div class="col-md-10">
               <h3>{{ item.position }}</h3>
-              <p class="cv-meta">{{ item.organization }}</p>
+              <p class="cv-meta">
+                {% if item.url -%}
+                  <a href="{{ item.url }}">{{ item.organization }}</a>
+                {%- else -%}
+                  {{- item.organization -}}
+                {%- endif %}
+              </p>
               <p>{{ item.summary }}</p>
             </div>
           </div>

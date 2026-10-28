@@ -22,3 +22,5 @@ pdftoppm -scale-to 1600 -png -singlefile assets/pdf/Tugnetti_CV.pdf /tmp/public-
 Inspect the rendered page after every material change. `cv:build` compiles twice, rejects overfull boxes, verifies one page and two-column positions, checks the public content and contact allowlist, then records SHA-256 hashes in `build.json`. `cv:check` needs Python and pypdf but no TeX installation: it checks the generated source, all rendering inputs, PDF hash, page count, column positions and content restrictions. The complete web CV and the short PDF deliberately contain different amounts of information.
 
 Build intermediates are ignored. Previous PDF versions remain recoverable in Git. The former generic house-style source is unused by this renderer.
+
+Web-only biography or link metadata can change without rebuilding the PDF. Refresh `build.json` input hashes only after confirming that `generate(resume)` exactly matches the saved `main.tex`, the existing PDF hash still matches the validated manifest, and `verify_pdf()` passes. This preserves the PDF bytes and its existing visual validation.

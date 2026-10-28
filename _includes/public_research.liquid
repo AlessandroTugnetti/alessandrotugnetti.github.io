@@ -26,7 +26,7 @@
                     {{- paper.name -}}
                   {%- endif %}
                 </div>
-                <div class="author">{{ paper.authors }}</div>
+                <div class="author">{{ paper.authors | linked_authors }}</div>
                 <div class="periodical">
                   <em>
                     {{- paper.status -}}

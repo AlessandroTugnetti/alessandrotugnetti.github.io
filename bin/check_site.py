@@ -9,7 +9,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
-from rendered_content import ContentStructure, rendering_errors, news_errors
+from rendered_content import ContentStructure, rendering_errors, news_errors, LinkedText, author_link_errors
 
 SITE = "https://alessandrotugnetti.github.io"
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "_site").resolve()
@@ -114,6 +114,23 @@ if not projects_path.is_file() or 'href="/projects/"' not in home:
     errors.append("Projects page/navigation missing")
 if 'class="footer-hornet"' not in home or "Finance · Machine learning · Luxembourg" in visible_text(root / "index.html"):
     errors.append("index.html: requested Home visual changes missing")
+identities = json.loads((Path(__file__).resolve().parents[1] / "_data/authors.json").read_text())
+for route in ("index.html", "research/index.html", "cv/index.html"):
+    source = (root / route).read_text()
+    errors.extend(f"{route}: {e}" for e in author_link_errors(source, identities))
+    if any(label in visible_text(root / route) for label in ("Read the article", "Teaching details", "Let’s connect", "Credential ID:")):
+        errors.append(f"{route}: redundant link label remains")
+cv_links = LinkedText()
+cv_links.feed((root / "cv/index.html").read_text())
+for collection, field in (("certificates", "name"), ("education", "studyType"), ("awards", "title"), ("volunteer", "organization"), ("publications", "name")):
+    for item in resume[collection]:
+        if item.get("url") and (item[field], item["url"]) not in cv_links.links:
+            errors.append(f"cv/index.html: name is missing its link: {item[field]}")
+home_links = LinkedText()
+home_links.feed(home)
+for name, url in (("European Financial Management", resume["publications"][0]["url"]), ("Journal of Economic Surveys", resume["publications"][1]["url"]), ("Design Execution and Evaluation of Research in Finance and Economics", "/teaching/")):
+    if (name, url) not in home_links.links:
+        errors.append(f"index.html: News name is missing its link: {name}")
 for course in resume["teaching"]:
     if course["name"] not in visible_text(root / "teaching/index.html"):
         errors.append(f"teaching/index.html: missing course {course['name']}")
