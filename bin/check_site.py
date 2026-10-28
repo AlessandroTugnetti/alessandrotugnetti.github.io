@@ -149,7 +149,7 @@ for region, match in role_regions.items():
     text = " ".join(unescape(re.sub(r"<[^>]+>", " ", source)).split())
     links = LinkedText()
     links.feed(source)
-    if "ADEM" not in text or (region != "Home biography" and "2 November 2026" not in text):
+    if "ADEM" not in text or (region == "CV experience" and "2 November 2026" not in text):
         errors.append(f"{region}: missing dated ADEM role")
     for name in ("Gabriele Marconi", "François-Xavier Borsi"):
         url = next(a["url"] for a in identities if name in a["aliases"])
@@ -168,8 +168,8 @@ if bio:
 news = role_regions["Home News"]
 if news:
     text = " ".join(unescape(re.sub(r"<[^>]+>", " ", news.group(1))).split())
-    if not re.search(r'<time[^>]*datetime="2026-11-02"[^>]*>\s*\[2 November 2026\]\s*</time>', news.group(1)):
-        errors.append("Home News: ADEM badge must show the full 2 November 2026 event date")
+    if not re.search(r'<time[^>]*datetime="2026-11-02"[^>]*>\s*\[2 November\]\s*</time>', news.group(1)):
+        errors.append("Home News: ADEM badge must show 2 November without the year")
     if "I joined ADEM as a data scientist, in the group of" not in text:
         errors.append("Home News: natural ADEM announcement missing")
 
