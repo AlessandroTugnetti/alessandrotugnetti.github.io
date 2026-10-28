@@ -127,23 +127,11 @@
     },
     {
       "name": "Programming and data",
-      "keywords": [
-        "Python",
-        "R",
-        "MATLAB",
-        "Stata",
-        "SQL"
-      ]
+      "keywords": ["Python", "R", "MATLAB", "Stata", "SQL"]
     },
     {
       "name": "Research and communication",
-      "keywords": [
-        "Research design",
-        "Peer-reviewed publishing",
-        "Data visualisation",
-        "Teaching",
-        "Technical and stakeholder communication"
-      ]
+      "keywords": ["Research design", "Peer-reviewed publishing", "Data visualisation", "Teaching", "Technical and stakeholder communication"]
     }
   ],
   "languages": [
