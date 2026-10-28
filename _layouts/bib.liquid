@@ -57,17 +57,17 @@
     </div>
     <!-- Names share one identity map with the complete CV and working papers. -->
     <div class="author">
-      {% for author in entry.author_array %}
+      {%- for author in entry.author_array -%}
         {%- unless forloop.first -%}
-          {% if forloop.last %} and {% else %}, {% endif %}
+          {%- if forloop.last -%}{{ ' and ' }}{%- else -%}{{ ', ' }}{%- endif -%}
         {%- endunless -%}
-        {% capture author_name %}{{ author.first }} {{ author.last }}{% endcapture %}
-        {% if author.last == 'Tugnetti' -%}
+        {%- capture author_name -%}{{ author.first }} {{ author.last }}{%- endcapture -%}
+        {%- if author.last == 'Tugnetti' -%}
           <em>{{ author_name | linked_author }}</em>
         {%- else -%}
           {{- author_name | linked_author -}}
-        {%- endif %}
-      {% endfor %}
+        {%- endif -%}
+      {%- endfor -%}
       {% if entry.annotation %}
         <i
           class="fa-solid fa-circle-info ml-1"

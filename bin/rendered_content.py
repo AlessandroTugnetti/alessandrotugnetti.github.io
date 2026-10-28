@@ -117,6 +117,8 @@ def author_link_errors(source, identities):
     if not parsed.author_rows:
         errors.append("publication author rows are missing")
     for text, links in parsed.author_rows:
+        if re.search(r"\s+,", text):
+            errors.append("publication authors have whitespace before a comma")
         for identity in identities:
             names = [name for name in identity['aliases'] if name in text]
             if names and not any((name, identity['url']) in links for name in names):
