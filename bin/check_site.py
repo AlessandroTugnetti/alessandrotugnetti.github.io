@@ -149,7 +149,7 @@ for region, match in role_regions.items():
     text = " ".join(unescape(re.sub(r"<[^>]+>", " ", source)).split())
     links = LinkedText()
     links.feed(source)
-    if "ADEM" not in text or "2 November 2026" not in text:
+    if "ADEM" not in text or (region != "Home biography" and "2 November 2026" not in text):
         errors.append(f"{region}: missing dated ADEM role")
     for name in ("Gabriele Marconi", "François-Xavier Borsi"):
         url = next(a["url"] for a in identities if name in a["aliases"])
@@ -157,6 +157,21 @@ for region, match in role_regions.items():
             errors.append(f"{region}: missing colleague link {name}")
     if re.search(r"upcoming|I'll join|Starting 2 November", text):
         errors.append(f"{region}: role must use neutral dated wording")
+
+bio = role_regions["Home biography"]
+if bio:
+    text = " ".join(unescape(re.sub(r"<[^>]+>", " ", bio.group(1))).split())
+    ordered = ["machine learning", "Vice President", "WeSTEM+", "I work as a data scientist at ADEM, in the group of"]
+    positions = [text.find(fragment) for fragment in ordered]
+    if any(pos < 0 for pos in positions) or positions != sorted(positions):
+        errors.append("Home biography: expected interests, QFI, WeSTEM+, then natural ADEM paragraph")
+news = role_regions["Home News"]
+if news:
+    text = " ".join(unescape(re.sub(r"<[^>]+>", " ", news.group(1))).split())
+    if not re.search(r'<time[^>]*datetime="2026-11-02"[^>]*>\s*\[2 November 2026\]\s*</time>', news.group(1)):
+        errors.append("Home News: ADEM badge must show the full 2 November 2026 event date")
+    if "I joined ADEM as a data scientist, in the group of" not in text:
+        errors.append("Home News: natural ADEM announcement missing")
 
 if not (root / "assets/pdf/Tugnetti_CV.pdf").read_bytes().startswith(b"%PDF-"):
     errors.append("Public CV download is not a PDF")

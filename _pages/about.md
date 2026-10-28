@@ -25,11 +25,11 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-{% include adem_role.liquid kind='bio' %}
-
 {{ site.data.resume.basics.summary }}
 
 I also serve as Vice President of the Quantitative Finance and Insurance (QFI) Alumni and Students Association.
 
 {% assign academy = site.data.resume.certificates | first %}
 At the moment, I'm taking the [{{ academy.name }}]({{ academy.url }}) at [{{ academy.issuer }}]({{ academy.url }}).
+
+{% include adem_role.liquid kind='bio' %}

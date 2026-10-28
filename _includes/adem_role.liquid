@@ -4,9 +4,9 @@
   {%- when 'period' -%}
     From {{ date_label }}
   {%- when 'bio' -%}
-    At {{ role.name }} from {{ date_label }}, working with {{ role.colleagues | linked_authors }}.
+    I work as a data scientist at {{ role.name }}, in the group of {{ role.colleagues | linked_authors }}.
   {%- when 'news' -%}
-    {{ role.position }} at {{ role.name }}, from {{ date_label }}, working with {{ role.colleagues | linked_authors }}.
+    I joined {{ role.name }} as a data scientist, in the group of {{ role.colleagues | linked_authors }}.
   {%- when 'colleagues' -%}
     Working with {{ role.colleagues | linked_authors }}.
 {%- endcase -%}
