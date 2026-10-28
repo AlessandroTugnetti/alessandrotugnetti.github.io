@@ -8,7 +8,7 @@ test("public research distinguishes published papers and both working papers", (
   const working = resume.publications.filter((p) => p.status === "Working paper");
   assert.equal(working.length, 2);
   const qfi = working.find((p) => p.url.includes("abstract_id=7582999"));
-  assert.equal(qfi.authors, "Saverio Cabra, Lorenzo Toscano and Alessandro Tugnetti");
+  assert.equal(qfi.authors, "Saverio Capra, Lorenzo Toscano and Alessandro Tugnetti");
   assert(working.some((p) => p.name === "The Out-of-Sample Predictability of Long-Run Economic Growth"));
   assert(!JSON.stringify(resume).includes("The Virtue of Complexity"));
 });
@@ -24,4 +24,13 @@ test("language levels omit the removed qualifier", () => {
   assert(!JSON.stringify(resume.languages).includes("self-assessed"));
   assert.equal(resume.languages.find((l) => l.language === "English").fluency, "C1/C2");
   assert.equal(resume.languages.find((l) => l.language === "Luxembourgish").fluency, "B1");
+});
+
+test("academy records the actual start and links to the programme", () => {
+  const academy = resume.certificates.find((c) => c.issuer === "WeSTEM+");
+  assert.equal(academy.url, "https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/");
+  assert(academy.summary.includes("27 October 2026"));
+  const news = readFileSync(new URL("../_data/home_news.yml", import.meta.url), "utf8");
+  assert(news.includes('date: "2026-10-27"'));
+  assert(!news.includes("completion expected"));
 });

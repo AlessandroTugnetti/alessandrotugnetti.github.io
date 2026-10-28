@@ -11,7 +11,7 @@ ninja.data = [{
     },
   },{id: "nav-research",
           title: "research",
-          description: "Published articles and working papers in empirical finance, economic forecasting and alumni career trajectories.",
+          description: "Published articles and working papers.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/research/";
@@ -22,6 +22,13 @@ ninja.data = [{
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
+          },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "Code and projects.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
           },
         },{id: "nav-cv",
           title: "cv",
