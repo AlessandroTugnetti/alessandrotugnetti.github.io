@@ -4,7 +4,7 @@
     "label": "Data Scientist · PhD in Finance",
     "email": "alessandro.tugnetti@live.it",
     "url": "https://alessandrotugnetti.github.io/",
-    "summary": "I am a data scientist based in Luxembourg with a research background in finance and economics. I work with complex data, statistical models and machine learning to investigate economic questions, evaluate forecasts and communicate results. I completed my PhD in Finance at the University of Luxembourg in April 2026.",
+    "summary": "I'm a data scientist with a PhD in Finance from the University of Luxembourg. My interests include machine learning and data science.",
     "location": {
       "city": "Luxembourg",
       "countryCode": "LU"
@@ -78,7 +78,7 @@
     },
     {
       "name": "QFI Alumni: Labour-Market Entry and Career Progression",
-      "authors": "Saverio Cabra, Lorenzo Toscano and Alessandro Tugnetti",
+      "authors": "Saverio Capra, Lorenzo Toscano and Alessandro Tugnetti",
       "publisher": "Working paper",
       "status": "Working paper",
       "period": "",
@@ -152,7 +152,7 @@
   ],
   "volunteer": [
     {
-      "organization": "QFI Alumni & Students Association",
+      "organization": "Quantitative Finance and Insurance (QFI) Alumni and Students Association",
       "position": "Co-founder and Vice President",
       "period": "October 2025 – Present",
       "summary": "Developed the career-support framework, including mentoring and alumni connections. Coordinate research on alumni sectors, roles, progression and geography, including compensation where available. Contribute to the association’s strategy and research agenda; planned outputs aim to guide students and inform programme development."
@@ -207,9 +207,9 @@
     {
       "name": "Applied Data & AI Academy",
       "issuer": "WeSTEM+",
-      "period": "October 2026 – April 2027 (expected)",
-      "summary": "In progress; started October 2026.",
-      "url": ""
+      "period": "27 October 2026 – April 2027 (expected)",
+      "summary": "In progress; started 27 October 2026.",
+      "url": "https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/"
     },
     {
       "name": "Computational Methods in Financial Mathematics",

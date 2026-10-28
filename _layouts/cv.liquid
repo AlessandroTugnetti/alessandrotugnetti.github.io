@@ -74,7 +74,13 @@ layout: default
                   {{- item.name -}}
                 {%- endif %}
               </h3>
-              <p class="cv-meta">{{ item.issuer }}</p>
+              <p class="cv-meta">
+                {% if item.url != '' -%}
+                  <a href="{{ item.url }}">{{ item.issuer }}</a>
+                {%- else -%}
+                  {{- item.issuer -}}
+                {%- endif %}
+              </p>
               {% if item.summary != '' %}
                 <p>{{ item.summary }}</p>
               {% endif %}

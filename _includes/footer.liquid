@@ -2,10 +2,9 @@
   <div class="container footer-grid">
     <div class="footer-identity">
       <a class="footer-wordmark" href="{{ '/' | relative_url }}">Alessandro Tugnetti</a>
-      <p>
-        Finance, machine learning<br>
-        and the dynamics of markets.
-      </p>
+      {% if page.permalink == '/' %}
+        <img class="footer-hornet" src="{{ '/assets/img/pixel-hornet.svg' | relative_url }}" width="64" height="48" alt="A small pixel hornet">
+      {% endif %}
       <p class="footer-copyright">
         © {{ site.time | date: '%Y' }}
         {{ site.first_name }}
@@ -29,8 +28,8 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      <span>Built with <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/alshedivat/al-folio">al-folio</a>.</span
-      ><span>Visual inspiration: <a href="https://physics-morris.github.io/">Morris Huang</a></span>
+      <span>Built with <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/alshedivat/al-folio">al-folio</a>.</span>
+      <span>Visual inspiration: <a href="https://physics-morris.github.io/">Morris Huang</a></span>
     </div>
   </div>
 </footer>

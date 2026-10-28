@@ -68,7 +68,9 @@ def generate(r):
         out += r'\sidebarlanguageentry{'+tex(e['language'])+'}{'+tex(level)+'}\n'
     course = next(e for e in r['certificates'] if e['issuer'] == 'WeSTEM+')
     out += r'\sidebarsection{Development}{\faBook}'+'\n'
-    out += r'\sidebareducationentry{'+tex(course['period'])+'}{'+tex(course['name'])+'}{WeSTEM+ | In progress}\n'
+    academy_url = 'https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/'
+    assert course['url'] == academy_url, 'Keep the approved academy URL in the public data'
+    out += r'\sidebareducationentry{'+tex(course['period'])+'}{'+r'\href{'+academy_url+'}{'+tex(course['name'])+'}}{'+r'\href{'+academy_url+'}{WeSTEM+} | In progress}\n'
     out += r'''\end{minipage}};
 \end{tikzpicture}}
 \begin{document}
@@ -118,13 +120,14 @@ def verify_pdf():
     assert any('profile' in t.lower() and x > 230 for t, x in positions), 'Missing right profile column'
     for forbidden in ['QFI', 'Labour-Market', 'self-assessed', '+352', 'Rue Richard', 'Referees']:
         assert re.sub(r'\s+', '', forbidden).lower() not in normalized, f'Unexpected public PDF content: {forbidden}'
-    for required in ['Alessandro', 'Tugnetti', '2026', '2027', 'C1/C2', 'B1', 'Selected Publications', 'WeSTEM']:
+    for required in ['Alessandro', 'Tugnetti', '2026', '2027', 'C1/C2', 'B1', 'Selected Publications', 'WeSTEM', '27 October 2026']:
         assert re.sub(r'\s+', '', required).lower() in normalized, f'Missing public PDF content: {required}'
     assert 'sidebarblue' in (SOURCE/'layout-overrides.tex').read_text()
     assert '\\makecvsidebar' in (SOURCE/'main.tex').read_text()
     # Public contact allowlist, including hyperlink annotations.
     uris = [str(a.get_object().get('/A', {}).get('/URI', '')) for a in page.get('/Annots', [])]
-    allowed = ['mailto:alessandro.tugnetti@live.it', 'https://www.linkedin.com/in/alessandrotugnetti/', 'https://github.com/AlessandroTugnetti', 'https://alessandrotugnetti.github.io/', 'https://onlinelibrary.wiley.com/']
+    allowed = ['mailto:alessandro.tugnetti@live.it', 'https://www.linkedin.com/in/alessandrotugnetti/', 'https://github.com/AlessandroTugnetti', 'https://alessandrotugnetti.github.io/', 'https://onlinelibrary.wiley.com/', 'https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/']
+    assert uris.count('https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/') == 2, 'Academy and issuer must link to the programme'
     assert all(any(u.startswith(prefix) for prefix in allowed) for u in uris if u), 'Unexpected PDF contact/link'
     return {'pages': 1, 'layout': 'editus-one-page-v1', 'columns': 2, 'selected_papers': 2}
 

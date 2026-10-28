@@ -27,4 +27,7 @@ latest_posts:
 
 {{ site.data.resume.basics.summary }}
 
-My research focuses on digital-asset markets and long-run economic growth. I combine econometric analysis and machine learning with careful data preparation and out-of-sample evaluation. Alongside research, I contribute to QFI alumni career research and community initiatives, and I am continuing my professional development through WeSTEM+’s Applied Data & AI Academy.
+I also serve as Vice President of the Quantitative Finance and Insurance (QFI) Alumni and Students Association.
+
+{% assign academy = site.data.resume.certificates | first %}
+At the moment, I'm taking the [{{ academy.name }}]({{ academy.url }}) at [{{ academy.issuer }}]({{ academy.url }}).

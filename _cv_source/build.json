@@ -1,9 +1,9 @@
 {
   "inputs": {
-    "assets/json/resume.json": "f8f204f0e1861758d8e655dde3534cebfd04cf879da402944b7a646a980d57eb",
-    "bin/build_public_cv.py": "166d5c32753843a7cc76229ebff8cde4d0323dc0f2e62a4d138c01831e88f5c6",
-    "_cv_source/selection.json": "2ea9404dab468314542b9086ba5fabf9ab0c40b70336a840e8119bf40d6180c7",
-    "_cv_source/main.tex": "81e2b05ccdfba557c375854448bca0cf19dbab8e8923ee59f1a276523d5b1466",
+    "assets/json/resume.json": "63778fe08808409d4141cb06245e70af0e3f77aa3c1937b97da03f042e8efb6f",
+    "bin/build_public_cv.py": "6ac2891ab0c8fd700c222865051c578feb68aee76857c2c30b5df6bc160a042b",
+    "_cv_source/selection.json": "b7aab765fe01f2900b1134bbc084840ba730ebe64f161b0c38f98324c09cc7c7",
+    "_cv_source/main.tex": "216de460e5e6193afdc0dd341f064df8ce40f9f3e50ea26bb288761e95642b15",
     "_cv_source/layout-overrides.tex": "2e2849a17533014be09856230fd9bbab084479f6e425e17bc8af7cd7c1be7762",
     "_cv_source/yaac-another-awesome-cv.cls": "c8ad262dae4d85b71d17c2c0c300cc32dea0ec828e75aea51c9ee708391ed0b3",
     "_cv_source/fonts/FontAwesome.ttf": "aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8",
@@ -20,7 +20,7 @@
     "_cv_source/fonts/SourceSansPro-Semibold.otf": "ee3ba5c88400b22b880d85202ce82143dc5e19861bf7880b7f4c32d4263e96d5",
     "_cv_source/fonts/SourceSansPro-SemiboldIt.otf": "82ed41eed0b18254c1bbcd7c4317abfbfa55ac056a5cf62004f561c0c44f735c"
   },
-  "pdf_sha256": "cfe1639aa3686a46a93038a1cc9564217c42bc8da664cdc0ade94e1c3f1ec9f5",
+  "pdf_sha256": "9d4cbf2490f3f46ddfbf385e09c41e4928a20d1cc693f11357188235a35dad2c",
   "qa": {
     "pages": 1,
     "layout": "editus-one-page-v1",

@@ -83,6 +83,37 @@ if len(re.findall(r'alt="\d+ Google Scholar citations \(checked \d{4}-\d{2}-\d{2
     errors.append("research/index.html: Scholar counts must include a verified check date")
 if "self-assessed" in visible_text(root / "cv/index.html"):
     errors.append("cv/index.html: removed language qualifier still present")
+# Academy mentions must remain linked wherever the name is visible.
+academy_url = "https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/"
+class AcademyLinks(HTMLParser):
+    def __init__(self, route):
+        super().__init__()
+        self.route = route
+        self.href = None
+    def handle_starttag(self, tag, attrs):
+        if tag == "a": self.href = dict(attrs).get("href")
+    def handle_endtag(self, tag):
+        if tag == "a": self.href = None
+    def handle_data(self, data):
+        if any(name in data for name in ("WeSTEM+", "Applied Data & AI Academy")) and self.href != academy_url:
+            errors.append(f"{self.route}: academy mention is not linked to the programme")
+for route in ("index.html", "cv/index.html"):
+    AcademyLinks(route).feed((root / route).read_text())
+if 'datetime="2026-10-27"' not in home or "completion expected" in home:
+    errors.append("index.html: academy News must record the actual 27 October start")
+if "Saverio Capra" not in visible_text(root / "research/index.html") or "Saverio Cabra" in visible_text(root / "research/index.html"):
+    errors.append("research/index.html: corrected QFI coauthor missing")
+for paper in resume["publications"]:
+    if paper["status"] == "Published article":
+        if f'href="{paper["url"]}"' not in research_source:
+            errors.append("research/index.html: missing published-paper title destination")
+if "from planning and teaching to assessment" not in visible_text(root / "teaching/index.html"):
+    errors.append("teaching/index.html: whole-course responsibility missing")
+projects_path = root / "projects/index.html"
+if not projects_path.is_file() or 'href="/projects/"' not in home:
+    errors.append("Projects page/navigation missing")
+if 'class="footer-hornet"' not in home or "Finance · Machine learning · Luxembourg" in visible_text(root / "index.html"):
+    errors.append("index.html: requested Home visual changes missing")
 for course in resume["teaching"]:
     if course["name"] not in visible_text(root / "teaching/index.html"):
         errors.append(f"teaching/index.html: missing course {course['name']}")

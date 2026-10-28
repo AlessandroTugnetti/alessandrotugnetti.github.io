@@ -854,3 +854,11 @@ select:focus-visible {
   white-space: normal;
   line-height: 1.5;
 }
+
+.footer-hornet {
+  display: block;
+  margin: 1rem 0;
+  image-rendering: pixelated;
+  transform: rotate(-14deg);
+  transform-origin: center;
+}
