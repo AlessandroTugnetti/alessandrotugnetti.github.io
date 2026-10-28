@@ -63,3 +63,8 @@
     - date: "2020-10"
       label: October
       text: "Joined the [SHARP Consulting career mentoring programme](https://sharp-website-27836f.webflow.io/)."
+- year: 2019
+  items:
+    - date: "2019-02"
+      label: February
+      text: "Completed Advanced Risk and Portfolio Management at [ARPM](https://www.arpm.co/)."

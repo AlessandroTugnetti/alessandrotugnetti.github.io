@@ -1,6 +1,6 @@
 {
   "inputs": {
-    "assets/json/resume.json": "0b80548b7e6d557b2132b43364bf2013a978afa1eb3dbf113b5014d4432c2e6a",
+    "assets/json/resume.json": "21285e022762216e2f0385e0b5fede054669c2a4fada92888bc80918a72a1250",
     "bin/build_public_cv.py": "6ac2891ab0c8fd700c222865051c578feb68aee76857c2c30b5df6bc160a042b",
     "_cv_source/selection.json": "b7aab765fe01f2900b1134bbc084840ba730ebe64f161b0c38f98324c09cc7c7",
     "_cv_source/main.tex": "216de460e5e6193afdc0dd341f064df8ce40f9f3e50ea26bb288761e95642b15",
