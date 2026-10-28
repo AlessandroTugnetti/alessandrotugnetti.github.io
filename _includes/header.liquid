@@ -50,6 +50,16 @@
           </li>
           <li class="nav-item">
             <a
+              class="nav-link {% if page.permalink == '/projects/' %}active{% endif %}"
+              href="{{ '/projects/' | relative_url }}"
+              {% if page.permalink == '/projects/' %}
+                aria-current="page"
+              {% endif %}
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
               class="nav-link {% if page.permalink == '/cv/' %}active{% endif %}"
               href="{{ '/cv/' | relative_url }}"
               {% if page.permalink == '/cv/' %}
