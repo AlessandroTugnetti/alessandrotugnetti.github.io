@@ -42,3 +42,33 @@ class GoogleScholarMetricsTest < Minitest::Test
   end
 
 end
+
+require_relative '../_plugins/author-links'
+
+class AuthorLinksTest < Minitest::Test
+  def render(names)
+    authors = JSON.parse(File.read(File.expand_path('../_data/authors.json', __dir__)))
+    site = Struct.new(:data).new({ 'authors' => authors })
+    Liquid::Template.parse('{{ names | linked_authors }}').render({ 'names' => names }, registers: { site: site })
+  end
+
+  def test_initials_and_accents_keep_display_and_use_the_same_identity
+    ['Roman Kräussl', 'Roman Kraussl'].each do |name|
+      assert_includes render(name), 'https://scholar.google.lu/citations?user=QqwtATAAAAAJ&amp;hl=fr'
+      assert_includes render(name), ">#{name}</a>"
+    end
+    assert_includes render('J. Pénasse'), '>J. Pénasse</a>'
+    assert_includes render('E. Nekrasova'), 'https://www.linkedin.com/in/elizaveta-nekrasova-phd-b0a320176/'
+  end
+
+  def test_author_order_and_unknown_author_are_preserved
+    output = render('Saverio Capra, Lorenzo Toscano and Alessandro Tugnetti')
+    assert_match %r{>Saverio Capra</a>, Lorenzo Toscano and <a href=}, output
+    assert_includes output, 'user=nD56QvQAAAAJ'
+    refute_match %r{<a[^>]*>Lorenzo Toscano</a>}, output
+  end
+
+  def test_unrecognized_names_are_escaped_not_injected
+    assert_equal '&lt;img src=x onerror=alert(1)&gt;', render('<img src=x onerror=alert(1)>')
+  end
+end
