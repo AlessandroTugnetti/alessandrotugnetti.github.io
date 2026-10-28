@@ -34,3 +34,18 @@ test("academy records the actual start and links to the programme", () => {
   assert(news.includes('date: "2026-10-27"'));
   assert(!news.includes("completion expected"));
 });
+
+test("ADEM is dated accurately in web-only experience with both colleague links", () => {
+  assert.equal(resume.work.length, 4, "frozen PDF selection remains unchanged");
+  const role = resume.web_work[0];
+  assert.equal(role.name, "ADEM");
+  assert.equal(role.position, "Data Scientist");
+  assert.equal(role.startDate, "2026-11-02");
+  assert.equal(role.colleagues, "Gabriele Marconi and François-Xavier Borsi");
+  const authors = JSON.parse(readFileSync(new URL("../_data/authors.json", import.meta.url)));
+  for (const [name, url] of [
+    ["Gabriele Marconi", "https://scholar.google.com/citations?user=Ae2SSogAAAAJ&hl=it"],
+    ["François-Xavier Borsi", "https://www.linkedin.com/in/dr-fran%C3%A7ois-xavier-borsi-07564455/"],
+  ])
+    assert.equal(authors.find((a) => a.aliases.includes(name)).url, url);
+});
