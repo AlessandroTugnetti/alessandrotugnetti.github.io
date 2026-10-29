@@ -50,6 +50,8 @@ def visible_text(path):
 
 resume = json.loads((root / "assets/json/resume.json").read_text())
 home = (root / "index.html").read_text()
+if '/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e' in home:
+    errors.append('index.html: CSS cache key hashes an empty source directory')
 for route in ("index.html", "cv/index.html", "research/index.html", "teaching/index.html"):
     text = visible_text(root / route)
     if re.search(r"PhD candidate|Ph\.D\. Student|Currently a doctoral researcher", text, re.I):
