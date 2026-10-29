@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build/check the one-page public CV using the approved JobApplication layout.
+"""Verify the approved public PDF, or build the legacy locally generated CV.
 
-The web CV is complete. This PDF deliberately selects experience, education,
-training, skills and two published papers, excluding QFI and other working papers.
+An imported JobApplication PDF is pinned by hash and is never regenerated from
+the complete website resume. Its editable sources remain in JobApplication.
 """
 import argparse
 import hashlib
@@ -132,12 +132,47 @@ def verify_pdf():
     return {'pages': 1, 'layout': 'editus-one-page-v1', 'columns': 2, 'selected_papers': 2}
 
 
+def verify_imported_pdf(path):
+    from pypdf import PdfReader
+    reader = PdfReader(path)
+    assert len(reader.pages) == 1, 'Approved public CV must be exactly one page'
+    page = reader.pages[0]
+    assert abs(float(page.mediabox.width) - 595.28) < 1 and abs(float(page.mediabox.height) - 841.89) < 1, 'Approved CV must be A4'
+    text = re.sub(r'\s+', '', page.extract_text()).lower()
+    for label in ('Alessandro', 'Tugnetti', 'Education', 'Profile', 'Professional Experience', 'Research and Publications', 'Certificates'):
+        assert re.sub(r'\s+', '', label).lower() in text, f'Missing approved English CV section: {label}'
+    return {'pages': 1, 'format': 'A4', 'language': 'en', 'layout': 'editus-one-page-v1'}
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--check', action='store_true')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--check', action='store_true')
+    modes.add_argument('--import-pdf', type=Path, help='Publish an already reviewed JobApplication PDF without altering its bytes')
     args = parser.parse_args()
-    generated = generate(json.loads(DATA.read_text()))
     manifest = SOURCE/'build.json'
+    if args.import_pdf:
+        source = args.import_pdf.resolve()
+        qa = verify_imported_pdf(source)
+        source_hash = digest(source)
+        PDF.write_bytes(source.read_bytes())
+        manifest.write_text(json.dumps({
+            'mode': 'imported-jobapplication',
+            'source': str(source.relative_to(ROOT.parent)),
+            'pdf_sha256': source_hash,
+            'qa': qa,
+        }, indent=2) + '\n')
+        assert digest(PDF) == source_hash, 'Imported PDF bytes changed'
+        print('Published the reviewed English JobApplication PDF byte for byte.')
+        return
+    if manifest.exists():
+        state = json.loads(manifest.read_text())
+        if state.get('mode') == 'imported-jobapplication':
+            assert digest(PDF) == state['pdf_sha256'], 'Public PDF differs from the approved JobApplication export'
+            assert verify_imported_pdf(PDF) == state['qa'], 'Imported CV properties changed'
+            print('Approved English JobApplication CV: one A4 page; PDF matches its pinned export. Edit and export in JobApplication to update it.')
+            return
+    generated = generate(json.loads(DATA.read_text()))
     if args.check:
         assert (SOURCE/'main.tex').read_text() == generated, 'Short CV source is stale; run python3 bin/build_public_cv.py'
         state = json.loads(manifest.read_text())

@@ -9,12 +9,6 @@ layout: default
         ><i class="fa-solid fa-file-pdf" aria-hidden="true"></i
       ></a>
     </h1>
-    <p><a class="btn btn-sm z-depth-0" href="{{ '/assets/pdf/Tugnetti_CV.pdf' | relative_url }}">Download public CV (PDF)</a></p>
-    <p>
-      {{ site.data.resume.basics.name }} · {{ site.data.resume.basics.location.city }} ·
-      <a href="mailto:{{ site.data.resume.basics.email }}">{{ site.data.resume.basics.email }}</a>
-    </p>
-    <p>{{ site.data.resume.basics.summary }}</p>
   </header>
   <article>
     <div class="cv">
@@ -22,13 +16,13 @@ layout: default
         <h2 class="card-title font-weight-medium" id="cv-experience">Experience</h2>
         {% assign displayed_work = site.data.resume.web_work | concat: site.data.resume.work %}
         {% for item in displayed_work %}
-          <div class="cv-entry row">
-            <div class="col-md-2 text-center date-column">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase">
-                {%- if item.startDate %}{% include adem_role.liquid kind='period' %}{% else %}{{ item.period }}{% endif -%}
+          <div class="cv-entry">
+            <div class="date-column">
+              <span class="badge font-weight-bold danger-color-dark">
+                {%- if item.startDate %}{{ item.startDate | date: '%b %Y' }}{% else %}{{ item.period }}{% endif -%}
               </span>
             </div>
-            <div class="col-md-10">
+            <div class="cv-description">
               <h3>{{ item.position }}</h3>
               <p class="cv-meta">{{ item.name }}</p>
               {% if item.startDate %}
@@ -43,11 +37,11 @@ layout: default
       <section class="card mt-3 p-3" aria-labelledby="cv-education">
         <h2 class="card-title font-weight-medium" id="cv-education">Education</h2>
         {% for item in site.data.resume.education %}
-          <div class="cv-entry row">
-            <div class="col-md-2 text-center date-column">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+          <div class="cv-entry">
+            <div class="date-column">
+              <span class="badge font-weight-bold danger-color-dark">{{ item.period }}</span>
             </div>
-            <div class="col-md-10">
+            <div class="cv-description">
               <h3>
                 {% if item.url -%}
                   <a href="{{ item.url }}">{{ item.studyType }}</a>
@@ -71,21 +65,21 @@ layout: default
       </section>
       <section class="card mt-3 p-3" aria-labelledby="cv-research">
         <h2 class="card-title font-weight-medium" id="cv-research">Research</h2>
-        {% include public_research.liquid %}
+        {% include public_research.liquid cv=true %}
       </section>
       <section class="card mt-3 p-3" aria-labelledby="cv-teaching">
         <h2 class="card-title font-weight-medium" id="cv-teaching">Teaching</h2>
         <p>University of Luxembourg. Four curricular courses, plus the Python Camp.</p>
-        {% include public_teaching.liquid %}
+        {% include public_teaching.liquid cv=true %}
       </section>
       <section class="card mt-3 p-3" aria-labelledby="cv-training">
         <h2 class="card-title font-weight-medium" id="cv-training">Training &amp; Certifications</h2>
         {% for item in site.data.resume.certificates %}
-          <div class="cv-entry row">
-            <div class="col-md-2 text-center date-column">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+          <div class="cv-entry">
+            <div class="date-column">
+              <span class="badge font-weight-bold danger-color-dark">{{ item.period }}</span>
             </div>
-            <div class="col-md-10">
+            <div class="cv-description">
               <h3>
                 {% if item.url != '' -%}
                   <a href="{{ item.url }}">{{ item.name }}</a>
@@ -110,11 +104,11 @@ layout: default
       <section class="card mt-3 p-3" aria-labelledby="cv-awards">
         <h2 class="card-title font-weight-medium" id="cv-awards">Honors, Recognition &amp; Programs</h2>
         {% for item in site.data.resume.awards %}
-          <div class="cv-entry row">
-            <div class="col-md-2 text-center date-column">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+          <div class="cv-entry">
+            <div class="date-column">
+              <span class="badge font-weight-bold danger-color-dark">{{ item.period }}</span>
             </div>
-            <div class="col-md-10">
+            <div class="cv-description">
               <h3>
                 {% if item.url -%}
                   <a href="{{ item.url }}">{{ item.title }}</a>
@@ -137,11 +131,11 @@ layout: default
       <section class="card mt-3 p-3" aria-labelledby="cv-volunteer">
         <h2 class="card-title font-weight-medium" id="cv-volunteer">Leadership &amp; Volunteering</h2>
         {% for item in site.data.resume.volunteer %}
-          <div class="cv-entry row">
-            <div class="col-md-2 text-center date-column">
-              <span class="badge font-weight-bold danger-color-dark text-uppercase">{{ item.period }}</span>
+          <div class="cv-entry">
+            <div class="date-column">
+              <span class="badge font-weight-bold danger-color-dark">{{ item.period }}</span>
             </div>
-            <div class="col-md-10">
+            <div class="cv-description">
               <h3>{{ item.position }}</h3>
               <p class="cv-meta">
                 {% if item.url -%}

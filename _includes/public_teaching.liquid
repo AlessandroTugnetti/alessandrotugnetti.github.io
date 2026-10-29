@@ -1,13 +1,25 @@
-<div class="publications-container">
+<div class="{% if include.cv %}cv-teaching{% else %}publications-container{% endif %}">
   {% assign periods = site.data.resume.teaching | map: 'period' | uniq %}
   {% for period in periods %}
-    <h2 class="year">{{ period }}</h2>
-    <div class="publications">
+    {% unless include.cv %}
+      <h2 class="year">{{ period }}</h2>
+    {% endunless %}
+    <div
+      {% unless include.cv %}
+        class="publications"
+      {% endunless %}
+    >
       {% for course in site.data.resume.teaching %}
         {% if course.period == period %}
-          <div class="row teaching-course">
-            <div class="col-sm-3 abbr">University of Luxembourg</div>
-            <div class="col-sm-8">
+          <div class="{% if include.cv %}cv-entry{% else %}row teaching-course{% endif %}">
+            {% if include.cv %}
+              <div class="date-column">
+                <span class="badge font-weight-bold danger-color-dark">{{ course.period }}</span>
+              </div>
+            {% else %}
+              <div class="col-sm-3 abbr">University of Luxembourg</div>
+            {% endif %}
+            <div class="{% if include.cv %}cv-description{% else %}col-sm-8{% endif %}">
               <div class="title">
                 <b>
                   {%- if course.code != '' %}({{ course.code }}) {% endif -%}

@@ -1,24 +1,24 @@
-<div class="publications">
+<div class="{% if include.cv %}cv-research{% else %}publications{% endif %}">
   {% if include.bibliography %}
     {% bibliography %}
   {% endif %}
   {% assign statuses = 'Published article|Working paper' | split: '|' %}
   {% for status in statuses %}
     {% if include.bibliography and status == 'Published article' %}{% continue %}{% endif %}
-    <h2 class="bibliography">
+    <h2 class="{% if include.cv %}cv-research-group{% else %}bibliography{% endif %}">
       {% if status == 'Published article' %}Published articles{% else %}Working papers{% endif %}
     </h2>
-    <ol class="bibliography">
+    <ol class="{% if include.cv %}cv-research-list{% else %}bibliography{% endif %}">
       {% for paper in site.data.resume.publications %}
         {% if paper.status == status %}
           <li>
-            <div class="row">
-              <div class="col-sm-2 abbr">
-                <span class="badge">
+            <div class="{% if include.cv %}cv-entry{% else %}row{% endif %}">
+              <div class="{% if include.cv %}date-column{% else %}col-sm-2 abbr{% endif %}">
+                <span class="badge{% if include.cv %} font-weight-bold danger-color-dark{% endif %}">
                   {%- if paper.period != '' %}{{ paper.period }}{% else %}Working paper{% endif -%}
                 </span>
               </div>
-              <div class="col-sm-10">
+              <div class="{% if include.cv %}cv-description{% else %}col-sm-10{% endif %}">
                 <div class="title">
                   {% if paper.url != '' -%}
                     <a href="{{ paper.url }}">{{ paper.name }}</a>

@@ -24,27 +24,27 @@
     {
       "institution": "University of Luxembourg",
       "studyType": "PhD in Finance",
-      "period": "2022–2026",
+      "period": "2022 · 2026",
       "summary": "Essays in Empirical Finance. Defended on 27 April 2026."
     },
     {
       "institution": "University of Turin",
       "studyType": "MSc in Quantitative Finance and Insurance",
-      "period": "2018–2020",
+      "period": "2018 · 2020",
       "summary": "",
       "url": "https://www.finance-insurance.unito.it/do/home.pl"
     },
     {
       "institution": "Collegio Carlo Alberto",
       "studyType": "Master of Research in Economics",
-      "period": "Awarded 2020",
+      "period": "2015 · 2020",
       "summary": "Completed through the Allievi Honours Program.",
       "url": "https://www.carloalberto.org/education/allievi-honors-program/"
     },
     {
       "institution": "University of Turin",
       "studyType": "Bachelor in Economics",
-      "period": "Awarded 2018",
+      "period": "2015 · 2018",
       "summary": ""
     }
   ],
@@ -74,7 +74,7 @@
       "authors": "E. Nekrasova, J. Pénasse and Alessandro Tugnetti",
       "publisher": "Working paper",
       "status": "Working paper",
-      "period": "",
+      "period": "2023 · Present",
       "url": "",
       "summary": "Evaluates long-run GDP forecasting with historical country panels and out-of-sample model comparisons."
     },
@@ -92,25 +92,25 @@
     {
       "name": "University of Luxembourg",
       "position": "Doctoral Researcher in Finance",
-      "period": "February 2022 – April 2026",
+      "period": "Feb 2022 · Apr 2026",
       "summary": "Research in empirical finance, digital assets and long-run economic forecasting. Developed a Kalman-filter-based approach to reconstruct missing GDP observations and evaluated forecasting models out of sample. Co-authored two journal articles and contributed to university teaching."
     },
     {
       "name": "DWS Investments S.A.",
       "position": "Liquidity Stress Testing Analyst",
-      "period": "February – December 2021",
+      "period": "Feb 2021 · Dec 2021",
       "summary": "Contributed to quantitative liquidity-stress-testing frameworks for money market funds and collaborated with IT to translate analytical models into production use."
     },
     {
       "name": "Accenture",
       "position": "Quantitative Finance and Compliance Specialist",
-      "period": "July – October 2019",
+      "period": "Jul 2019 · Oct 2019",
       "summary": "Analysed bank-account models for an Intesa Sanpaolo project concerning the Payment Accounts Directive. Built an integrated analytical dataset and communicated statistical results to management."
     },
     {
       "name": "London Mutual Credit Union",
       "position": "Data Analyst Intern",
-      "period": "May – September 2017",
+      "period": "May 2017 · Sep 2017",
       "summary": "Processed loan-application documents using OCR and developed credit-scorecard analysis, principally in MATLAB."
     }
   ],
@@ -156,20 +156,20 @@
     {
       "organization": "Quantitative Finance and Insurance (QFI) Alumni and Students Association",
       "position": "Co-founder and Vice President",
-      "period": "October 2025 – Present",
+      "period": "Oct 2025 · Present",
       "summary": "Developed the career-support framework, including mentoring and alumni connections. Coordinate research on alumni sectors, roles, progression and geography, including compensation where available. Contribute to the association’s strategy and research agenda; planned outputs aim to guide students and inform programme development."
     },
     {
       "organization": "Serve the City Luxembourg",
       "position": "Community Volunteer",
-      "period": "September 2021 – Present",
+      "period": "Sep 2021 · Present",
       "summary": "Contribute to local community initiatives organised by Serve the City Luxembourg.",
       "url": "https://servethecity.lu/"
     },
     {
       "organization": "Cultural Association “Amici del Cammello”",
       "position": "President",
-      "period": "June 2012 – Present",
+      "period": "Jun 2012 · Present",
       "summary": "Lead a volunteer-run cultural association promoting reading, education and community participation through its bookshop and cultural activities."
     }
   ],
@@ -178,19 +178,19 @@
       "name": "Empirical Finance",
       "code": "WEALMG2-1",
       "program": "Master in Wealth Management",
-      "period": "2022–2025"
+      "period": "2022 · 2025"
     },
     {
       "name": "Bloomberg",
       "code": "MScFE-52 / 2.O1",
       "program": "MSc in Finance and Economics",
-      "period": "2022–2025"
+      "period": "2022 · 2025"
     },
     {
       "name": "Industrial Economics",
       "code": "BASE-45",
       "program": "BSc in Economics",
-      "period": "2022–2025",
+      "period": "2022 · 2025",
       "role": "Teaching Assistant"
     },
     {
@@ -203,56 +203,56 @@
       "name": "Python Camp",
       "code": "",
       "program": "MSc in Finance and Economics",
-      "period": "2022–2024"
+      "period": "2022 · 2024"
     }
   ],
   "certificates": [
     {
       "name": "Applied Data & AI Academy",
       "issuer": "WeSTEM+",
-      "period": "27 October 2026 – April 2027 (expected)",
-      "summary": "In progress; started 27 October 2026.",
+      "period": "Oct 2026 · Apr 2027",
+      "summary": "In progress; started 27 October 2026. Completion expected April 2027.",
       "url": "https://we-stem.org/prorgams-2026-applied-data-ai-fintech-academy/"
     },
     {
       "name": "Computational Methods in Financial Mathematics",
       "issuer": "London School of Economics and Political Science",
-      "period": "August 2023",
+      "period": "Aug 2023",
       "summary": "",
       "url": "https://www.lse.ac.uk/study-at-lse/summer-schools/summer-school/courses/research-methods/me200"
     },
     {
       "name": "Ideation Camp, 10th Edition",
       "issuer": "University of Luxembourg",
-      "period": "November 2022",
+      "period": "Nov 2022",
       "summary": "",
       "url": "https://www.uni.lu/en/news/ideation-camp-10-an-unforgettable-experience/"
     },
     {
       "name": "Deep Dive into Blockchain: Linking Economics, Technology and Law",
       "issuer": "University of Zurich",
-      "period": "July 2022",
+      "period": "Jul 2022",
       "summary": "",
       "url": "https://www.uzh.ch/en/researchinnovation/priorities/competence/BCC.html"
     },
     {
       "name": "MasterZ Blockchain & Digital Assets",
       "issuer": "MasterZ",
-      "period": "July 2022",
+      "period": "Jul 2022",
       "summary": "",
       "url": "https://www.masterzblockchain.com/en/"
     },
     {
       "name": "IBM Data Science Specialization",
       "issuer": "Coursera",
-      "period": "November 2021",
+      "period": "Nov 2021",
       "summary": "",
       "url": "https://www.coursera.org/account/accomplishments/specialization/certificate/S9YF74JTDWBU"
     },
     {
       "name": "Advanced Risk and Portfolio Management",
       "issuer": "ARPM",
-      "period": "February 2019",
+      "period": "Feb 2019",
       "summary": "",
       "url": "https://www.arpm.co/"
     }
@@ -261,14 +261,14 @@
     {
       "title": "IAS Young Academics",
       "awarder": "IAS, University of Luxembourg",
-      "period": "December 2021",
+      "period": "Dec 2021",
       "summary": "Research-support initiative for interdisciplinary doctoral research.",
       "url": "https://yia.uni.lu/institute-for-advanced-studies/"
     },
     {
       "title": "Mentoring Program SHARP Consulting",
       "awarder": "SHARP Consulting Group",
-      "period": "October 2020",
+      "period": "Oct 2020",
       "summary": "Career mentoring programme supporting the transition from university to employment.",
       "url": "https://sharp-website-27836f.webflow.io/"
     },
@@ -276,14 +276,14 @@
       "title": "Scholarship “Franco Cellino”",
       "url": "https://www.to.camcom.it/borse-di-studio-Franco-Cellino-Giulio-Diale",
       "awarder": "Turin Chamber of Commerce",
-      "period": "January 2018",
+      "period": "Jan 2018",
       "summary": "Scholarship supporting studies in Quantitative Finance and Insurance at the University of Turin."
     },
     {
       "title": "Scholarship “Diplomati eccellenti tecnici e professionali”",
       "url": "https://www.to.camcom.it/diplomati-eccellenti-tecnici-e-professionali",
       "awarder": "Turin Chamber of Commerce",
-      "period": "September 2015",
+      "period": "Sep 2015",
       "summary": "Recognition for outstanding achievement in technical and vocational secondary education."
     }
   ],

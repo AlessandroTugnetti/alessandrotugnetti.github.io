@@ -136,6 +136,16 @@ for course in resume["teaching"]:
         errors.append(f"teaching/index.html: missing course {course['name']}")
 # Check the role and both colleague links separately in each requested location.
 cv_source = (root / "cv/index.html").read_text()
+# The CV has one icon download and a consistent date-first grid in every dated section.
+header = re.search(r'<header class="post-header">(.*?)</header>', cv_source, re.S)
+if not header or re.search(r'<p(?:\s|>)', header.group(1)):
+    errors.append('cv/index.html: duplicate download/contact/summary text remains below the heading')
+expected_entries = sum(len(resume[key]) for key in ('web_work', 'work', 'education', 'publications', 'teaching', 'certificates', 'awards', 'volunteer'))
+if cv_source.count('class="date-column"') != expected_entries or cv_source.count('class="cv-description"') != expected_entries:
+    errors.append('cv/index.html: dated entries must all use the shared date-first layout')
+for expected in ('2015 · 2020', '2015 · 2018', 'Feb 2021 · Dec 2021', '2023 · Present'):
+    if expected not in visible_text(root / 'cv/index.html'):
+        errors.append(f'cv/index.html: missing approved date range {expected}')
 role_regions = {
     "Home biography": re.search(r'class="intro-biography">(.*?)</div>', home, re.S),
     "Home News": re.search(r'<section class="terminal-news"(.*?)</section>', home, re.S),
@@ -149,7 +159,7 @@ for region, match in role_regions.items():
     text = " ".join(unescape(re.sub(r"<[^>]+>", " ", source)).split())
     links = LinkedText()
     links.feed(source)
-    if "ADEM" not in text or (region == "CV experience" and "2 November 2026" not in text):
+    if "ADEM" not in text or (region == "CV experience" and "Nov 2026" not in text):
         errors.append(f"{region}: missing dated ADEM role")
     for name in ("Gabriele Marconi", "François-Xavier Borsi"):
         url = next(a["url"] for a in identities if name in a["aliases"])
