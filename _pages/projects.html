@@ -6,100 +6,64 @@ description: Code and projects.
 nav: true
 nav_order: 4
 _styles: >
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
-    gap: 1rem;
-  }
-
-  .project-tile {
-    position: relative;
+  .project-tile .project-tile-body {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    aspect-ratio: 1;
-    gap: 0.75rem;
-    padding: 1.25rem;
-    border: 1px solid var(--global-divider-color);
-    background: var(--global-card-bg-color);
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.75rem;
   }
 
-  .project-tile h2 {
-    font-size: 1.35rem;
-    margin: 0;
+  .project-tile .card-title {
+    font-size: 1rem;
   }
 
-  .project-tile p {
-    margin: 0;
-  }
-
-  .project-tile--cover {
-    isolation: isolate;
-    justify-content: flex-end;
-    color: white;
-  }
-
-  .project-tile--cover::before {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.82) 72%, #000);
-    content: "";
-  }
-
-  .project-tile--cover a {
-    color: inherit;
-  }
-
-  .project-tile--cover .project-tile-meta {
-    margin-top: 0;
-  }
-
-  .project-tile-cover {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .project-tile-meta {
+    display: flex;
+    flex: none;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
 
   .project-tile-meta a {
     position: relative;
     z-index: 2;
-  }
-
-  .project-tile-meta {
-    margin-top: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 0.85rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 ---
 
-<div class="project-grid">
+<div class="row">
   {% for repo in site.data.repositories.github_repos %} {% assign project = site.data.repositories.project_details[repo] %} {% assign repo_url = repo
   | prepend: 'https://github.com/' %} {% assign project_url = repo_url %} {% if project.url %} {% assign project_url = project.url | relative_url %}
   {% endif %}
-  <section class="project-tile{% if project.cover %} project-tile--cover{% endif %}" data-github-repository="{{ repo | escape }}">
-    <h2><a class="stretched-link" href="{{ project_url }}">{{ project.title | default: repo | escape }}</a></h2>
-    {% if project.description %}
-    <p>{{ project.description | escape }}</p>
-    {% endif %} {% if project.cover %}
-    <img class="project-tile-cover" src="{{ project.cover | relative_url }}" alt="{{ project.cover_alt | default: '' | escape }}" loading="lazy" />
-    {% endif %}
-    <div class="project-tile-meta">
-      <a href="{{ repo_url }}">GitHub</a>
-      <span data-github-stat="stargazers_count"
-        >{% if project.stars %}{{ project.stars }}{% else %}—{% endif %} star{% unless project.stars == 1 %}s{% endunless %}</span
-      >
-      <span data-github-stat="forks_count"
-        >{% if project.forks %}{{ project.forks }}{% else %}—{% endif %} fork{% unless project.forks == 1 %}s{% endunless %}</span
-      >
-    </div>
-  </section>
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
+    <section class="project-tile card h-100 hoverable position-relative" data-github-repository="{{ repo | escape }}">
+      {% if project.cover %}
+      <img
+        class="card-img-top project-tile-cover"
+        src="{{ project.cover | relative_url }}"
+        alt="{{ project.cover_alt | default: '' | escape }}"
+        loading="lazy"
+      />
+      {% endif %}
+      <div class="card-body project-tile-body">
+        <h2 class="card-title h5 mb-0">
+          <a class="stretched-link text-decoration-none text-reset" href="{{ project_url }}">{{ project.title | default: repo | escape }}</a>
+        </h2>
+        <div class="project-tile-meta">
+          <a href="{{ repo_url }}" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+          <span data-github-stat="stargazers_count"
+            >{% if project.stars %}{{ project.stars }}{% else %}—{% endif %} star{% unless project.stars == 1 %}s{% endunless %}</span
+          >
+          <span data-github-stat="forks_count"
+            >{% if project.forks %}{{ project.forks }}{% else %}—{% endif %} fork{% unless project.forks == 1 %}s{% endunless %}</span
+          >
+        </div>
+      </div>
+    </section>
+  </div>
   {% endfor %}
 </div>
 

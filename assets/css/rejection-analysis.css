@@ -1077,13 +1077,6 @@
   padding-inline: 0;
 }
 
-.rejection-article .project-cover {
-  display: block;
-  width: min(100%, 440px);
-  height: auto;
-  margin: 26px auto 0;
-}
-
 .rejection-article .chapter h2[id] {
   scroll-margin-top: 100px;
 }

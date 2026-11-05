@@ -4,10 +4,8 @@ title: After I Click Apply
 description: What a folder of rejection emails tells me about applying for jobs.
 permalink: /projects/rejection-email-analysis/
 rejection_article: true
-repository: AlessandroTugnetti/Rejection-Analysis
 ---
 
-{% assign project = site.data.repositories.project_details[page.repository] %}
 <article class="rejection-article" aria-labelledby="rejection-title">
   <header class="masthead">
     <a class="project-back" href="{{ '/projects/' | relative_url }}">← Projects</a>
@@ -21,9 +19,6 @@ repository: AlessandroTugnetti/Rejection-Analysis
       <a href="#months">The timeline</a><a href="#stages">The replies</a><a href="#wait">The wait</a><a href="#silence">The silence</a
       ><a href="#arrival">The timestamp</a><a href="#wording">The wording</a><a href="#roles">The jobs</a>
     </nav>
-    {% if project.cover %}
-    <img class="project-cover" src="{{ project.cover | relative_url }}" alt="{{ project.cover_alt | default: '' | escape }}" decoding="async" />
-    {% endif %}
   </header>
   <section class="chapter">
     <header class="chapter-head">
