@@ -1,0 +1,21 @@
+---
+layout: page
+title: Recipes
+permalink: /misc/recipes/
+---
+
+<p><a href="{{ '/misc/' | relative_url }}">Misc</a> / Recipes</p>
+
+<div class="row">
+  {% assign recipes = site.recipes | sort: 'title' %} {% for recipe in recipes %}
+  <div class="col-12 col-sm-6 col-lg-4 mb-4">
+    <a class="recipe-card card h-100 hoverable text-decoration-none" href="{{ recipe.url | relative_url }}">
+      {% include figure.liquid path=recipe.image alt="" class="card-img-top recipe-card-image" sizes="(min-width: 992px) 340px, (min-width: 576px)
+      50vw, 100vw" %}
+      <div class="card-body">
+        <h2 class="card-title h5 mb-0">{{ recipe.title }}</h2>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>

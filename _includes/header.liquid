@@ -68,6 +68,19 @@
               >CV</a
             >
           </li>
+          {% assign section = page.url | split: '/' | slice: 1 | first %}
+          <li class="nav-item">
+            <a
+              class="nav-link {% if section == 'misc' %}active{% endif %}"
+              href="{{ '/misc/' | relative_url }}"
+              {% if page.url == '/misc/' %}
+                aria-current="page"
+              {% elsif section == 'misc' %}
+                aria-current="location"
+              {% endif %}
+              >Misc</a
+            >
+          </li>
           <li class="nav-item theme-control">
             <button id="light-toggle" title="Change color theme" aria-label="Change color theme">
               <i class="ti ti-sun-moon" id="light-toggle-system"></i><i class="ti ti-moon-filled" id="light-toggle-dark"></i

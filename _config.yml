@@ -150,6 +150,9 @@ collections:
     output: true
   projects:
     output: true
+  recipes:
+    output: true
+    permalink: /misc/recipes/:name/
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
