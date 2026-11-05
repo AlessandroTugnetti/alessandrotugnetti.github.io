@@ -14,7 +14,10 @@ rejection_article: true
       I used to read a rejection email and save it in a folder. After enough of those emails I started to wonder what I missed by reading them only
       once. Do they come in waves? And how often does one tell me why I get a no?
     </p>
-    <button class="results-button" type="button" popovertarget="rejection-results">What I found</button>
+    <div class="results-actions">
+      <button class="results-button" type="button" popovertarget="rejection-results">What I found</button>
+      <button class="results-button" type="button" popovertarget="rejection-scope">Scope and method</button>
+    </div>
     <div class="results-popover" id="rejection-results" popover role="dialog" aria-labelledby="rejection-results-title">
       <h2 id="rejection-results-title">What I found</h2>
       <p>
@@ -24,11 +27,15 @@ rejection_article: true
       </p>
       <button class="results-button" type="button" popovertarget="rejection-results" popovertargetaction="hide" autofocus>Close</button>
     </div>
-    <p class="snapshot">
-      I started looking for work in November 2025, and my search is still focused entirely on Luxembourg. I apply through company careers pages
-      whenever I can. I use LinkedIn for roles that are only listed there. I update this analysis as the search continues, and the numbers here are
-      current as of November 5, 2026.
-    </p>
+    <div class="results-popover" id="rejection-scope" popover role="dialog" aria-labelledby="rejection-scope-title">
+      <h2 id="rejection-scope-title">Scope and method</h2>
+      <p>
+        I started looking for work in November 2025, and I’m still looking exclusively in Luxembourg. I apply through company careers pages whenever I
+        can and use LinkedIn for roles that are only listed there. I try to apply as soon as I spot a role, usually within a week of it going live. I
+        update this analysis as I go. The figures here are current as of November 5, 2026.
+      </p>
+      <button class="results-button" type="button" popovertarget="rejection-scope" popovertargetaction="hide" autofocus>Close</button>
+    </div>
     <nav class="story-nav" aria-label="Article sections">
       <a href="#months">The timeline</a><a href="#stages">The replies</a><a href="#wait">The wait</a><a href="#silence">The silence</a
       ><a href="#arrival">The timestamp</a><a href="#wording">The wording</a><a href="#roles">The jobs</a>
@@ -57,8 +64,7 @@ rejection_article: true
           <h3>Applications sent and rejections recorded, by month</h3>
           <div id="chart-timeline" class="plot" role="img" aria-label="Applications sent and rejections recorded, by month"></div>
           <figcaption>
-            I count applications in their send month and rejections in their recorded rejection month. I leave missing or estimated dates off the
-            lines.
+            I count each application in the month I send it and each rejection in the month it comes in. I leave out missing or estimated dates.
           </figcaption>
         </figure>
       </div>
@@ -89,8 +95,8 @@ rejection_article: true
           <h3>From first reply to interview</h3>
           <div id="chart-stage" class="plot" role="img" aria-label="From first reply to interview"></div>
           <figcaption>
-            Each bar counts applications out of 317. The groups overlap. Replies include recruiter questions and decisions. Automatic confirmations
-            are left out.
+            Each bar counts applications out of 317, using my full application record. The groups overlap. I count recruiter questions and decisions
+            as replies and leave out automatic confirmations. If an interview is rescheduled or I get a reminder, I still count it once.
           </figcaption>
         </figure>
       </div>
@@ -120,8 +126,8 @@ rejection_article: true
           <h3>How long I wait between steps</h3>
           <div id="chart-timing" class="plot" role="img" aria-label="How long I wait between steps"></div>
           <figcaption>
-            Each dot is one application with two documented dates. I measure calendar days. A step can be a request or a scheduled appointment. A box
-            shows the middle half of the waits where I have at least five cases.
+            Each dot is one application with two documented dates. I measure waits in calendar days and leave out estimated rejection dates. A step
+            can be a request or a scheduled appointment. A box shows the middle half of the waits where I have at least five cases.
           </figcaption>
         </figure>
       </div>
@@ -195,7 +201,10 @@ rejection_article: true
         <h2 id="arrival">When the rejections <em>land</em></h2>
       </div>
     </header>
-    <p>When a rejection does land, I can see when it reaches me. I have 79 rejection emails from August to early November.</p>
+    <p>
+      I have 79 rejection emails from August to early November. I use those emails here and in the wording section. For application outcomes I draw on
+      my full search record, which goes back to November 2025.
+    </p>
     <div class="arrival-grid">
       <figure class="chart-block">
         <h3>Month of the Year</h3>
@@ -251,7 +260,8 @@ rejection_article: true
           <figcaption>
             I strip greetings, signatures, footers and quoted threads. I standardize case and mask recognized names, employers, roles and numeric
             references. I compare sets of consecutive three-word sequences within each language. The share of distinct sequences in either email that
-            appear in both is the Jaccard score. I keep one highest score per email (78 emails have a peer). The dashed line marks 0.75.
+            appear in both is the Jaccard score. I keep one highest score per email (78 emails have a peer). The dashed line marks 0.75, the cutoff I
+            choose for calling two emails a close match.
           </figcaption>
         </figure>
       </div>
@@ -347,19 +357,6 @@ rejection_article: true
       Hang in there.
     </p>
   </section>
-  <details class="methodology">
-    <summary>Scope and method</summary>
-    <p>The monthly chart counts applications and rejections in the months they occur.</p>
-    <p>
-      The emails used for text and arrival patterns are a subset of the correspondence. Application outcomes come from a broader record. The timing
-      calculations use calendar dates and omit estimated rejection dates. Interview rescheduling and reminders are counted once for the same
-      appointment.
-    </p>
-    <p>
-      The closest-match score is the size of the intersection of two sets of distinct three-word sequences divided by the size of their union. The
-      0.75 threshold is a descriptive choice. Messages are matched within language, with identifying text masked where the analysis can recognize it.
-    </p>
-  </details>
   <footer>
     <div class="footer-links"><a href="https://github.com/AlessandroTugnetti/Rejection-Analysis">Analysis code on GitHub</a></div>
   </footer>
