@@ -181,6 +181,7 @@ let setEchartsTheme = (theme) => {
 
 let setPlotlyTheme = (theme) => {
   document.querySelectorAll(".js-plotly-plot").forEach((elem) => {
+    if (elem.closest(".rejection-article")) return;
     // Get the code block content from previous element, since it is the plotly code itself as defined in Markdown, but it is hidden
     let jsonData = JSON.parse(elem.previousSibling.childNodes[0].innerHTML);
 

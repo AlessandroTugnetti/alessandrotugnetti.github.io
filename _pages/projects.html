@@ -33,6 +33,38 @@ _styles: >
     margin: 0;
   }
 
+  .project-tile--cover {
+    isolation: isolate;
+    justify-content: flex-end;
+    color: white;
+  }
+
+  .project-tile--cover::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.82) 72%, #000);
+    content: "";
+  }
+
+  .project-tile--cover a {
+    color: inherit;
+  }
+
+  .project-tile--cover .project-tile-meta {
+    margin-top: 0;
+  }
+
+  .project-tile-cover {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .project-tile-meta a {
     position: relative;
     z-index: 2;
@@ -51,10 +83,12 @@ _styles: >
   {% for repo in site.data.repositories.github_repos %} {% assign project = site.data.repositories.project_details[repo] %} {% assign repo_url = repo
   | prepend: 'https://github.com/' %} {% assign project_url = repo_url %} {% if project.url %} {% assign project_url = project.url | relative_url %}
   {% endif %}
-  <section class="project-tile" data-github-repository="{{ repo | escape }}">
+  <section class="project-tile{% if project.cover %} project-tile--cover{% endif %}" data-github-repository="{{ repo | escape }}">
     <h2><a class="stretched-link" href="{{ project_url }}">{{ project.title | default: repo | escape }}</a></h2>
     {% if project.description %}
     <p>{{ project.description | escape }}</p>
+    {% endif %} {% if project.cover %}
+    <img class="project-tile-cover" src="{{ project.cover | relative_url }}" alt="{{ project.cover_alt | default: '' | escape }}" loading="lazy" />
     {% endif %}
     <div class="project-tile-meta">
       <a href="{{ repo_url }}">GitHub</a>

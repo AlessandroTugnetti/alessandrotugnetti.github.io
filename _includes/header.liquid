@@ -18,6 +18,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
+          {% assign section = page.url | split: '/' | slice: 1 | first %}
           <li class="nav-item">
             <a
               class="nav-link {% if page.permalink == '/' %}active{% endif %}"
@@ -50,10 +51,12 @@
           </li>
           <li class="nav-item">
             <a
-              class="nav-link {% if page.permalink == '/projects/' %}active{% endif %}"
+              class="nav-link {% if section == 'projects' %}active{% endif %}"
               href="{{ '/projects/' | relative_url }}"
               {% if page.permalink == '/projects/' %}
                 aria-current="page"
+              {% elsif section == 'projects' %}
+                aria-current="location"
               {% endif %}
               >Projects</a
             >
@@ -68,7 +71,6 @@
               >CV</a
             >
           </li>
-          {% assign section = page.url | split: '/' | slice: 1 | first %}
           <li class="nav-item">
             <a
               class="nav-link {% if section == 'misc' %}active{% endif %}"

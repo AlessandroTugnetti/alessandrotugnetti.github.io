@@ -13,6 +13,9 @@
       <meta http-equiv="refresh" content="3; url={{ redirect }}">
     {% endif %}
     {% include head.liquid %}
+    {% if page.rejection_article %}
+      <link rel="stylesheet" href="{{ '/assets/css/rejection-analysis.css' | relative_url | bust_file_cache }}">
+    {% endif %}
   </head>
 
   <!-- Body -->
@@ -26,7 +29,7 @@
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="container mt-5" role="main">
+    <div class="container mt-5{% if page.rejection_article %} rejection-article-shell{% endif %}" role="main">
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
           <div class="row">

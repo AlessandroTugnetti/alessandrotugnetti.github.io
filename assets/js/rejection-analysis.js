@@ -1,0 +1,361 @@
+(() => {
+  const figures = {
+    timeline: [
+      [
+        {
+          type: "scatter",
+          mode: "lines",
+          line: { color: "#00369f", width: 5 },
+          name: "applications sent",
+          x: [
+            "2025-11",
+            "2025-12",
+            "2026-01",
+            "2026-02",
+            "2026-03",
+            "2026-04",
+            "2026-05",
+            "2026-06",
+            "2026-07",
+            "2026-08",
+            "2026-09",
+            "2026-10",
+            "2026-11",
+          ],
+          y: [4, 0, 16, 2, 5, 14, 6, 42, 81, 15, 77, 34, 21],
+          marker: { color: "#00369f" },
+          hovertemplate: "%{x}<br>%{y} applications sent<extra></extra>",
+        },
+        {
+          type: "scatter",
+          mode: "lines",
+          line: { color: "#303030", width: 5 },
+          name: "rejections",
+          x: [
+            "2025-11",
+            "2025-12",
+            "2026-01",
+            "2026-02",
+            "2026-03",
+            "2026-04",
+            "2026-05",
+            "2026-06",
+            "2026-07",
+            "2026-08",
+            "2026-09",
+            "2026-10",
+            "2026-11",
+          ],
+          y: [0, 0, 0, 0, 1, 0, 0, 1, 2, 10, 23, 42, 5],
+          marker: { color: "#303030" },
+          hovertemplate: "%{x}<br>%{y} rejections<extra></extra>",
+        },
+      ],
+      { showlegend: true },
+    ],
+    stage: [
+      [
+        {
+          type: "bar",
+          orientation: "h",
+          x: [94, 16, 9, 4],
+          y: ["Dated reply", "Next step", "Interview attended", "Interview and rejection"],
+          marker: { color: ["#303030", "#00369f", "#00369f", "#00369f"] },
+          text: [94, 16, 9, 4],
+          textposition: "outside",
+          cliponaxis: false,
+          customdata: [29.652996845425868, 5.047318611987381, 2.8391167192429023, 1.2618296529968454],
+          hovertemplate: "%{y}<br>%{x} of 317 (%{customdata:.1f}%)<extra></extra>",
+        },
+      ],
+      { xaxis: { range: [0, 110] }, yaxis: { autorange: "reversed" } },
+    ],
+    timing: [
+      [
+        {
+          type: "box",
+          name: "Send → reply",
+          x: [
+            0, 136, 63, 132, 95, 84, 49, 51, 114, 52, 122, 106, 114, 49, 97, 103, 112, 21, 99, 56, 25, 11, 27, 10, 79, 71, 25, 15, 71, 90, 12, 84, 9,
+            0, 66, 37, 18, 46, 45, 21, 0, 6, 1, 1, 57, 57, 60, 56, 42, 49, 1, 1, 7, 37, 2, 3, 42, 3, 1, 8, 1, 4, 7, 4, 4, 5, 4, 6, 41, 0, 4, 31, 1,
+            36, 22, 30, 1, 8, 2, 5, 6, 0, 9, 7, 6, 2, 6, 2, 0, 2, 2, 1, 21, 39,
+          ],
+          orientation: "h",
+          boxpoints: "all",
+          jitter: 0.3,
+          pointpos: 0,
+          marker: { color: "#00369f", size: 5, opacity: 0.65 },
+          line: { color: "#00369f", width: 1 },
+          hovertemplate: "%{x} days<extra></extra>",
+        },
+        {
+          type: "box",
+          name: "Send → step 1",
+          x: [0, 85, 16, 40, 11, 11, 25, 1, 4],
+          orientation: "h",
+          boxpoints: "all",
+          jitter: 0.3,
+          pointpos: 0,
+          marker: { color: "#00369f", size: 5, opacity: 0.65 },
+          line: { color: "#00369f", width: 1 },
+          hovertemplate: "%{x} days<extra></extra>",
+        },
+        {
+          type: "scatter",
+          mode: "markers",
+          name: "Send → step 2",
+          x: [80, 26, 10],
+          y: ["Send → step 2", "Send → step 2", "Send → step 2"],
+          marker: { color: "#00369f", size: 5, opacity: 0.65 },
+          hovertemplate: "%{x} days<extra></extra>",
+        },
+        {
+          type: "box",
+          name: "Send → rejection",
+          x: [
+            114, 136, 132, 13, 95, 84, 49, 51, 114, 52, 122, 106, 114, 16, 49, 97, 3, 103, 112, 79, 99, 56, 25, 27, 24, 79, 71, 90, 77, 84, 9, 68, 66,
+            37, 46, 45, 0, 6, 1, 57, 57, 60, 56, 42, 49, 1, 14, 7, 37, 2, 3, 42, 3, 1, 4, 7, 4, 4, 5, 4, 41, 41, 4, 4, 31, 1, 22, 30, 1, 8, 2, 5, 6,
+            9, 7, 6, 2, 6, 2, 0, 2, 2, 1, 39,
+          ],
+          orientation: "h",
+          boxpoints: "all",
+          jitter: 0.3,
+          pointpos: 0,
+          marker: { color: "#00369f", size: 5, opacity: 0.65 },
+          line: { color: "#00369f", width: 1 },
+          hovertemplate: "%{x} days<extra></extra>",
+        },
+        {
+          type: "scatter",
+          mode: "markers",
+          name: "Step 1 → rejection",
+          x: [39, 13, 10],
+          y: ["Step 1 → rejection", "Step 1 → rejection", "Step 1 → rejection"],
+          marker: { color: "#00369f", size: 5, opacity: 0.65 },
+          hovertemplate: "%{x} days<extra></extra>",
+        },
+        {
+          type: "scatter",
+          mode: "markers",
+          name: "Step 2 → rejection",
+          x: [34, 4],
+          y: ["Step 2 → rejection", "Step 2 → rejection"],
+          marker: { color: "#00369f", size: 5, opacity: 0.65 },
+          hovertemplate: "%{x} days<extra></extra>",
+        },
+      ],
+      {
+        xaxis: { title: { text: "Calendar days" } },
+        yaxis: {
+          autorange: "reversed",
+          categoryorder: "array",
+          categoryarray: ["Send → reply", "Send → step 1", "Send → step 2", "Send → rejection", "Step 1 → rejection", "Step 2 → rejection"],
+        },
+      },
+    ],
+    silence: [
+      [
+        {
+          type: "bar",
+          x: ["30+ days", "60+ days", "90+ days", "180+ days"],
+          y: [41.35338345864662, 40.298507462686565, 40.0, 27.906976744186046],
+          marker: { color: ["#7797ce", "#7797ce", "#00369f", "#7797ce"] },
+          text: ["41.4%", "40.3%", "40.0%", "27.9%"],
+          textposition: "outside",
+          cliponaxis: false,
+          customdata: [
+            [110, 266],
+            [81, 201],
+            [70, 175],
+            [12, 43],
+          ],
+          hovertemplate: "%{x}<br>%{customdata[0]} of %{customdata[1]} (%{y:.1f}%)<extra></extra>",
+        },
+      ],
+      { yaxis: { ticksuffix: "%", range: [0, 52] } },
+    ],
+    "arrival-month": [
+      [
+        {
+          type: "bar",
+          name: "emails",
+          x: ["Aug", "Sep", "Oct", "Nov"],
+          y: [10, 23, 42, 4],
+          marker: { color: "#00369f" },
+          hovertemplate: "%{x}<br>%{y} emails<extra></extra>",
+        },
+      ],
+      {},
+    ],
+    weekday: [
+      [
+        {
+          type: "bar",
+          name: "emails",
+          x: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          y: [13, 17, 11, 20, 12, 2, 4],
+          marker: { color: "#00369f" },
+          hovertemplate: "%{x}<br>%{y} emails<extra></extra>",
+        },
+      ],
+      {},
+    ],
+    hour: [
+      [
+        {
+          type: "bar",
+          name: "emails",
+          x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+          y: [0, 0, 0, 0, 0, 0, 0, 0, 2, 9, 18, 11, 6, 5, 6, 5, 6, 3, 5, 1, 0, 1, 0, 1],
+          marker: { color: "#00369f" },
+          hovertemplate: "%{x:02d}:00<br>%{y} emails<extra></extra>",
+          width: 0.8,
+        },
+      ],
+      {
+        xaxis: {
+          type: "linear",
+          range: [-1.8, 24.8],
+          tickmode: "array",
+          tickvals: [0, 6, 12, 18, 23],
+          ticktext: ["00:00", "06:00", "12:00", "18:00", "23:00"],
+        },
+      },
+    ],
+    similarity: [
+      [
+        {
+          type: "histogram",
+          x: [
+            1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.96875, 0.9454545454545454,
+            0.9454545454545454, 0.9368421052631579, 0.9368421052631579, 0.9345794392523364, 0.9345794392523364, 0.8888888888888888,
+            0.8888888888888888, 0.8849557522123894, 0.8849557522123894, 0.8247422680412371, 0.8245614035087719, 0.8245614035087719,
+            0.8181818181818182, 0.7671232876712328, 0.7671232876712328, 0.7191011235955056, 0.7191011235955056, 0.3125, 0.2073170731707317,
+            0.2073170731707317, 0.2, 0.2, 0.17757009345794392, 0.17757009345794392, 0.15151515151515152, 0.15151515151515152, 0.14093959731543623,
+            0.12727272727272726, 0.12716763005780346, 0.12213740458015267, 0.11818181818181818, 0.11818181818181818, 0.1171875, 0.1171875,
+            0.10084033613445378, 0.09316770186335403, 0.09210526315789473, 0.0891089108910891, 0.08843537414965986, 0.08823529411764706,
+            0.08812260536398467, 0.08695652173913043, 0.08547008547008547, 0.08280254777070063, 0.07920792079207921, 0.0718954248366013,
+            0.06951871657754011, 0.06428571428571428, 0.058394160583941604, 0.057692307692307696, 0.05434782608695652, 0.050761421319796954, 0.046875,
+            0.039301310043668124, 0.030456852791878174, 0.01875, 0.006666666666666667,
+          ],
+          xbins: { start: 0, end: 1.01, size: 0.05 },
+          marker: { color: "#00369f", line: { color: "white", width: 1 } },
+          hovertemplate: "Similarity %{x}<br>%{y} emails<extra></extra>",
+        },
+      ],
+      {
+        xaxis: { title: "Closest match score", range: [0, 1.05] },
+        shapes: [{ type: "line", x0: 0.75, x1: 0.75, y0: 0, y1: 1, yref: "paper", line: { color: "#303030", dash: "dot" } }],
+      },
+    ],
+    roles: [
+      [
+        {
+          type: "bar",
+          orientation: "h",
+          x: [117, 79, 6],
+          y: ["Data /<br>technical", "Finance /<br>investment", "Compliance /<br>financial crime"],
+          name: "applications",
+          marker: { color: "#777" },
+          hovertemplate: "%{y}<br>%{x} applications<extra></extra>",
+        },
+        {
+          type: "bar",
+          orientation: "h",
+          x: [58, 41, 3],
+          y: ["Data /<br>technical", "Finance /<br>investment", "Compliance /<br>financial crime"],
+          name: "rejections",
+          marker: { color: "#00369f" },
+          hovertemplate: "%{y}<br>%{x} rejections<extra></extra>",
+        },
+      ],
+      { showlegend: true, barmode: "group", yaxis: { autorange: "reversed" } },
+    ],
+  };
+  const article = document.querySelector(".rejection-article");
+  const root = document.documentElement;
+  const mobile = window.matchMedia("(max-width: 720px)");
+
+  function renderCharts() {
+    const dark = root.dataset.theme === "dark";
+    const isMobile = mobile.matches;
+    const style = getComputedStyle(article);
+    const themeColor = (name) => style.getPropertyValue(name).trim();
+    const ink = themeColor("--ink");
+    const paper = themeColor("--global-bg-color");
+    const colors = {
+      "#00369f": themeColor("--accent"),
+      "#303030": dark ? "#d0d7de" : "#303030",
+      "#7797ce": dark ? "#8baee6" : "#7797ce",
+      "#777": dark ? "#a7b1bd" : "#777",
+      white: paper,
+    };
+    const baseAxis = { automargin: true, zeroline: false, fixedrange: true, gridcolor: themeColor("--rule") };
+    return Promise.all(
+      Object.entries(figures).map(([id, definition]) => {
+        const [data, extra] = JSON.parse(JSON.stringify(definition), (key, value) =>
+          typeof value === "string" && Object.hasOwn(colors, value) ? colors[value] : value
+        );
+        const layout = {
+          paper_bgcolor: "rgba(0,0,0,0)",
+          plot_bgcolor: "rgba(0,0,0,0)",
+          height: isMobile ? 300 : 355,
+          margin: { l: 40, r: 15, t: 20, b: 48 },
+          font: { family: "Consolas, Liberation Mono, monospace", size: isMobile ? 10 : 12, color: ink },
+          xaxis: { ...baseAxis, showgrid: false, ...extra.xaxis },
+          yaxis: { ...baseAxis, showgrid: true, rangemode: "tozero", ...extra.yaxis },
+          showlegend: !!extra.showlegend,
+          legend: { orientation: "h", x: 0, y: 1.15 },
+          shapes: extra.shapes || [],
+          barmode: extra.barmode || "relative",
+          hoverlabel: { bgcolor: ink, font: { color: paper } },
+        };
+        if (extra.showlegend) layout.margin.t = 44;
+        if (id === "stage") {
+          data.forEach((t) => {
+            t.y = t.y.map((y) =>
+              isMobile
+                ? y
+                    .replace("substantive reply", "substantive<br>reply")
+                    .replace(" + rejection", "<br>+ rejection")
+                    .replace(" / financial", " /<br>financial")
+                : y
+            );
+          });
+        }
+        if (["weekday", "hour", "arrival-month"].includes(id)) {
+          layout.height = 235;
+          layout.margin = { l: 32, r: 8, t: 12, b: 32 };
+        }
+        if (["stage", "timing", "roles"].includes(id)) {
+          layout.yaxis.ticklabelstandoff = 14;
+          layout.margin.l = isMobile ? 124 : 155;
+        }
+        if (id === "roles") {
+          layout.height = isMobile ? 360 : 410;
+          layout.margin.l = isMobile ? 118 : 145;
+          layout.bargap = 0.46;
+          layout.bargroupgap = 0.17;
+        }
+        if (id === "timeline") {
+          layout.xaxis.nticks = isMobile ? 6 : 9;
+          layout.xaxis.tickformat = "%b %y";
+          layout.xaxis.type = "date";
+        }
+        return Plotly.react("chart-" + id, data, layout, { responsive: true, displayModeBar: false });
+      })
+    );
+  }
+
+  if (window.Plotly) {
+    let updates = Promise.resolve();
+    function queueRender() {
+      updates = updates.then(renderCharts).then(() => {
+        root.dataset.charts = "ready";
+      });
+    }
+    new MutationObserver(queueRender).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+    mobile.addEventListener("change", queueRender);
+    queueRender();
+  }
+})();
