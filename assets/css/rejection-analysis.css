@@ -1007,6 +1007,42 @@
   line-height: 1.37;
   margin: 26px 0;
 }
+.rejection-article .results-button {
+  display: none;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+.rejection-article .results-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+@supports selector(:popover-open) {
+  .rejection-article .results-button {
+    display: inline-block;
+  }
+}
+.rejection-article .masthead > .results-button {
+  margin-bottom: 20px;
+}
+.rejection-article .results-popover {
+  width: min(34rem, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  padding: clamp(18px, 4vw, 32px);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--global-card-bg-color);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 24%);
+  color: var(--ink);
+  font: 18px/1.55 var(--serif);
+}
+.rejection-article .results-popover h2 {
+  margin: 0 0 12px;
+  font: 700 24px/1.2 var(--serif);
+}
 .rejection-article .masthead .snapshot {
   font:
     12px/1.6 Consolas,

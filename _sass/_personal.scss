@@ -240,6 +240,11 @@ body.sticky-bottom-footer > .academic-footer {
 .terminal-news-body li p {
   display: inline;
 }
+// Preserve the link accent on the italicized publication name.
+a[href^="https://www.virgule.lu/"] > em
+{
+  color: inherit;
+}
 .section-heading {
   display: flex;
   align-items: baseline;

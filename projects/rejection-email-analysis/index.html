@@ -11,14 +11,19 @@ rejection_article: true
     <a class="project-back" href="{{ '/projects/' | relative_url }}">← Projects</a>
     <h1 id="rejection-title">After I Click Apply</h1>
     <p class="standfirst">
-      When I get a rejection, the median wait is about four weeks. At 90 days, two in five older applications still have no reply. Even when I do hear
-      back, most emails either give no reason or say the employer is moving ahead with other candidates. That is what I miss when I read each email
-      only once. I can see how long the search stays open and how rarely a rejection tells me what to try next.
-    </p>
-    <p class="standfirst">
       I used to read a rejection email and save it in a folder. After enough of those emails I started to wonder what I missed by reading them only
       once. Do they come in waves? And how often does one tell me why I get a no?
     </p>
+    <button class="results-button" type="button" popovertarget="rejection-results">What I found</button>
+    <div class="results-popover" id="rejection-results" popover role="dialog" aria-labelledby="rejection-results-title">
+      <h2 id="rejection-results-title">What I found</h2>
+      <p>
+        When I get a rejection, the median wait is about four weeks. At 90 days, two in five older applications still have no reply. Even when I do
+        hear back, most emails either give no reason or say the employer is moving ahead with other candidates. That is what I miss when I read each
+        email only once. I can see how long the search stays open and how rarely a rejection tells me what to try next.
+      </p>
+      <button class="results-button" type="button" popovertarget="rejection-results" popovertargetaction="hide" autofocus>Close</button>
+    </div>
     <p class="snapshot">
       I started looking for work in November 2025, and my search is still focused entirely on Luxembourg. I apply through company careers pages
       whenever I can. I use LinkedIn for roles that are only listed there. I update this analysis as the search continues, and the numbers here are
