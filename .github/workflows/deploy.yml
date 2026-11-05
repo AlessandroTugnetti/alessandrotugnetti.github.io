@@ -55,30 +55,26 @@ jobs:
         run: npm run cv:check
       - name: Check generated site
         run: npm run site:check
-      - name: Prepare static Pages output
-        run: touch _site/.nojekyll
-      - uses: actions/upload-artifact@v4
+      - name: Upload GitHub Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
         with:
-          name: website
-          path: _site/
-          include-hidden-files: true
-          retention-days: 7
+          path: _site
 
   deploy:
     if: github.event_name != 'pull_request'
     needs: build
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
     permissions:
-      contents: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
         with:
-          name: website
-          path: _site
-      - name: Publish to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: _site
+          timeout: 1200000
