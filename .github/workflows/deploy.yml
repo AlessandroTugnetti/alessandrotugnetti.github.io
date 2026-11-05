@@ -34,7 +34,7 @@ jobs:
         run: npm test
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.5"
+          ruby-version: "3.3"
           bundler-cache: true
       - name: Test Scholar metric parsing and fallback
         run: bundle exec ruby tests/google_scholar_test.rb
