@@ -1,0 +1,15 @@
+---
+layout: page
+title: Interview
+permalink: /misc/interview/
+---
+
+<p><a href="{{ '/misc/' | relative_url }}">Misc</a> / Interview</p>
+
+{% for year in site.data.home_news %} {% for item in year.items %} {% if item.interview_title %}
+<section class="mb-4">
+  <h2>{{ item.interview_title }}</h2>
+  <p><time datetime="{{ item.date }}">{{ item.label }} {{ year.year }}</time></p>
+  {{ item.text | markdownify }}
+</section>
+{% endif %} {% endfor %} {% endfor %}
