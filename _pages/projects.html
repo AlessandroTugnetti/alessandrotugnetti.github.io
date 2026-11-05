@@ -32,13 +32,24 @@ _styles: >
     z-index: 2;
     font-size: 1rem;
   }
+
+  @media (max-width: 359px) {
+    .project-tile .project-tile-body {
+      gap: 0.375rem;
+      padding-inline: 0.5rem;
+    }
+
+    .project-tile .card-title {
+      font-size: 0.9rem;
+    }
+  }
 ---
 
 <div class="row">
   {% for repo in site.data.repositories.github_repos %} {% assign project = site.data.repositories.project_details[repo] %} {% assign repo_url = repo
   | prepend: 'https://github.com/' %} {% assign project_url = repo_url %} {% if project.url %} {% assign project_url = project.url | relative_url %}
   {% endif %}
-  <div class="col-12 col-sm-6 col-lg-4 mb-4">
+  <div class="col-12 col-md-6 col-xl-4 mb-4">
     <section class="project-tile card h-100 hoverable position-relative" data-github-repository="{{ repo | escape }}">
       {% if project.cover %}
       <img
