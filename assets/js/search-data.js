@@ -400,7 +400,12 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "recipes-lingue-di-pizza",
+          title: 'Lingue di pizza',
+          description: "",
+          section: "Recipes",handler: () => {
+              window.location.href = "/misc/recipes/lingue-di-pizza/";
+            },},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
