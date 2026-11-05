@@ -990,49 +990,31 @@
   line-height: 1.37;
   margin: 26px 0;
 }
-.rejection-article .results-button {
-  display: none;
-  padding: 5px 0;
-  border: 0;
-  background: transparent;
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
+.rejection-article .masthead-disclosure {
+  border-top: 1px solid var(--ink);
+  padding: 22px 0;
 }
-.rejection-article .results-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
+.rejection-article .masthead-disclosure summary {
+  font-size: 12px;
 }
-@supports selector(:popover-open) {
-  .rejection-article .results-button {
-    display: inline-block;
+.rejection-article .masthead-disclosure p {
+  max-width: 930px;
+  margin: 0;
+  font: 15px/1.75 var(--serif);
+}
+@media (max-width: 630px) {
+  .rejection-article .masthead-disclosure {
+    padding: 20px 0;
   }
-}
-.rejection-article .results-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 20px;
-}
-.rejection-article .results-popover {
-  width: min(34rem, calc(100% - 32px));
-  max-height: calc(100% - 32px);
-  padding: clamp(18px, 4vw, 32px);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  background: var(--global-card-bg-color);
-  box-shadow: 0 12px 36px rgb(0 0 0 / 24%);
-  color: var(--ink);
-  font: 18px/1.55 var(--serif);
-}
-.rejection-article .results-popover h2 {
-  margin: 0 0 12px;
-  font: 700 24px/1.2 var(--serif);
+  .rejection-article .masthead-disclosure p {
+    font-size: 14px;
+  }
 }
 .rejection-article .story-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
-  margin: 24px 0 12px;
+  margin: 0 0 12px;
   padding: 14px 0;
   border-top: 1px solid var(--rule);
 }
