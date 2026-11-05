@@ -6,7 +6,7 @@ image: assets/img/recipes/lingue-di-pizza.png
 
 [Misc]({{ '/misc/' | relative_url }}) / [Recipes]({{ '/misc/recipes/' | relative_url }})
 
-I start with [Fulvio Marino’s reel](https://www.instagram.com/reels/DdoAxHdgMdd/) and make my batch without yeast. I roll the dough into long, skinny pizzette. What I’m after is that bite right at the edge where the tomato meets the crunch.
+I start with [Fulvio Marino’s reel](https://www.instagram.com/reels/DdoAxHdgMdd/) and make my batch without yeast.
 
 <div class="col-12 col-sm-8 col-md-6 mx-auto my-4">
   {% include figure.liquid path=page.image alt="Three long tomato pizzette overlap on a blue-rimmed plate against a red tablecloth." class="img-fluid rounded" width="1086" height="1448" sizes="(min-width: 768px) 530px, (min-width: 576px) 66vw, 100vw" %}

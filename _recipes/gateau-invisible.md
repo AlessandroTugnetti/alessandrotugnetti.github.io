@@ -6,7 +6,7 @@ image: assets/img/recipes/gateau-invisible.jpg
 
 [Misc]({{ '/misc/' | relative_url }}) / [Recipes]({{ '/misc/recipes/' | relative_url }})
 
-I follow [Eryn Folle Cuisine’s original recipe](https://erynfollecuisine.canalblog.com/archives/2008/02/06/7847617.html) for this apple and pear cake. Once I coat the fruit, I can barely see the batter. It does just enough to hold the layers together when I cut a slice.
+I follow [Eryn Folle Cuisine’s original recipe](https://erynfollecuisine.canalblog.com/archives/2008/02/06/7847617.html) for this apple and pear cake.
 
 <div class="col-12 col-sm-8 col-md-6 mx-auto my-4">
   {% include figure.liquid path=page.image alt="A golden apple and pear cake in a parchment-lined springform tin, with sunlight across the top." class="img-fluid rounded" width="1152" height="2048" sizes="(min-width: 768px) 530px, (min-width: 576px) 66vw, 100vw" %}
