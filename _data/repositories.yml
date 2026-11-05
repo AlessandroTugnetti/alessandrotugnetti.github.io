@@ -3,4 +3,12 @@
 github_users:
   - AlessandroTugnetti
 repo_description_lines_max: 3
-github_repos: []
+github_repos:
+  - AlessandroTugnetti/Rejection-Analysis
+project_details:
+  AlessandroTugnetti/Rejection-Analysis:
+    title: Rejection Email Analysis
+    url: /projects/rejection-email-analysis/
+    description: What a folder of rejection emails tells me about applying for jobs.
+    stars: 0
+    forks: 0
