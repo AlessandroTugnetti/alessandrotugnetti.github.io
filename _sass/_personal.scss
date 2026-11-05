@@ -18,8 +18,15 @@ body.fixed-top-nav {
   padding-top: 105px;
 }
 body.sticky-bottom-footer {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0;
   padding-bottom: 0;
+}
+body.sticky-bottom-footer > .academic-footer {
+  margin-top: auto;
 }
 #navbar {
   background: var(--personal-navy);
