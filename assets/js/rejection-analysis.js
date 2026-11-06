@@ -22,7 +22,7 @@
             "2026-10",
             "2026-11",
           ],
-          y: [4, 0, 16, 2, 5, 14, 6, 42, 81, 15, 77, 34, 21],
+          y: [4, 0, 16, 2, 5, 14, 6, 42, 81, 15, 77, 35, 21],
           marker: { color: "#00369f" },
           hovertemplate: "%{x}<br>%{y} applications sent<extra></extra>",
         },
@@ -46,7 +46,7 @@
             "2026-10",
             "2026-11",
           ],
-          y: [0, 0, 0, 0, 1, 0, 0, 1, 2, 10, 23, 42, 5],
+          y: [0, 0, 0, 1, 1, 1, 1, 5, 9, 11, 24, 42, 7],
           marker: { color: "#303030" },
           hovertemplate: "%{x}<br>%{y} rejections<extra></extra>",
         },
@@ -58,14 +58,14 @@
         {
           type: "bar",
           orientation: "h",
-          x: [94, 16, 9, 4],
-          y: ["Dated reply", "Next step", "Interview attended", "Interview and rejection"],
+          x: [95, 17, 9, 4],
+          y: ["First reply with a date", "Next step", "Interview attended", "Interview and rejection"],
           marker: { color: ["#303030", "#00369f", "#00369f", "#00369f"] },
-          text: [94, 16, 9, 4],
+          text: [95, 17, 9, 4],
           textposition: "outside",
           cliponaxis: false,
-          customdata: [29.652996845425868, 5.047318611987381, 2.8391167192429023, 1.2618296529968454],
-          hovertemplate: "%{y}<br>%{x} of 317 (%{customdata:.1f}%)<extra></extra>",
+          customdata: [29.874213836477985, 5.345911949685535, 2.8301886792452833, 1.257861635220126],
+          hovertemplate: "%{y}<br>%{x} of 318 (%{customdata:.1f}%)<extra></extra>",
         },
       ],
       { xaxis: { range: [0, 110] }, yaxis: { autorange: "reversed" } },
@@ -76,9 +76,9 @@
           type: "box",
           name: "Send → reply",
           x: [
-            0, 136, 63, 132, 95, 84, 49, 51, 114, 52, 122, 106, 114, 49, 97, 103, 112, 21, 99, 56, 25, 11, 27, 10, 79, 71, 25, 15, 71, 90, 12, 84, 9,
-            0, 66, 37, 18, 46, 45, 21, 0, 6, 1, 1, 57, 57, 60, 56, 42, 49, 1, 1, 7, 37, 2, 3, 42, 3, 1, 8, 1, 4, 7, 4, 4, 5, 4, 6, 41, 0, 4, 31, 1,
-            36, 22, 30, 1, 8, 2, 5, 6, 0, 9, 7, 6, 2, 6, 2, 0, 2, 2, 1, 21, 39,
+            0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 8, 8, 9, 9, 10, 11,
+            12, 15, 18, 21, 21, 21, 22, 25, 25, 27, 30, 31, 36, 37, 37, 39, 41, 42, 42, 45, 46, 49, 49, 49, 51, 52, 56, 56, 57, 57, 60, 63, 66, 71,
+            71, 79, 84, 84, 90, 95, 97, 99, 103, 106, 112, 114, 114, 122, 132, 136,
           ],
           orientation: "h",
           boxpoints: "all",
@@ -91,7 +91,7 @@
         {
           type: "box",
           name: "Send → step 1",
-          x: [0, 85, 16, 40, 11, 11, 25, 1, 4],
+          x: [0, 1, 4, 11, 11, 13, 16, 25, 40, 71, 85],
           orientation: "h",
           boxpoints: "all",
           jitter: 0.3,
@@ -104,7 +104,7 @@
           type: "scatter",
           mode: "markers",
           name: "Send → step 2",
-          x: [80, 26, 10],
+          x: [10, 26, 80],
           y: ["Send → step 2", "Send → step 2", "Send → step 2"],
           marker: { color: "#00369f", size: 5, opacity: 0.65 },
           hovertemplate: "%{x} days<extra></extra>",
@@ -113,9 +113,9 @@
           type: "box",
           name: "Send → rejection",
           x: [
-            114, 136, 132, 13, 95, 84, 49, 51, 114, 52, 122, 106, 114, 16, 49, 97, 3, 103, 112, 79, 99, 56, 25, 27, 24, 79, 71, 90, 77, 84, 9, 68, 66,
-            37, 46, 45, 0, 6, 1, 57, 57, 60, 56, 42, 49, 1, 14, 7, 37, 2, 3, 42, 3, 1, 4, 7, 4, 4, 5, 4, 41, 41, 4, 4, 31, 1, 22, 30, 1, 8, 2, 5, 6,
-            9, 7, 6, 2, 6, 2, 0, 2, 2, 1, 39,
+            0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 8, 9, 9, 9, 11, 12, 13, 13,
+            14, 16, 22, 24, 25, 25, 27, 30, 31, 37, 37, 38, 39, 41, 41, 42, 42, 45, 46, 49, 49, 49, 51, 52, 53, 56, 56, 57, 57, 60, 65, 66, 68, 71,
+            77, 79, 79, 84, 84, 90, 91, 92, 95, 97, 99, 103, 106, 112, 114, 114, 114, 122, 132, 136, 139, 158, 193,
           ],
           orientation: "h",
           boxpoints: "all",
@@ -129,8 +129,8 @@
           type: "scatter",
           mode: "markers",
           name: "Step 1 → rejection",
-          x: [39, 13, 10],
-          y: ["Step 1 → rejection", "Step 1 → rejection", "Step 1 → rejection"],
+          x: [10, 13, 39, 43],
+          y: ["Step 1 → rejection", "Step 1 → rejection", "Step 1 → rejection", "Step 1 → rejection"],
           marker: { color: "#00369f", size: 5, opacity: 0.65 },
           hovertemplate: "%{x} days<extra></extra>",
         },
@@ -138,14 +138,14 @@
           type: "scatter",
           mode: "markers",
           name: "Step 2 → rejection",
-          x: [34, 4],
+          x: [4, 34],
           y: ["Step 2 → rejection", "Step 2 → rejection"],
           marker: { color: "#00369f", size: 5, opacity: 0.65 },
           hovertemplate: "%{x} days<extra></extra>",
         },
       ],
       {
-        xaxis: { title: { text: "Calendar days" } },
+        xaxis: { title: { text: "Days" } },
         yaxis: {
           autorange: "reversed",
           categoryorder: "array",
@@ -158,14 +158,14 @@
         {
           type: "bar",
           x: ["30+ days", "60+ days", "90+ days", "180+ days"],
-          y: [41.35338345864662, 40.298507462686565, 40.0, 27.906976744186046],
+          y: [41.57303370786517, 40.38461538461539, 40.0, 27.906976744186046],
           marker: { color: ["#7797ce", "#7797ce", "#00369f", "#7797ce"] },
-          text: ["41.4%", "40.3%", "40.0%", "27.9%"],
+          text: ["41.6%", "40.4%", "40.0%", "27.9%"],
           textposition: "outside",
           cliponaxis: false,
           customdata: [
-            [110, 266],
-            [81, 201],
+            [111, 267],
+            [84, 208],
             [70, 175],
             [12, 43],
           ],
@@ -180,7 +180,7 @@
           type: "bar",
           name: "emails",
           x: ["Aug", "Sep", "Oct", "Nov"],
-          y: [10, 23, 42, 4],
+          y: [10, 23, 42, 5],
           marker: { color: "#00369f" },
           hovertemplate: "%{x}<br>%{y} emails<extra></extra>",
         },
@@ -193,7 +193,7 @@
           type: "bar",
           name: "emails",
           x: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-          y: [13, 17, 11, 20, 12, 2, 4],
+          y: [13, 17, 11, 21, 12, 2, 4],
           marker: { color: "#00369f" },
           hovertemplate: "%{x}<br>%{y} emails<extra></extra>",
         },
@@ -206,7 +206,7 @@
           type: "bar",
           name: "emails",
           x: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
-          y: [0, 0, 0, 0, 0, 0, 0, 0, 2, 9, 18, 11, 6, 5, 6, 5, 6, 3, 5, 1, 0, 1, 0, 1],
+          y: [0, 0, 0, 0, 0, 0, 0, 0, 2, 9, 19, 11, 6, 5, 6, 5, 6, 3, 5, 1, 0, 1, 0, 1],
           marker: { color: "#00369f" },
           hovertemplate: "%{x:02d}:00<br>%{y} emails<extra></extra>",
           width: 0.8,
@@ -262,7 +262,7 @@
         {
           type: "bar",
           orientation: "h",
-          x: [58, 41, 3],
+          x: [60, 41, 3],
           y: ["Data /<br>technical", "Finance /<br>investment", "Compliance /<br>financial crime"],
           name: "rejections",
           marker: { color: "#00369f" },
@@ -311,17 +311,10 @@
           hoverlabel: { bgcolor: ink, font: { color: paper } },
         };
         if (extra.showlegend) layout.margin.t = 44;
-        if (id === "stage") {
-          data.forEach((t) => {
-            t.y = t.y.map((y) =>
-              isMobile
-                ? y
-                    .replace("substantive reply", "substantive<br>reply")
-                    .replace(" + rejection", "<br>+ rejection")
-                    .replace(" / financial", " /<br>financial")
-                : y
-            );
-          });
+        if (id === "stage" && isMobile) {
+          data[0].y = data[0].y.map((label) =>
+            label.replace("First reply with", "First reply<br>with").replace("Interview and rejection", "Interview and<br>rejection")
+          );
         }
         if (["weekday", "hour", "arrival-month"].includes(id)) {
           layout.height = 235;
