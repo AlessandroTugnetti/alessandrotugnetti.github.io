@@ -165,7 +165,10 @@ for region, match in role_regions.items():
         errors.append(f"{region}: missing dated ADEM role")
     for name in ("Gabriele Marconi", "François-Xavier Borsi"):
         url = next(a["url"] for a in identities if name in a["aliases"])
-        if (name, url) not in links.links:
+        if region == "Home News":
+            if name in text or any(href == url for _, href in links.links):
+                errors.append(f"{region}: unexpected colleague name or link {name}")
+        elif (name, url) not in links.links:
             errors.append(f"{region}: missing colleague link {name}")
     if re.search(r"upcoming|I'll join|Starting 2 November", text):
         errors.append(f"{region}: role must use neutral dated wording")
@@ -182,7 +185,7 @@ if news:
     text = " ".join(unescape(re.sub(r"<[^>]+>", " ", news.group(1))).split())
     if not re.search(r'<time[^>]*datetime="2026-11-02"[^>]*>\s*\[2 November\]\s*</time>', news.group(1)):
         errors.append("Home News: ADEM badge must show 2 November without the year")
-    if "I joined ADEM as a data scientist, in the group of" not in text:
+    if "I joined the Études, statistiques et Data Science department at ADEM as a data scientist." not in text:
         errors.append("Home News: natural ADEM announcement missing")
 
 if not (root / "assets/pdf/Tugnetti_CV.pdf").read_bytes().startswith(b"%PDF-"):
