@@ -30,6 +30,6 @@ latest_posts:
 I also serve as Vice President of the Quantitative Finance and Insurance (QFI) Alumni and Students Association.
 
 {% assign academy = site.data.resume.certificates | first %}
-I'm taking the [{{ academy.name }}]({{ academy.url }}) at {{ academy.issuer }}.
+I'm taking the [{{ academy.name }} at {{ academy.issuer }}]({{ academy.url }}).
 
 {% include adem_role.liquid kind='bio' %}
