@@ -70,15 +70,15 @@
         {
           type: "bar",
           orientation: "h",
-          x: [116, 20, 9],
-          y: ["First reply with a date", "Next step", "Interview invitation"],
+          x: [116, 20, 11, 6],
+          y: ["First reply with a date", "Next step", "Interview attended", "Interview and rejection"],
           marker: {
-            color: ["#303030", "#00369f", "#00369f"],
+            color: ["#303030", "#00369f", "#00369f", "#00369f"],
           },
-          text: [116, 20, 9],
+          text: [116, 20, 11, 6],
           textposition: "outside",
           cliponaxis: false,
-          customdata: [33.91812865497076, 5.847953216374269, 2.6315789473684212],
+          customdata: [33.91812865497076, 5.847953216374269, 3.216374269005848, 1.7543859649122806],
           hovertemplate: "%{y}<br>%{x} of 342 (%{customdata:.1f}%)<extra></extra>",
         },
       ],
@@ -218,18 +218,18 @@
         {
           type: "bar",
           x: ["30+ days", "60+ days", "90+ days", "180+ days"],
-          y: [40.069686411149824, 40.63745019920319, 37.98882681564246, 25.58139534883721],
+          y: [40.13840830449827, 40.63745019920319, 37.98882681564246, 27.659574468085108],
           marker: {
             color: ["#7797ce", "#7797ce", "#00369f", "#7797ce"],
           },
-          text: ["40.1%", "40.6%", "38.0%", "25.6%"],
+          text: ["40.1%", "40.6%", "38.0%", "27.7%"],
           textposition: "outside",
           cliponaxis: false,
           customdata: [
-            [115, 287],
+            [116, 289],
             [102, 251],
             [68, 179],
-            [11, 43],
+            [13, 47],
           ],
           hovertemplate: "%{x}<br>%{customdata[0]} of %{customdata[1]} (%{y:.1f}%)<extra></extra>",
         },
@@ -355,7 +355,7 @@
         {
           type: "bar",
           orientation: "h",
-          x: [125, 81, 6],
+          x: [129, 85, 6],
           y: ["Data /<br>technical", "Finance /<br>investment", "Compliance /<br>financial crime"],
           name: "applications",
           marker: {
@@ -366,7 +366,7 @@
         {
           type: "bar",
           orientation: "h",
-          x: [62, 45, 3],
+          x: [64, 48, 3],
           y: ["Data /<br>technical", "Finance /<br>investment", "Compliance /<br>financial crime"],
           name: "rejections",
           marker: {
@@ -425,7 +425,7 @@
         if (extra.showlegend) layout.margin.t = 44;
         if (id === "stage" && isMobile) {
           data[0].y = data[0].y.map((label) =>
-            label.replace("First reply with", "First reply<br>with").replace("Interview invitation", "Interview<br>invitation")
+            label.replace("First reply with", "First reply<br>with").replace("Interview and rejection", "Interview and<br>rejection")
           );
         }
         if (["weekday", "hour", "arrival-month"].includes(id)) {

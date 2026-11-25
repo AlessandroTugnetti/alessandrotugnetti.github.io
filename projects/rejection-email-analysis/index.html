@@ -1,7 +1,7 @@
 ---
 layout: default
 title: After Clicking Apply
-description: What I learn from tracking job applications and rejection emails in Luxembourg.
+description: What a folder of rejection emails tells me about applying for jobs.
 permalink: /projects/rejection-email-analysis/
 rejection_article: true
 ---
@@ -11,37 +11,53 @@ rejection_article: true
     <a class="project-back" href="{{ '/projects/' | relative_url }}">← Projects</a>
     <h1 id="rejection-title">After Clicking Apply</h1>
     <p class="standfirst">
-      I can get a reply on the day I apply or wait more than three months. I track 342 applications in Luxembourg to see how often I hear back and
-      what employers say when they turn me down.
+      For months, I read each rejection email and saved it in a folder. As the folder grew, I wondered what the messages could tell me when I read
+      them together. Do rejections come in waves? How often does an employer say why they turned me down?
     </p>
     <details class="masthead-disclosure">
-      <summary>About the data</summary>
+      <summary>What I found</summary>
       <p>
-        I apply mostly through employers’ careers pages. My tracker starts in November 2025, and I last checked the tracker and email archive on
-        November 24, 2026. I use original emails for send times and wording. Dated copies and employer records fill in some earlier decisions.
+        When I get a rejection, the median wait is about two and a half weeks. At 90 days, almost two in five older applications still have no reply.
+        Even when I do hear back, most emails either give no reason or say the employer is moving ahead with other candidates.
+      </p>
+    </details>
+    <details class="masthead-disclosure">
+      <summary>Scope and method</summary>
+      <p>
+        I have been applying for jobs exclusively in Luxembourg since November 2025. I apply through company careers pages whenever I can and use
+        LinkedIn for roles that are only listed there. I try to apply as soon as I spot a role, usually within a week of the posting date. I update
+        this analysis as I go. The figures here are current as of November 25, 2026.
       </p>
     </details>
     <nav class="story-nav" aria-label="Article sections">
-      <a href="#months">Timeline</a><a href="#stages">Replies and interviews</a><a href="#wait">Wait times</a
-      ><a href="#silence">Unanswered applications</a><a href="#arrival">Email arrival</a><a href="#wording">Wording</a
-      ><a href="#roles">Roles and employers</a>
+      <a href="#months">The timeline</a><a href="#stages">The replies</a><a href="#wait">The wait</a><a href="#silence">The silence</a
+      ><a href="#arrival">The timestamp</a><a href="#wording">The wording</a><a href="#roles">The jobs</a>
     </nav>
   </header>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="months">Applications and <em>rejections by month</em></h2>
+      <div>
+        <p class="eyebrow">The timeline</p>
+        <h2 id="months">When the rejections <em>come in</em></h2>
+      </div>
     </header>
     <div class="story-spread">
       <div class="spread-copy">
-        <p>I record 176 rejections. July has the most applications, with 81. October has the most dated rejections, with 42.</p>
+        <p>
+          I start with the dates the rejection emails arrive. Do applications and rejections peak in the same months, or does the busiest period in my
+          inbox come later?
+        </p>
+        <p>
+          Across the search, I count 342 applications and 176 rejections. I send the most applications in July and record the most rejections in
+          October. A rejection in October can come from an application I sent weeks earlier.
+        </p>
       </div>
       <div class="spread-visual">
         <figure class="chart-block">
           <h3>Applications sent and rejections recorded, by month</h3>
           <div id="chart-timeline" class="plot" role="img" aria-label="Applications sent and rejections recorded, by month"></div>
           <figcaption>
-            Applications are grouped by the month I send them, and rejections by the month of the decision. The chart includes 139 rejections with
-            documented dates.
+            I count each application in the month I send it and each rejection in the month it comes in. I leave out missing or estimated dates.
           </figcaption>
         </figure>
       </div>
@@ -49,23 +65,31 @@ rejection_article: true
   </section>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="stages">How far <em>I get</em></h2>
+      <div>
+        <p class="eyebrow">The replies</p>
+        <h2 id="stages">How far <em>I get</em></h2>
+      </div>
     </header>
     <div class="story-spread story-spread--reverse">
       <div class="spread-copy">
         <p>
-          For 116 applications (33.9%), I have a dated reply. I record a next step for 20 applications (5.8%), from a recruiter’s question to a test
-          or interview.
+          I count a reply with a known date for 116 applications (33.9%). For 20 applications (5.8%), I receive an invitation or request to take a
+          next step.
         </p>
-        <p>I can verify interview invitations for nine applications, including interviews still to come.</p>
+        <p>Sometimes the next step is a test or a call before a formal interview. I attend interviews for 11 applications (3.2%).</p>
+        <p>
+          I record a rejection for six of those eleven applications. Rafa Audibert groups recruiter calls with first interviews in his remote
+          engineering search. I keep interviews separate so I can see how often I get past the earlier steps.
+          <a href="https://rafaaudibert.dev/blog/applying-for-a-job-in-2024/">Audibert’s search</a>
+        </p>
       </div>
       <div class="spread-visual">
         <figure class="chart-block">
-          <h3>From first reply to interview invitation</h3>
-          <div id="chart-stage" class="plot" role="img" aria-label="From first reply to interview invitation"></div>
+          <h3>From first reply to interview</h3>
+          <div id="chart-stage" class="plot" role="img" aria-label="From first reply to interview"></div>
           <figcaption>
-            The groups overlap. A recruiter’s question or decision counts as a reply. Automatic confirmations are excluded, and each application
-            counts once per bar.
+            Each bar counts applications out of 342, using my full application record. The groups overlap. I count recruiter questions and decisions
+            as replies and leave out automatic confirmations. If an interview is rescheduled or I get a reminder, I still count it once.
           </figcaption>
         </figure>
       </div>
@@ -73,41 +97,98 @@ rejection_article: true
   </section>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="wait">How long <em>I wait</em></h2>
+      <div>
+        <p class="eyebrow">The wait</p>
+        <h2 id="wait">How long <em>I wait</em></h2>
+      </div>
     </header>
     <div class="story-spread">
       <div class="spread-copy">
-        <p>The median wait for a first reply is 13.5 days. Seven replies arrive on the day I apply, and 13 take at least 90 days.</p>
-        <p>For rejections with a documented date, the median wait is 17 days. Five arrive the day I apply, and 21 take at least 90 days.</p>
+        <p>
+          The median wait for a first reply is 13.5 days. Seven of the 116 first replies (6%) arrive the day I apply. Thirteen (11%) take 90 days or
+          more.
+        </p>
+        <p>
+          For rejections, I wait a median of 17 days. Five of the 139 rejections I can time (4%) arrive the same day, and 21 (15%) take at least 90
+          days. An automated decision could explain some of the quickest rejections, but I cannot tell from the timing alone.
+        </p>
+        <p>
+          Thomas Rones uses confirmation emails as his starting dates and gets a five-day median for applications he can pair with a reply. I count
+          from the date I apply, so I can include a rejection that arrives without an archived confirmation.
+          <a href="https://thomasrones.com/projects/job-search-measured/">Rones’s job-search analysis</a>
+        </p>
       </div>
       <div class="spread-visual">
         <figure class="chart-block">
           <h3>How long I wait between steps</h3>
           <div id="chart-timing" class="plot" role="img" aria-label="How long I wait between steps"></div>
           <figcaption>
-            Each dot is a wait between two documented dates. A step can be a request or a scheduled appointment. Each box spans the middle half of the
-            waits.
+            Each dot is one application with two documented dates. I measure waits in days and leave out estimated rejection dates. A step can be a
+            request or a scheduled appointment. Where shown, a box marks the middle half of the waits.
           </figcaption>
         </figure>
       </div>
     </div>
+    <div class="data-table">
+      <h3>From application to rejection</h3>
+      <div class="table-scroll" tabindex="0">
+        <table>
+          <caption class="sr-only">
+            From application to rejection
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Interview record</th>
+              <th scope="col">Rejections</th>
+              <th scope="col">Median days</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">No interview on record</th>
+              <td>170</td>
+              <td>14.5</td>
+            </tr>
+            <tr>
+              <th scope="row">Interview attended</th>
+              <td>6</td>
+              <td>37</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">
+        Median waits use documented send and rejection dates, available for 134 rejections in the first group and five in the second.
+      </p>
+    </div>
   </section>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="silence">When <em>there is no reply</em></h2>
+      <div>
+        <p class="eyebrow">The silence</p>
+        <h2 id="silence">When I <em>hear nothing</em></h2>
+      </div>
     </header>
     <div class="story-spread story-spread--reverse">
       <div class="spread-copy">
-        <p>Of the 179 applications at least 90 days old, 68 (38%) are still open with no substantive reply in my records.</p>
-        <p>The longest wait I can measure ends with a rejection 193 days after I apply.</p>
+        <p>
+          When I hear nothing after applying, I wonder whether I am still in the running. I look at how many applications remain open as the weeks
+          pass. I am surprised by how many are still open after three months. I have no reply or outcome for 68 of the 179 applications at least 90
+          days old, or 38%.
+        </p>
+        <p>
+          How long do I wait before I call it ghosting? Loïc Sans uses two months in his own search. I check at several points because a late reply
+          can still come. One rejection arrives 193 days after I apply.
+          <a href="https://loicsans.me/search/">Sans’s job-search log</a>
+        </p>
       </div>
       <div class="spread-visual">
         <figure class="chart-block">
           <h3>Still waiting for a reply</h3>
           <div id="chart-silence" class="plot" role="img" aria-label="Still waiting for a reply"></div>
           <figcaption>
-            For each threshold, I count only applications old enough to reach it. An automatic confirmation still leaves an application in the
-            unanswered group.
+            Each bar includes only applications old enough to reach that point. I count those still open without a reply or next step. Automatic
+            confirmations are left out.
           </figcaption>
         </figure>
       </div>
@@ -115,44 +196,62 @@ rejection_article: true
   </section>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="arrival">When <em>emails arrive</em></h2>
+      <div>
+        <p class="eyebrow">The timestamp</p>
+        <h2 id="arrival">When the rejections <em>land</em></h2>
+      </div>
     </header>
     <p>
-      I have 100 rejection emails to compare. All but one arrive between August 7 and November 24, 2026. I take the time of the April email from a
-      copy of the original.
+      My job search goes back to November 2025. Of the 100 rejection emails I look at here, one arrives in April and the rest arrive between August 7
+      and November 24, 2026.
     </p>
     <div class="arrival-grid">
       <figure class="chart-block">
-        <h3>Month of arrival</h3>
-        <div id="chart-arrival-month" class="plot" role="img" aria-label="Month of arrival"></div>
-        <figcaption>The archive covers parts of August and November.</figcaption>
+        <h3>Month of the Year</h3>
+        <div id="chart-arrival-month" class="plot" role="img" aria-label="Month of the Year"></div>
+        <figcaption>Rejection emails by month.</figcaption>
       </figure>
       <figure class="chart-block">
-        <h3>Day of arrival</h3>
-        <div id="chart-weekday" class="plot" role="img" aria-label="Day of arrival"></div>
-        <figcaption>Eight emails arrive over the weekend.</figcaption>
+        <h3>Day of the Week</h3>
+        <div id="chart-weekday" class="plot" role="img" aria-label="Day of the Week"></div>
+        <figcaption>Rejection emails by weekday.</figcaption>
       </figure>
       <figure class="chart-block">
-        <h3>Hour of arrival</h3>
-        <div id="chart-hour" class="plot" role="img" aria-label="Hour of arrival"></div>
-        <figcaption>All times are local to Luxembourg.</figcaption>
+        <h3>Hour of the Day</h3>
+        <div id="chart-hour" class="plot" role="img" aria-label="Hour of the Day"></div>
+        <figcaption>Rejection emails by hour, Luxembourg time.</figcaption>
       </figure>
     </div>
-    <p>Tuesday has the most emails, with 25. The busiest hour is 10 to 11 a.m., with 23.</p>
+    <p>
+      Tuesday is the busiest day in my inbox. I count 23 emails in the 10 a.m. hour and eight on weekends. Conor Dewey’s analysis puts Wednesday first
+      and also finds some rejections on Saturdays. <a href="https://github.com/cdeweyx/Job-Rejection-Analysis">Job Rejection Analysis notebook</a>
+    </p>
   </section>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="wording">What <em>the emails say</em></h2>
+      <div>
+        <p class="eyebrow">The wording</p>
+        <h2 id="wording">Have I <em>read this before?</em></h2>
+      </div>
     </header>
     <div class="story-spread">
       <div class="spread-copy">
         <p>
-          I find a thank-you in 62 of the 63 English emails. Across all 100 emails, 45 give no reason and 32 say the employer is moving ahead with
-          other candidates. Seven mention specific experience or qualifications.
+          I start with a phrase I recognize. In his job rejection analysis, Conor Dewey finds that some version of “thank you for your interest” is
+          the most common subject line. I look in the body of the emails and find a thank-you in 62 of 63 English messages.
+          <a href="https://github.com/cdeweyx/Job-Rejection-Analysis">Dewey’s analysis</a>
         </p>
         <p>
-          I compare each email with its closest match in the same language. Forty-nine have a close match. For 17 of those, I can verify that at least
-          one close match comes from a different employer.
+          Across the sample, I count 45 emails that give no reason and 32 that point to other candidates. Together they make up 77% of my sample.
+          <a href="https://medium.com/design-bootcamp/i-ran-a-statistical-analysis-on-my-own-job-rejections-2cea443ebbdb">Liz Dugan</a> puts roughly
+          73% of her emails in those same broad categories, with other candidates first. We classify the emails differently, but I recognize the
+          pattern in her results. Most of the time the letter tells me the outcome and leaves me guessing what I could have done differently.
+        </p>
+        <p>
+          Dugan compares how long emails are when they use certain phrases. I want to see how much of the wording repeats beyond the phrases I
+          recognize. For each email, I look for the closest match in the same language. The chart shows how many emails fall in each score range. A
+          score of 0 means the two emails share no three-word sequences. At 1, the sets of sequences are identical. I count scores at or above the
+          dashed line at 0.75 as close matches.
         </p>
       </div>
       <div class="spread-visual">
@@ -160,43 +259,59 @@ rejection_article: true
           <h3>How closely do the emails match?</h3>
           <div id="chart-similarity" class="plot" role="img" aria-label="How closely do the emails match?"></div>
           <figcaption>
-            After removing greetings, signatures, footers and quoted text, I mask identifiable names, job titles and numbers. I score how many
-            three-word phrases the two emails share as a fraction of all the distinct phrases in the pair. The dashed line marks 0.75, my cutoff for a
-            close match.
+            I remove greetings, signatures, footers and quoted threads, standardize capitalization and mask names, employers, roles and numeric
+            references I can identify. I compare distinct sequences of three consecutive words. The Jaccard score is the share of sequences in either
+            email that appear in both.
           </figcaption>
         </figure>
       </div>
     </div>
     <p>
-      Other applicants have tracked the same kind of email. Liz Dugan also finds that most of hers give no reason or mention other candidates, using
-      her own categories.
-      <a href="https://medium.com/design-bootcamp/i-ran-a-statistical-analysis-on-my-own-job-rejections-2cea443ebbdb">Dugan’s rejection analysis</a>
+      At my cutoff, 49 emails have a close match. For 17 of those emails, at least one close match comes from a different recorded employer. I
+      recognize the format much more often than I can match the wording across employers.
+    </p>
+    <p>
+      Jablin and Krone describe a recurring structure in post-screening rejection letters. Barešová finds that 86% of the American letters she studies
+      open with appreciation. I count thanks wherever they appear in my English emails. That familiar gesture gives the letters a recognizable shape
+      even when the wording varies. <a href="https://digitalcommons.unl.edu/commstudiespapers/144/">Jablin and Krone</a>,
+      <a href="https://library.upol.cz/knihy/Baresova%20-%20Politeness%20Strategie.pdf">Barešová</a>
     </p>
   </section>
   <section class="chapter">
     <header class="chapter-head">
-      <h2 id="roles">Roles and <em>employer size</em></h2>
+      <div>
+        <p class="eyebrow">The jobs</p>
+        <h2 id="roles">Does the role <em>make a difference?</em></h2>
+      </div>
     </header>
     <div class="story-spread story-spread--reverse">
       <div class="spread-copy">
         <p>
-          Data and technical roles make up the largest group in my November 17 comparison. I record 62 rejections from 125 applications in that group
-          and 45 from 81 in finance and investment.
+          My skills and qualifications lead me mainly toward data and analytics, so technical roles make up the largest group in my search, with 129
+          applications. I count 85 in finance and investment and 6 in compliance and financial crime. One investment risk role also mentions data
+          integration, so I count it in both groups.
         </p>
       </div>
       <div class="spread-visual">
         <figure class="chart-block">
-          <h3>Applications and rejections by title keyword, November 17</h3>
-          <div id="chart-roles" class="plot" role="img" aria-label="Applications and rejections by title keyword, November 17"></div>
+          <h3>Applications and recorded rejections by title keyword</h3>
+          <div id="chart-roles" class="plot" role="img" aria-label="Applications and recorded rejections by title keyword"></div>
           <figcaption>
-            I group job titles by keyword. A title can appear in more than one group, and the time employers have had to reply varies.
+            I group applications using keywords in the recorded titles and count known rejections within each group. Nine applications belong to more
+            than one group. Follow-up time varies.
           </figcaption>
         </figure>
       </div>
     </div>
     <p>
-      I find published staff counts for nine employers in the November 17 snapshot, covering 39 applications. Where available, I use the headcount for
-      the company or group.
+      I count 64 rejections among those 129 data and technical applications, and 48 among the 85 finance and investment applications. I also have
+      applications still waiting for an outcome in both groups. The chart shows where I send most of my applications and where the rejections I know
+      about accumulate.
+    </p>
+    <p>
+      I also wonder whether larger employers take longer to send a rejection or word their emails differently. I compare waits for employers with more
+      than 1,000 staff and those with fewer than 250, using published headcounts for the company or its group. I have too few emails with verified
+      headcounts to compare wording by employer size.
     </p>
     <div class="data-table">
       <h3>Rejections by employer size</h3>
@@ -219,10 +334,10 @@ rejection_article: true
             <tr>
               <th scope="row">More than 1,000 staff</th>
               <td>6</td>
-              <td>33</td>
+              <td>34</td>
               <td>23</td>
-              <td>13</td>
-              <td>8</td>
+              <td>14</td>
+              <td>7.5</td>
             </tr>
             <tr>
               <th scope="row">Fewer than 250 staff</th>
@@ -236,10 +351,16 @@ rejection_article: true
         </table>
       </div>
     </div>
-    <p>Both dated rejections in the smaller group come from the same employer, so the median describes only that employer’s two replies.</p>
+    <p>
+      I can verify headcounts for nine employers, covering 40 applications. The two rejection waits I can measure for smaller employers both come from
+      one company. I have more dates for larger employers, but too few to say whether company size explains the difference.
+    </p>
+    <p>
+      If you are applying for jobs and wondering whether everyone else is hearing back, I wrote this for you. I am still applying, and I hope these
+      numbers offer some perspective.
+    </p>
   </section>
   <footer>
-    <p>I want to see how many of the applications that are still open after three months eventually get a reply.</p>
     <div class="footer-links"><a href="https://github.com/AlessandroTugnetti/Rejection-Analysis">Analysis code on GitHub</a></div>
   </footer>
 </article>
