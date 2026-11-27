@@ -6,6 +6,7 @@ repo_description_lines_max: 3
 github_repos:
   - AlessandroTugnetti/Rejection-Analysis
   - qfi-alumni/qfi-alumni.github.io
+  - AlessandroTugnetti/utilities-dashboard
 project_details:
   AlessandroTugnetti/Rejection-Analysis:
     title: After Clicking Apply
@@ -19,5 +20,10 @@ project_details:
     url: https://qfi-alumni.github.io/
     cover: /assets/img/projects/qfi-association.jpg
     cover_alt: Aerial view of the School of Management and Economics in Turin.
+    stars: 0
+    forks: 0
+  AlessandroTugnetti/utilities-dashboard:
+    title: Utilities Dashboard
+    url: https://alessandrotugnetti.github.io/utilities-dashboard/
     stars: 0
     forks: 0
