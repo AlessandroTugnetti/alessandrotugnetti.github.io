@@ -5,11 +5,19 @@ github_users:
 repo_description_lines_max: 3
 github_repos:
   - AlessandroTugnetti/Rejection-Analysis
+  - qfi-alumni/qfi-alumni.github.io
 project_details:
   AlessandroTugnetti/Rejection-Analysis:
     title: After Clicking Apply
     url: /projects/rejection-email-analysis/
     cover: /assets/img/projects/rejection-email-analysis.png
     cover_alt: A man in a suit faces an oversized hand held up in a stop gesture.
+    stars: 0
+    forks: 0
+  qfi-alumni/qfi-alumni.github.io:
+    title: QFI Alumni & Students Association
+    url: https://qfi-alumni.github.io/
+    cover: /assets/img/projects/qfi-association.jpg
+    cover_alt: Aerial view of the School of Management and Economics in Turin.
     stars: 0
     forks: 0
