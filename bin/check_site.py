@@ -12,6 +12,8 @@ from urllib.parse import unquote, urljoin, urlsplit
 from rendered_content import ContentStructure, rendering_errors, news_errors, LinkedText, author_link_errors
 
 SITE = "https://alessandrotugnetti.github.io"
+# This URL is published by the project's own GitHub Pages workflow.
+PROJECT_SITE_URLS = {f"{SITE}/utilities-dashboard/"}
 root = Path(sys.argv[1] if len(sys.argv) > 1 else "_site").resolve()
 errors = []
 
@@ -22,6 +24,8 @@ class Links(HTMLParser):
         for key in ("href", "src"):
             value = attrs.get(key, "")
             if not value or value.startswith(("#", "mailto:", "tel:", "javascript:", "data:")):
+                continue
+            if value in PROJECT_SITE_URLS:
                 continue
             target = urlsplit(urljoin(page_url, value))
             if target.netloc != urlsplit(SITE).netloc or target.scheme not in ("http", "https"):
